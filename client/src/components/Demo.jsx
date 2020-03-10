@@ -37,8 +37,9 @@ const Authentication = ({ donorDialogue, playerDialogues, currentVideo, currentP
           id={idx}
           key={p.text}
           text={p.text}
+          point={p.addScore}
           nextArray={p.nextDialogue}
-          verticalPosition={100 + ((vidH - 200) / 3) * idx}
+          verticalPosition={100 + ((vidH - 200) / playerDialogues.length) * idx}
           height={((vidH - 200) / playerDialogues.length - 25)}
           dialogueHandler={dialogueHandler}
         />

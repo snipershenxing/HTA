@@ -357,14 +357,26 @@ class App extends React.Component {
     // }, 10);
   }
 
-  dialogueHandler(player, newDialogue, skip) {
+  dialogueHandler(player, newDialogue, skip, point) {
+    let { score, playerDialogues } = this.state;
     if (player) {
-      this.state.playerDialogues.forEach((e, i) => {
-        if (skip != i)
-          document.getElementById(`${i}`).style.opacity = 0;
+      if (newDialogue === 'Gate1') {
+        if (score + point <= 2) {
+          newDialogue = 'Gate1-1'
+        } else if (3 <= score + point && score + point <= 7) {
+          newDialogue = 'Gate1-2'
+        } else {
+          newDialogue = 'Gate1-3'
+        }
+      }
+      playerDialogues.forEach((e, i) => {
+        e.addScore = 0
+        if (skip != i) document.getElementById(String(i)).style.display = 'none';
       });
       this.setState({
-        donorDialogue: Dialogue[newDialogue]
+        donorDialogue: Dialogue[newDialogue],
+        score: score + point,
+        playerDialogues: playerDialogues
       });
     } else {
       let playerDialogues = [];
@@ -381,6 +393,7 @@ class App extends React.Component {
     let { playerDialogues, donorDialogue, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster } = this.state;
     return (
       <div id='main'>
+        <h3 style={{ position: "absolute", top: 0, left: "50%" }}>Score : {score}</h3>
         {authenticate !== 'passed' ?
           <div>
             <Authentication
