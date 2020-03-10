@@ -1,0 +1,36 @@
+.bubbleButton, .respondButton {
+  position: absolute;
+  height: 23vh;
+  color: black;
+  font-size: 25px;
+  font-family: arial;
+  border-radius: 4vh;
+  overflow: hidden;
+}
+
+.bubbleButton {
+  background-color: rgba(120, 180, 164, 1);
+  width: 28vw;
+  top: 50px;
+  left: 50px;
+}
+
+.respondButton {
+  background-color: rgba(233, 114, 115, 1);
+  bottom: 100px;
+  right: 50px;
+  width: 33vw;
+}
+
+.textForBubbleButton, .textForRespondButton {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  font-size: 2.5vh;
+  overflow: hidden;
+}
