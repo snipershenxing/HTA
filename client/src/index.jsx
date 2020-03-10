@@ -29,7 +29,7 @@ class App extends React.Component {
       currentVideo: "./assets/FrancoSittingAnsweingPhone.mp4",
       currentPoster: "./assets/posterFranco.png",
       playerDialogues: [],
-      donorDialogue: ""
+      donorDialogue: {}
     };
     this.trySignInWithCookie = this.trySignInWithCookie.bind(this);
     this.signinWithCookie = this.signinWithCookie.bind(this);
@@ -45,6 +45,7 @@ class App extends React.Component {
     this.updateHandler = this.updateHandler.bind(this);
     this.logoutHandler = this.logoutHandler.bind(this);
     this.changeVideoHandler = this.changeVideoHandler.bind(this);
+    this.dialogueHandler = this.dialogueHandler.bind(this);
   }
 
   componentDidMount() {
@@ -52,7 +53,7 @@ class App extends React.Component {
     var vid = document.getElementById("myVideo");
     this.setState({
       playerDialogues: [Dialogue[2], Dialogue[3], Dialogue[4]],
-      donorDialogue: Dialogue[1].text
+      donorDialogue: Dialogue[1]
     })
   }
 
@@ -356,6 +357,26 @@ class App extends React.Component {
     // }, 10);
   }
 
+  dialogueHandler(player, newDialogue, skip) {
+    if (player) {
+      this.state.playerDialogues.forEach((e, i) => {
+        if (skip != i)
+          document.getElementById(`${i}`).style.opacity = 0;
+      });
+      this.setState({
+        donorDialogue: Dialogue[newDialogue]
+      });
+    } else {
+      let playerDialogues = [];
+      for (let ix of newDialogue) {
+        playerDialogues.push(Dialogue[ix]);
+      }
+      this.setState({
+        playerDialogues,
+      });
+    }
+  }
+
   render() {
     let { playerDialogues, donorDialogue, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster } = this.state;
     return (
@@ -406,6 +427,7 @@ class App extends React.Component {
             currentPoster={currentPoster}
             logoutHandler={this.logoutHandler}
             changeVideoHandler={this.changeVideoHandler}
+            dialogueHandler={this.dialogueHandler}
           />
         }
       </div>

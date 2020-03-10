@@ -6,6 +6,7 @@
   font-family: arial;
   border-radius: 4vh;
   overflow: hidden;
+  transition: opacity 1s;
 }
 
 .bubbleButton {
