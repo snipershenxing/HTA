@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 
 
 import Authentication from './components/AuthenticationScreen.jsx';
-import Main from './components/MainScreen.jsx';
-import Demo from './components/Demo.jsx';
+import Main from '../Screen/MainScreen.jsx';
+import Demo from '../Screen/GameScreen.jsx';
 import Dialogue from '../src/Dialogue/Dialogue.js';
 
 const address = 'http://192.168.1.100:3001';
