@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 
 import Authentication from './components/AuthenticationScreen.jsx';
-import Main from './Screen/MainScreen.jsx';
+import Admin from './Screen/AdminScreen.jsx';
 import GameScreen from './Screen/GameScreen.jsx';
 import Dialogue from './Dialogue/Dialogue.js';
 
