@@ -5,7 +5,9 @@ import ReactDOM from 'react-dom';
 import Authentication from './components/AuthenticationScreen.jsx';
 import Admin from './Screen/AdminScreen.jsx';
 import Dialogue from './Dialogue/Dialogue.js';
+import FirstPage from './Screen/FirstPage.jsx';
 import ChooseDonor from './Screen/ChooseDonorScreen.jsx';
+import GameScreen from './Screen/GameScreen.jsx';
 
 const address = 'http://192.168.1.100:3001';
 // const address = 'http://192.168.1.2:3001';
@@ -54,10 +56,6 @@ class App extends React.Component {
   componentDidMount() {
     this.trySignInWithCookie();
     var vid = document.getElementById("myVideo");
-    this.setState({
-      playerDialogues: [Dialogue.Franco[2], Dialogue.Franco[3], Dialogue.Franco[4]],
-      donorDialogue: Dialogue.Franco[1]
-    })
   }
 
 
@@ -361,7 +359,7 @@ class App extends React.Component {
   }
 
   dialogueHandler(player, newDialogue, skip, point) {
-    let { subScore, playerDialogues } = this.state;
+    let { subScore, playerDialogues, gameChoosen } = this.state;
     if (player) {
       if (newDialogue === 'Gate1') {
         if (subScore + point <= 2) {
@@ -385,7 +383,7 @@ class App extends React.Component {
         if (skip != i) document.getElementById(String(i)).style.display = 'none';
       });
       this.setState({
-        donorDialogue: Dialogue.Franco[newDialogue],
+        donorDialogue: Dialogue[gameChoosen][newDialogue],
         subScore: subScore + point,
         playerDialogues: playerDialogues,
         donorClickable: true
@@ -399,7 +397,7 @@ class App extends React.Component {
       } else {
         let playerDialogues = [];
         for (let ix of newDialogue) {
-          playerDialogues.push(Dialogue.Franco[ix]);
+          playerDialogues.push(Dialogue[gameChoosen][ix]);
         }
         this.setState({
           playerDialogues,
@@ -410,10 +408,10 @@ class App extends React.Component {
   }
 
   render() {
-    let { playerDialogues, donorDialogue, donorClickable, subScore, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster } = this.state;
+    let { playerDialogues, donorDialogue, donorClickable, subScore, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster, gameChoosen } = this.state;
     return (
       <div id='main'>
-        <h3 style={{ position: "absolute", top: 0, left: "50%" }}>Score : {subScore}</h3>
+        {/* <h3 style={{ position: "absolute", top: 0, left: "50%" }}>Score : {subScore}</h3> */}
         {authenticate !== 'passed' ?
           <div>
             <Authentication
@@ -453,16 +451,30 @@ class App extends React.Component {
           //     </ol>
           //   </div>
           // </div>
-          <ChooseDonor
-            playerDialogues={playerDialogues}
-            donorDialogue={donorDialogue}
-            donorClickable={donorClickable}
-            currentVideo={currentVideo}
-            currentPoster={currentPoster}
-            logoutHandler={this.logoutHandler}
-            changeVideoHandler={this.changeVideoHandler}
-            dialogueHandler={this.dialogueHandler}
-          />
+          gameChoosen === '' ?
+            <FirstPage
+              goToChooseDonor={() => this.setState({ gameChoosen: 'choose' })}
+            /> :
+            gameChoosen === 'choose' ?
+              <ChooseDonor
+                chooseDonor={(name) => {
+                  this.setState({
+                    gameChoosen: name,
+                    playerDialogues: [Dialogue[name][2], Dialogue[name][3], Dialogue[name][4]],
+                    donorDialogue: Dialogue[name][1]
+                  });
+                }}
+              /> :
+              <GameScreen
+                playerDialogues={playerDialogues}
+                donorDialogue={donorDialogue}
+                donorClickable={donorClickable}
+                currentVideo={currentVideo}
+                currentPoster={currentPoster}
+                logoutHandler={this.logoutHandler}
+                changeVideoHandler={this.changeVideoHandler}
+                dialogueHandler={this.dialogueHandler}
+              />
         }
       </div>
     );

@@ -1,19 +1,17 @@
 import React from 'react';
-import GameScreen from './GameScreen.jsx';
 
-const ChooseDonor = ({ donorDialogue, playerDialogues, donorClickable, currentVideo, currentPoster, logoutHandler, changeVideoHandler, dialogueHandler }) => {
+const ChooseDonor = ({ chooseDonor }) => {
   return (
-    <div>
-      <GameScreen
-        playerDialogues={playerDialogues}
-        donorDialogue={donorDialogue}
-        donorClickable={donorClickable}
-        currentVideo={currentVideo}
-        currentPoster={currentPoster}
-        logoutHandler={logoutHandler}
-        changeVideoHandler={changeVideoHandler}
-        dialogueHandler={dialogueHandler}
-      />
+    <div className='chooseDonor'>
+      <div className="person"
+        onClick={() => chooseDonor('Franco')}
+      >Jennifer Walker</div>
+      <div className="person"
+        onClick={() => chooseDonor('Walker')}
+      >Sharrel Letkin</div>
+      <div className="person"
+        onClick={() => chooseDonor()}
+      >JP Romero</div>
     </div>
   );
 };
