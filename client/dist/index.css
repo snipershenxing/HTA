@@ -15,6 +15,15 @@
   top: 50px;
   left: 50px;
 }
+.bubbleButton::before {
+  content: '';
+  position: fixed;
+  width: 70px;
+  height: 113px;
+  background: url(./assets/playerAnchor.png) no-repeat center;
+  margin-left: -45px;
+  margin-top: 8vh;
+}
 
 .respondButton {
   background-color: rgba(233, 114, 115, 1);
@@ -22,6 +31,16 @@
   right: 50px;
   width: 33vw;
 }
+.respondButton::before {
+  content: '';
+  position: fixed;
+  width: 70px;
+  height: 59px;
+  background: url(./assets/donorAnchor.png) no-repeat center;
+  margin-left: 18vw;
+  margin-top: -59px;
+}
+
 
 .textForBubbleButton, .textForRespondButton {
   margin: 0;
@@ -30,7 +49,7 @@
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  width: 100%;
+  width: 95%;
   text-align: center;
   font-size: 2.5vh;
   overflow: hidden;

@@ -1,15 +1,15 @@
 import React from 'react';
-import PlayerBubble from './PlayerBubble.jsx';
-import DonorBubble from './DonorBubble.jsx';
+import PlayerBubble from '../components/PlayerBubble.jsx';
+import DonorBubble from '../components/DonorBubble.jsx';
 
 
-const Authentication = ({ donorDialogue, playerDialogues, currentVideo, currentPoster, logoutHandler, changeVideoHandler, dialogueHandler }) => {
+const GameScreen = ({ donorDialogue, playerDialogues, donorClickable, currentVideo, currentPoster, logoutHandler, changeVideoHandler, dialogueHandler }) => {
   let vidH = window.innerHeight;
-  // console.log(vidH);
   return (
-    <div id='videoContainer' style={{
-      position: 'absolute', zIndex: 5
-    }}>
+    <div
+      id='videoContainer'
+      style={{ position: 'absolute', zIndex: 5 }}
+    >
       <video
         id="myVideo"
         loop={false}
@@ -32,7 +32,7 @@ const Authentication = ({ donorDialogue, playerDialogues, currentVideo, currentP
       </video>
       <div id="vid2" />
 
-      {playerDialogues.map((p, idx) =>
+      {playerDialogues.length && playerDialogues.map((p, idx) =>
         <PlayerBubble
           id={idx}
           key={p.text}
@@ -46,11 +46,12 @@ const Authentication = ({ donorDialogue, playerDialogues, currentVideo, currentP
       )}
 
 
-      <DonorBubble
+      {donorDialogue && <DonorBubble
         text={donorDialogue.text}
         nextArray={donorDialogue.nextDialogue}
         dialogueHandler={dialogueHandler}
-      />
+        donorClickable={donorClickable}
+      />}
 
       <div style={{ width: 400, position: 'absolute', bottom: 0, left: 50 }}>
         <button style={{ width: '100%', height: 25 }} onClick={logoutHandler}>Log Out</button>
@@ -60,4 +61,4 @@ const Authentication = ({ donorDialogue, playerDialogues, currentVideo, currentP
   )
 };
 
-export default Authentication;
+export default GameScreen;

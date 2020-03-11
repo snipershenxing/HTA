@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 
 
 import Authentication from './components/AuthenticationScreen.jsx';
-import Main from '../Screen/MainScreen.jsx';
-import Demo from '../Screen/GameScreen.jsx';
-import Dialogue from '../src/Dialogue/Dialogue.js';
+import Main from './Screen/MainScreen.jsx';
+import GameScreen from './Screen/GameScreen.jsx';
+import Dialogue from './Dialogue/Dialogue.js';
 
 const address = 'http://192.168.1.100:3001';
 // const address = 'http://192.168.1.2:3001';
@@ -29,7 +29,8 @@ class App extends React.Component {
       currentVideo: "./assets/FrancoSittingAnsweingPhone.mp4",
       currentPoster: "./assets/posterFranco.png",
       playerDialogues: [],
-      donorDialogue: {}
+      donorDialogue: {},
+      donorClickable: false
     };
     this.trySignInWithCookie = this.trySignInWithCookie.bind(this);
     this.signinWithCookie = this.signinWithCookie.bind(this);
@@ -363,10 +364,18 @@ class App extends React.Component {
       if (newDialogue === 'Gate1') {
         if (score + point <= 2) {
           newDialogue = 'Gate1-1'
-        } else if (3 <= score + point && score + point <= 7) {
+        } else if (3 <= score + point && score + point <= 4) {
           newDialogue = 'Gate1-2'
         } else {
           newDialogue = 'Gate1-3'
+        }
+      } else if (newDialogue === 'Gate2') {
+        if (score + point <= 4) {
+          newDialogue = 'Gate2-1'
+        } else if (5 <= score + point && score + point <= 6) {
+          newDialogue = 'Gate2-2'
+        } else {
+          newDialogue = 'Gate2-3'
         }
       }
       playerDialogues.forEach((e, i) => {
@@ -376,21 +385,30 @@ class App extends React.Component {
       this.setState({
         donorDialogue: Dialogue[newDialogue],
         score: score + point,
-        playerDialogues: playerDialogues
+        playerDialogues: playerDialogues,
+        donorClickable: true
       });
     } else {
-      let playerDialogues = [];
-      for (let ix of newDialogue) {
-        playerDialogues.push(Dialogue[ix]);
+      if (newDialogue === 'End') {
+        this.setState({
+          donorDialogue: null,
+          playerDialogues: [],
+        })
+      } else {
+        let playerDialogues = [];
+        for (let ix of newDialogue) {
+          playerDialogues.push(Dialogue[ix]);
+        }
+        this.setState({
+          playerDialogues,
+          donorClickable: false
+        });
       }
-      this.setState({
-        playerDialogues,
-      });
     }
   }
 
   render() {
-    let { playerDialogues, donorDialogue, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster } = this.state;
+    let { playerDialogues, donorDialogue, donorClickable, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster } = this.state;
     return (
       <div id='main'>
         <h3 style={{ position: "absolute", top: 0, left: "50%" }}>Score : {score}</h3>
@@ -433,9 +451,10 @@ class App extends React.Component {
           //     </ol>
           //   </div>
           // </div>
-          <Demo
+          <GameScreen
             playerDialogues={playerDialogues}
             donorDialogue={donorDialogue}
+            donorClickable={donorClickable}
             currentVideo={currentVideo}
             currentPoster={currentPoster}
             logoutHandler={this.logoutHandler}
