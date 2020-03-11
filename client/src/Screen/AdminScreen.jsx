@@ -2,7 +2,7 @@ import React from 'react';
 import Switch from "react-switch";
 
 
-const Main = ({ userName, score, progress, tutorial, buttonHandler, updateHandler, logoutHandler }) => {
+const Admin = ({ userName, score, progress, tutorial, buttonHandler, updateHandler, logoutHandler }) => {
   return (<div style={{ float: 'left', width: '50%' }}>
     <h1>{userName}</h1>
     <form style={{ display: 'flex', margin: '20px 0' }}>
@@ -36,4 +36,4 @@ const Main = ({ userName, score, progress, tutorial, buttonHandler, updateHandle
   </div>);
 };
 
-export default Main;
+export default Admin;

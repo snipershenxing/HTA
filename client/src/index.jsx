@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 
 
 import Authentication from './components/AuthenticationScreen.jsx';
-import Main from './Screen/MainScreen.jsx';
-import GameScreen from './Screen/GameScreen.jsx';
+import Admin from './Screen/AdminScreen.jsx';
 import Dialogue from './Dialogue/Dialogue.js';
+import ChooseDonor from './Screen/ChooseDonorScreen.jsx';
 
 const address = 'http://192.168.1.100:3001';
 // const address = 'http://192.168.1.2:3001';
@@ -30,7 +30,9 @@ class App extends React.Component {
       currentPoster: "./assets/posterFranco.png",
       playerDialogues: [],
       donorDialogue: {},
-      donorClickable: false
+      donorClickable: false,
+      gameChoosen: '',
+      subScore: 0,
     };
     this.trySignInWithCookie = this.trySignInWithCookie.bind(this);
     this.signinWithCookie = this.signinWithCookie.bind(this);
@@ -53,8 +55,8 @@ class App extends React.Component {
     this.trySignInWithCookie();
     var vid = document.getElementById("myVideo");
     this.setState({
-      playerDialogues: [Dialogue[2], Dialogue[3], Dialogue[4]],
-      donorDialogue: Dialogue[1]
+      playerDialogues: [Dialogue.Franco[2], Dialogue.Franco[3], Dialogue.Franco[4]],
+      donorDialogue: Dialogue.Franco[1]
     })
   }
 
@@ -359,20 +361,20 @@ class App extends React.Component {
   }
 
   dialogueHandler(player, newDialogue, skip, point) {
-    let { score, playerDialogues } = this.state;
+    let { subScore, playerDialogues } = this.state;
     if (player) {
       if (newDialogue === 'Gate1') {
-        if (score + point <= 2) {
+        if (subScore + point <= 2) {
           newDialogue = 'Gate1-1'
-        } else if (3 <= score + point && score + point <= 4) {
+        } else if (3 <= subScore + point && subScore + point <= 4) {
           newDialogue = 'Gate1-2'
         } else {
           newDialogue = 'Gate1-3'
         }
       } else if (newDialogue === 'Gate2') {
-        if (score + point <= 4) {
+        if (subScore + point <= 4) {
           newDialogue = 'Gate2-1'
-        } else if (5 <= score + point && score + point <= 6) {
+        } else if (5 <= subScore + point && subScore + point <= 6) {
           newDialogue = 'Gate2-2'
         } else {
           newDialogue = 'Gate2-3'
@@ -383,8 +385,8 @@ class App extends React.Component {
         if (skip != i) document.getElementById(String(i)).style.display = 'none';
       });
       this.setState({
-        donorDialogue: Dialogue[newDialogue],
-        score: score + point,
+        donorDialogue: Dialogue.Franco[newDialogue],
+        subScore: subScore + point,
         playerDialogues: playerDialogues,
         donorClickable: true
       });
@@ -397,7 +399,7 @@ class App extends React.Component {
       } else {
         let playerDialogues = [];
         for (let ix of newDialogue) {
-          playerDialogues.push(Dialogue[ix]);
+          playerDialogues.push(Dialogue.Franco[ix]);
         }
         this.setState({
           playerDialogues,
@@ -408,10 +410,10 @@ class App extends React.Component {
   }
 
   render() {
-    let { playerDialogues, donorDialogue, donorClickable, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster } = this.state;
+    let { playerDialogues, donorDialogue, donorClickable, subScore, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster } = this.state;
     return (
       <div id='main'>
-        <h3 style={{ position: "absolute", top: 0, left: "50%" }}>Score : {score}</h3>
+        <h3 style={{ position: "absolute", top: 0, left: "50%" }}>Score : {subScore}</h3>
         {authenticate !== 'passed' ?
           <div>
             <Authentication
@@ -427,7 +429,7 @@ class App extends React.Component {
             />
           </div> :
           // <div style={{ display: 'table', width: '100%' }}>
-          //   <Main
+          //   <Admin
           //     userName={userName}
           //     score={score}
           //     progress={progress}
@@ -451,7 +453,7 @@ class App extends React.Component {
           //     </ol>
           //   </div>
           // </div>
-          <GameScreen
+          <ChooseDonor
             playerDialogues={playerDialogues}
             donorDialogue={donorDialogue}
             donorClickable={donorClickable}
