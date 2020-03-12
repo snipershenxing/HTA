@@ -8,6 +8,7 @@ import Dialogue from './Dialogue/Dialogue.js';
 import FirstPage from './Screen/FirstPage.jsx';
 import ChooseDonor from './Screen/ChooseDonorScreen.jsx';
 import GameScreen from './Screen/GameScreen.jsx';
+import ChooseCommunication from './Screen/ChooseCommunicationScreen.jsx';
 
 const address = 'http://192.168.1.100:3001';
 // const address = 'http://192.168.1.2:3001';
@@ -28,7 +29,7 @@ class App extends React.Component {
       progress: 0,
       tutorial: true,
       allUsers: [],
-      currentVideo: "./assets/FrancoSittingAnsweingPhone.mp4",
+      currentVideo: "./assets/Franco1.1.mp4",
       currentPoster: "./assets/posterFranco.png",
       playerDialogues: [],
       donorDialogue: {},
@@ -347,35 +348,45 @@ class App extends React.Component {
       .catch(err => console.log(err));
   }
 
-  changeVideoHandler() {
+  changeVideoHandler(newVid) {
     let vid = document.getElementById("myVideo");
     this.setState({
-      currentVideo: "./assets/FrancoSittingAnsweingPhone2.mp4"
+      currentVideo: newVid
     }, () => {
     });
-    // setTimeout(() => { 
     vid.load();
-    // }, 10);
   }
 
   dialogueHandler(player, newDialogue, skip, point) {
     let { subScore, playerDialogues, gameChoosen } = this.state;
     if (player) {
-      if (newDialogue === 'Gate1') {
+      if (gameChoosen === 'FrancoPhone' && newDialogue === 'Gate1') {
         if (subScore + point <= 2) {
-          newDialogue = 'Gate1-1'
+          newDialogue = 'Gate1-1';
+          this.changeVideoHandler("./assets/Franco2.2.mp4");
         } else if (3 <= subScore + point && subScore + point <= 4) {
           newDialogue = 'Gate1-2'
         } else {
           newDialogue = 'Gate1-3'
         }
-      } else if (newDialogue === 'Gate2') {
+      } else if (gameChoosen === 'FrancoPhone' && newDialogue === 'Gate2') {
         if (subScore + point <= 4) {
-          newDialogue = 'Gate2-1'
+          newDialogue = 'Gate2-1';
+          this.changeVideoHandler("./assets/Franco2.2.mp4");
         } else if (5 <= subScore + point && subScore + point <= 6) {
           newDialogue = 'Gate2-2'
         } else {
           newDialogue = 'Gate2-3'
+        }
+      } else if (gameChoosen === 'FrancoMeeting' && newDialogue === 'Gate1') {
+        if (subScore + point <= 4) {
+          newDialogue = 'Gate1-4'
+        } else if (5 <= subScore + point && subScore + point <= 7) {
+          newDialogue = 'Gate1-1'
+        } else if (8 <= subScore + point && subScore + point <= 12) {
+          newDialogue = 'Gate1-2'
+        } else {
+          newDialogue = 'Gate1-3'
         }
       }
       playerDialogues.forEach((e, i) => {
@@ -399,6 +410,7 @@ class App extends React.Component {
         for (let ix of newDialogue) {
           playerDialogues.push(Dialogue[gameChoosen][ix]);
         }
+        document.getElementById("myVideo").play()
         this.setState({
           playerDialogues,
           donorClickable: false
@@ -411,7 +423,7 @@ class App extends React.Component {
     let { playerDialogues, donorDialogue, donorClickable, subScore, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster, gameChoosen } = this.state;
     return (
       <div id='main'>
-        {/* <h3 style={{ position: "absolute", top: 0, left: "50%" }}>Score : {subScore}</h3> */}
+        <h3 style={{ position: "absolute", top: 0, left: "50%" }}>Score : {subScore}</h3>
         {authenticate !== 'passed' ?
           <div>
             <Authentication
@@ -455,26 +467,45 @@ class App extends React.Component {
             <FirstPage
               goToChooseDonor={() => this.setState({ gameChoosen: 'choose' })}
             /> :
+
             gameChoosen === 'choose' ?
               <ChooseDonor
                 chooseDonor={(name) => {
-                  this.setState({
-                    gameChoosen: name,
-                    playerDialogues: [Dialogue[name][2], Dialogue[name][3], Dialogue[name][4]],
-                    donorDialogue: Dialogue[name][1]
-                  });
+                  this.setState({ gameChoosen: name });
                 }}
               /> :
-              <GameScreen
-                playerDialogues={playerDialogues}
-                donorDialogue={donorDialogue}
-                donorClickable={donorClickable}
-                currentVideo={currentVideo}
-                currentPoster={currentPoster}
-                logoutHandler={this.logoutHandler}
-                changeVideoHandler={this.changeVideoHandler}
-                dialogueHandler={this.dialogueHandler}
-              />
+
+              gameChoosen === 'Franco' ?
+                <ChooseCommunication
+                  name='Franco'
+                  chooseCom={(name) => {
+                    if (name === 'FrancoPhone') {
+                      this.setState({
+                        gameChoosen: name,
+                        playerDialogues: [Dialogue[name][2], Dialogue[name][3], Dialogue[name][4]],
+                        donorDialogue: Dialogue[name][1]
+                      });
+                    } else if (name === 'FrancoMeeting') {
+                      this.setState({
+                        gameChoosen: name,
+                        playerDialogues: [Dialogue[name][1]],
+                        donorDialogue: Dialogue[name][2],
+                        donorClickable: true
+                      });
+                    }
+                  }}
+                /> :
+
+                <GameScreen
+                  playerDialogues={playerDialogues}
+                  donorDialogue={donorDialogue}
+                  donorClickable={donorClickable}
+                  currentVideo={currentVideo}
+                  currentPoster={currentPoster}
+                  logoutHandler={this.logoutHandler}
+                  changeVideoHandler={this.changeVideoHandler}
+                  dialogueHandler={this.dialogueHandler}
+                />
         }
       </div>
     );

@@ -7,10 +7,10 @@ const ChooseDonor = ({ chooseDonor }) => {
         onClick={() => chooseDonor('Franco')}
       >Jennifer Walker</div>
       <div className="person"
-        onClick={() => chooseDonor('Walker')}
+        onClick={() => chooseDonor('')}
       >Sharrel Letkin</div>
       <div className="person"
-        onClick={() => chooseDonor()}
+        onClick={() => chooseDonor('')}
       >JP Romero</div>
     </div>
   );

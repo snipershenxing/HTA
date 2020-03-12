@@ -8,7 +8,7 @@ const GameScreen = ({ donorDialogue, playerDialogues, donorClickable, currentVid
   return (
     <div
       id='videoContainer'
-      style={{ position: 'absolute', zIndex: 5 }}
+      style={{ position: 'absolute', zIndex: 5, background: 'url("./assets/posterFranco.png") no-repeat center', backgroundSize: 'contain', width: '100vw', height: '100vh' }}
     >
       <video
         id="myVideo"
@@ -18,8 +18,8 @@ const GameScreen = ({ donorDialogue, playerDialogues, donorClickable, currentVid
         style={{
           opacity: 0, transition: "opacity 2s",
           backgroundColor: 'transparent',
-          width: '99vw',
-          height: '99vh'
+          width: '100vw',
+          height: '100vh'
         }}
         onCanPlay={() => {
           let myVideo = document.getElementById("myVideo");
@@ -41,6 +41,7 @@ const GameScreen = ({ donorDialogue, playerDialogues, donorClickable, currentVid
           nextArray={p.nextDialogue}
           verticalPosition={100 + ((vidH - 200) / playerDialogues.length) * idx}
           height={((vidH - 200) / playerDialogues.length - 25)}
+          donorClickable={donorClickable}
           dialogueHandler={dialogueHandler}
         />
       )}

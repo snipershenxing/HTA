@@ -1,5 +1,5 @@
 const Dialogue = {
-  Franco: {
+  FrancoPhone: {
     1: {
       text: "Hello, Dr.Walker's Office.",
       nextDialogue: [2, 3, 4],
@@ -120,7 +120,7 @@ const Dialogue = {
     },
   },
 
-  Walker: {
+  FrancoMeeting: {
     1:
     {
       text: "Thanks for meeting me here.",
@@ -232,38 +232,33 @@ const Dialogue = {
     },
     19:
     {
-      text: "We’ve just published a detailed brochureand I have copies for both of you",
-      nextDialogue: ["Gate1"],
+      text: "We’ve just published a detailed brochure and I have copies for both of you",
+      nextDialogue: "Gate1",
       addScore: 0,
     },
     20:
     {
       text: "I know your time is valuable and I brought an executive summary to review",
-      nextDialogue: ["Gate1"],
+      nextDialogue: "Gate1",
       addScore: 4,
     },
     21:
     {
       text: "Let’s take a moment to review this presentation I prepared for you.",
-      nextDialogue: ["Gate1"],
+      nextDialogue: "Gate1",
       addScore: 5,
     },
-    "Gate1":
-    {
-      text: "",
-      nextDialogue: ["Gate1-1", "Gate1-2", "Gate1-3", "Gate1-4"],
-      addScore: 0,
-    },
+
     "Gate1-4":
     {
       text: "Natalie: Be careful to direct your conversation to their interests",
-      nextDialogue: ["end"],
+      nextDialogue: "End",
       addScore: 0,
     },
     "Gate1-1":
     {
       text: "Not right now.",
-      nextDialogue: ["end"],
+      nextDialogue: "End",
       addScore: 0,
     },
     "Gate1-2":
@@ -278,34 +273,35 @@ const Dialogue = {
       nextDialogue: [29],
       addScore: 0,
     },
+
     26:
     {
       text: "I hoped you would say that. We need tobring our climate change research forward. I think it’s time we talk about investing in our programs.",
-      nextDialogue: [30],
+      nextDialogue: 30,
       addScore: 1,
     },
     27:
     {
       text: "Thank you for asking. We are confident we will have a director in place and a published paper in the next year.",
-      nextDialogue: [31],
+      nextDialogue: 31,
       addScore: 3,
     },
     28:
     {
       text: "As we all know, climate change research is crucial, but we need to connect the studies to the work in our hatchery and toxicology lab.",
-      nextDialogue: [32],
+      nextDialogue: 32,
       addScore: 5,
     },
     29:
     {
       text: "I’m pleased to hear that. Let’s review our pledge form",
-      nextDialogue: [33],
+      nextDialogue: 33,
       addScore: 0,
     },
     30:
     {
       text: "I understand that funding is important, but we have so many commitments right now. Let’s reconnect after the holidays.",
-      nextDialogue: ["end"],
+      nextDialogue: "End",
       addScore: 0,
     },
     31:
@@ -323,31 +319,31 @@ const Dialogue = {
     33:
     {
       text: "Natalie: Good job! I knew you could do it.",
-      nextDialogue: ["end"],
+      nextDialogue: "End",
       addScore: 0,
     },
     34:
     {
       text: "I've got you down for $25,000. Can we count on you for that?",
-      nextDialogue: [37],
+      nextDialogue: 37,
       addScore: 1,
     },
     35:
     {
       text: "Thank you. I was hoping we could count on your support. The total cost will be $50,000. A leadership gift from you can make these plans a reality",
-      nextDialogue: [38],
+      nextDialogue: 38,
       addScore: 3,
     },
     36:
     {
       text: "Thank you. Your vision is vital to the success of this project. The total cost will be $50,000. Would you consider making a leadership gift of $25,000?",
-      nextDialogue: [39],
+      nextDialogue: 39,
       addScore: 5,
     },
     37:
     {
       text: "You know $25,000 is a lot of money. Let me think about it and get back to you",
-      nextDialogue: ["end"],
+      nextDialogue: "End",
       addScore: 0,
     },
     38:
@@ -365,7 +361,7 @@ const Dialogue = {
     40:
     {
       text: "Thank you for your generosity!",
-      nextDialogue: ["end"],
+      nextDialogue: "End",
       addScore: 0,
     },
   },
