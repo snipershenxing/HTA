@@ -370,7 +370,228 @@ const Dialogue = {
     },
   },
   Romero1: {
-
+    1:
+    {
+      text: "Hi it's JP",
+      nextDialogue: [2,3,4],
+      addScore: 0,
+    },
+    2:
+    {
+      text: "Good Morning, this is (Player Name) from the LoDo Aquarium. I’d like to talk about meeting up to discuss supporting our organization.",
+      nextDialogue: 5,
+      addScore: 1,
+    },
+    3:
+    {
+      text: "Hi J.P. This is (The Player) from the LoDo Aquarium.I was wanting to further discuss helping the aquarium.",
+      nextDialogue: 6,
+      addScore: 3,
+    },
+    4:
+    {
+      text: "Hello, J.P.! This is (The Player) calling from theLoDo Aquarium. I’m calling to follow up on our conversation about partnering with us.",
+      nextDialogue: 6,
+      addScore: 5,
+    },
+    5:
+    {
+      text: "Okay. I have a little time to talk but I’m pretty busy.",
+      nextDialogue: [7,8,9],
+      addScore: 0,
+    },
+    6:
+    {
+      text: "Good to hear from you. How have things been going?",
+      nextDialogue: [10,11],
+      addScore: 0,
+    },
+    7:
+    {
+      text: "Okay. It’s going to be hard to tell you everything right now. We have so much going on.It’s hard to know where to start",
+      nextDialogue: "Gate1",
+      addScore: 1,
+    },
+    8:
+    {
+      text: "I understand you are busy. We do have a lot of exciting news about our plans to share with you. Is it possible to find another time to talk about the touch tank and our summer programming?",
+      nextDialogue: "Gate1",
+      addScore: 2,
+    },
+    9:
+    {
+      text: "I don’t want to take up too much of your time.I thought you would be happy to know we are expanding the touch tank exhibit and our summer programming",
+      nextDialogue: "Gate1",
+      addScore: 3,
+    },
+    10:
+    {
+      text: "They’re going great! Attendance and engagement are up significantly, and we have just announced some exciting plans for the touch tank and our summer programming. I thought your grandkids would be interested",
+      nextDialogue: "Gate1",
+      addScore: 4,
+    },
+    11:
+    {
+      text: "Thank you forasking, J.P. I think you will be the most interested in some new opportunities for your grandchildren. We are expanding the touch tank and I thought they might be interested in our new summer programs",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    "Gate1":
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    "Gate1-1":
+    {
+      text: "I think finding another time to talk would be better.",
+      nextDialogue: [15,16],
+      addScore: 0,
+    },
+    "Gate1-2":
+    {
+      text: "That’s great to hear. All of the grandchildren enjoy the aquarium and we’ll definitely bring them when they visit next summer.",
+      nextDialogue: [17,18],
+      addScore: 0,
+    },
+    "Gate1-3":
+    {
+      text: "That is really exciting. The aquarium is becoming more and more important to all of my grandchildren. It is wonderful that you have new developments every time they visit.",
+      nextDialogue: [18,19],
+      addScore: 0,
+    },
+    15:
+    {
+      text: "Sure, let’s schedule a time meet to discuss numbers.",
+      nextDialogue: 20,
+      addScore: 1,
+    },
+    16:
+    {
+      text: "Yes, of course.I know you are busy. Would it be OK for me to reach out next week ?",
+      nextDialogue: 21,
+      addScore: 2,
+    },
+    17:
+    {
+      text: "Fantastic. I’d be happy to arrange some unique opportunities for them. Could we get together to review the options ?",
+      nextDialogue: 21,
+      addScore: 3,
+    },
+    18:
+    {
+      text: "That is so great to hear.We want to make sure families like yours always have new experiences and opportunities to learn.I have a few ideas about things they might enjoy during their next visit and how you can get more involved.How does your schedule look for the next few weeks?",
+      nextDialogue: 22,
+      addScore: 4,
+    },
+    19:
+    {
+      text: "Thank you, J.P., We want to make sure families like yours always have new experiences and opportunities to learn.I have some ideas about behind the scenes opportunities for your family and would love for you to be more involved.Are you available for lunch on Wednesday of later in the day Thursday ?",
+      nextDialogue: 23,
+      addScore: 5,
+    },
+    20:
+    {
+      text: "Natalie may explain that you should look more towards the donor’s interests rather than the statistics of the organization.",
+      nextDialogue: ["End"],
+      addScore: 0,
+    },
+    21:
+    {
+      text: "I’d be interested in hearing more. Why don’t you try calling me next week?",
+      nextDialogue: ["End"],
+      addScore: 0,
+    },
+    22:
+    {
+      text: "I’ll be out of town for a couple of weeks, but we could get together the week of the 21st.",
+      nextDialogue: [24,25],
+      addScore: 0,
+    },
+    23:
+    {
+      text: "That sounds great.I’m free for lunch on Wednesday and want to hear what you have in mind.",
+      nextDialogue: ["29"],
+      addScore: 0,
+    },
+    24:
+    {
+      text: "That sounds good. I’ll reach out to you again then and we can schedule a time to meet in person.",
+      nextDialogue: 2,
+      addScore: "Gate2",
+    },
+    25:
+    {
+      text: "OK. I am flexible on Wednesday, Thursday and Friday of that week.What time works best for you ?",
+      nextDialogue: "Gate2",
+      addScore: 3,
+    },
+    26:
+    {
+      text: "I’ll have to think about it.Call me back next week.",
+      nextDialogue: ["End"],
+      addScore: 0,
+    },
+    27:
+    {
+      text: "It looks like I am available for lunch on Wednesday.",
+      nextDialogue: [29],
+      addScore: 0,
+    },
+    28:
+    {
+      text: "(There is no line here)",
+      nextDialogue: [29],
+      addScore: 0,
+    },
+    29:
+    {
+      text: "Sounds Good",
+      nextDialogue: 30,
+      addScore: 0,
+    },
+    30:
+    {
+      text: "Where would we meet up? How about my cabin?",
+      nextDialogue: [31,32,33],
+      addScore: 0,
+    },
+    31:
+    {
+      text: "Actually, I know the Maitre' D at that new restaurant Chez Jacques.I heard it's fantastic, have you been ?",
+      nextDialogue: 34,
+      addScore: 0,
+    },
+    32:
+    {
+      text: "I don't want to put you to any trouble. Why don't we meet at the café on 5th ?",
+      nextDialogue: 35,
+      addScore: 0,
+    },
+    33:
+    {
+      text: "Thank you so much, I'd love to see your cabin.",
+      nextDialogue: 36,
+      addScore: 0,
+    },
+    34:
+    {
+      text: "Oh I've heard wonderful things about it.The waitlist for reservations is so long.Let's go.",
+      nextDialogue: ["End"],
+      addScore: 0,
+    },
+    35:
+    {
+      text: "That's really thoughtful of you.I like that café.",
+      nextDialogue: ["End"],
+      addScore: 0,
+    },
+    36:
+    {
+      text: "Natalie explains why this location is not a place you want to make an ask and takes the player back to previous choice.",
+      nextDialogue: ["End"],
+      addScore: 0,
+    },
   },
   Romero2: {
 
