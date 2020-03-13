@@ -36,7 +36,7 @@ const Dialogue = {
       addScore: 0,
     },
     8: {
-      text: `That’s great. I wanted to find a time with Jennifer to talk more about all the exciting things going on, and how she could be involved`,
+      text: `That’s great. I wanted to find a time with Jennifer to talk more about all the exciting things going on, and how she could be involved.`,
       nextDialogue: "Gate1",
       addScore: 2,
     },
@@ -51,7 +51,7 @@ const Dialogue = {
       addScore: 3,
     },
     11: {
-      text: `Oh my, yes. It’s been such a busy week – I can’t believe I did that.. What might work for her? I will try to accommodate my schedule`,
+      text: `Oh my, yes. It’s been such a busy week – I can’t believe I did that.. What might work for her? I will try to accommodate my schedule.`,
       nextDialogue: "Gate1",
       addScore: 1,
     },
@@ -132,12 +132,12 @@ const Dialogue = {
       addScore: 0,
     },
     3: {
-      text: "It’s always so nice to see you and have an opportunity to talk about the aquarium",
+      text: "It’s always so nice to see you and have an opportunity to talk about the aquarium.",
       nextDialogue: 6,
       addScore: 1,
     },
     4: {
-      text: "I thought it was time that I updated you two on what’s happening at the Aquarium",
+      text: "I thought it was time that I updated you two on what’s happening at the Aquarium.",
       nextDialogue: 7,
       addScore: 2,
     },
@@ -163,12 +163,12 @@ const Dialogue = {
       addScore: 0,
     },
     9: {
-      text: "We have so much going on. Where do I start? The touch tank is open and the new research program is up and running",
+      text: "We have so much going on. Where do I start? The touch tank is open and the new research program is up and running.",
       nextDialogue: 14,
       addScore: 0,
     },
     10: {
-      text: "I’m excited to share that we have increased attendance by 20% and we are on track to meet our goals",
+      text: "I’m excited to share that we have increased attendance by 20% and we are on track to meet our goals.",
       nextDialogue: 15,
       addScore: 1,
     },
@@ -188,12 +188,12 @@ const Dialogue = {
       addScore: 5,
     },
     14: {
-      text: "Natalie: Be careful to direct your conversation to their interests",
+      text: "Natalie: Be careful to direct your conversation to their interests.",
       nextDialogue: "End",
       addScore: 0,
     },
     15: {
-      text: "That sounds great. We were hoping to hear about the research initiatives",
+      text: "That sounds great. We were hoping to hear about the research initiatives.",
       nextDialogue: [19],
       addScore: 0,
     },
@@ -213,12 +213,12 @@ const Dialogue = {
       addScore: 0,
     },
     19: {
-      text: "We’ve just published a detailed brochure and I have copies for both of you",
+      text: "We’ve just published a detailed brochure and I have copies for both of you.",
       nextDialogue: "Gate1",
       addScore: 0,
     },
     20: {
-      text: "I know your time is valuable and I brought an executive summary to review",
+      text: "I know your time is valuable and I brought an executive summary to review.",
       nextDialogue: "Gate1",
       addScore: 4,
     },
@@ -229,7 +229,7 @@ const Dialogue = {
     },
 
     "Gate1-4": {
-      text: "Natalie: Be careful to direct your conversation to their interests",
+      text: "Natalie: Be careful to direct your conversation to their interests.",
       nextDialogue: "End",
       addScore: 0,
     },
@@ -265,7 +265,7 @@ const Dialogue = {
       addScore: 5,
     },
     29: {
-      text: "I’m pleased to hear that. Let’s review our pledge form",
+      text: "I’m pleased to hear that. Let’s review our pledge form.",
       nextDialogue: 33,
       addScore: 0,
     },
@@ -305,7 +305,7 @@ const Dialogue = {
       addScore: 5,
     },
     37: {
-      text: "You know $25,000 is a lot of money. Let me think about it and get back to you",
+      text: "You know $25,000 is a lot of money. Let me think about it and get back to you.",
       nextDialogue: "End",
       addScore: 0,
     },
@@ -331,7 +331,7 @@ const Dialogue = {
 
   SharrelPhone: {
     1: {
-      text: "Hello, this is Sharrel",
+      text: "Hello, this is Sharrel.",
       nextDialogue: [2, 3, 4],
       addScore: 0,
     },
@@ -351,7 +351,7 @@ const Dialogue = {
       addScore: 5,
     },
     5: {
-      text: "I'm sorry, I'm very busy right now, but I have a minute or two to talk.Will this be quick ?",
+      text: "I'm sorry, I'm very busy right now, but I have a minute or two to talk.Will this be quick?",
       nextDialogue: [7, 8],
       addScore: 0,
     },
@@ -361,7 +361,7 @@ const Dialogue = {
       addScore: 0,
     },
     7: {
-      text: "Yes, this'll be just a quick chat.Is that ok ?",
+      text: "Yes, this'll be just a quick chat.Is that ok?",
       nextDialogue: "Gate1",
       addScore: 0,
     },
@@ -386,12 +386,12 @@ const Dialogue = {
     //   addScore: ["Gate1-1", "Gate1-2", "Gate1-3"],
     // },
     "Gate1-1": {
-      text: "I don't really have much time right now",
+      text: "I don't really have much time right now.",
       nextDialogue: [14, 15],
       addScore: 0,
     },
     "Gate1-2": {
-      text: "Sounds like your guys are on the right track",
+      text: "Sounds like your guys are on the right track.",
       nextDialogue: [15, 16],
       addScore: 0,
     },
@@ -456,7 +456,7 @@ const Dialogue = {
       addScore: 3,
     },
     25: {
-      text: "I have some ideas about how you can get involved that I would like to discuss with you in person.How does your schedule look for the next few weeks ?",
+      text: "I have some ideas about how you can get involved that I would like to discuss with you in person.How does your schedule look for the next few weeks?",
       nextDialogue: "Gate2",
       addScore: 4,
     },
@@ -471,32 +471,32 @@ const Dialogue = {
       addScore: 0,
     },
     "Gate2-2": {
-      text: "Sure we can meet. Let's set up something for next month.",
+      text: "Sure we can meet. Let's set up something for next month. How about you come to my house and we can chat?",
       nextDialogue: "End",
       addScore: 0,
     },
     "Gate2-3": {
-      text: "I'd like that, how about we meet this Friday ?",
-      nextDialogue: [30],
+      text: "I'd like that, how about we meet this Friday? How about you come to my house and we can chat?",
+      nextDialogue: [31, 32, 33],
       addScore: 0,
     },
     "Gate2-4": {
       text: "No, I don't think I have the capacity to add anything right now.",
-      nextDialogue: [30],
+      nextDialogue: [31, 32, 33],
       addScore: 0,
     },
     30: {
-      text: "How about you come to my house and we can chat ?",
+      text: "How about you come to my house and we can chat?",
       nextDialogue: [31, 32, 33],
       addScore: 0,
     },
     31: {
-      text: "Actually, I know the Maitre' D at that new restaurant Chez Jacques. I heard it's fantastic, have you been ?",
+      text: "Actually, I know the Maitre' D at that new restaurant Chez Jacques. I heard it's fantastic, have you been?",
       nextDialogue: 34,
       addScore: 0,
     },
     32: {
-      text: "I don't want to put you to any trouble. Why don't we meet at the café on 5th ?",
+      text: "I don't want to put you to any trouble. Why don't we meet at the café on 5th?",
       nextDialogue: 35,
       addScore: 0,
     },
@@ -553,12 +553,12 @@ const Dialogue = {
       addScore: 4,
     },
     7: {
-      text: "You had mentioned that on the phone.Is there anything else you wanted to discuss ?",
+      text: "You had mentioned that on the phone.Is there anything else you wanted to discuss?",
       nextDialogue: [10, 11],
       addScore: 0,
     },
     8: {
-      text: "I was pleased to hear that.Why don't you tell me more about those plans ?",
+      text: "I was pleased to hear that.Why don't you tell me more about those plans?",
       nextDialogue: [11, 12],
       addScore: 0,
     },
@@ -587,11 +587,11 @@ const Dialogue = {
       nextDialogue: "Gate1",
       addScore: 4,
     },
-    "Gate1": {
-      text: "",
-      nextDialogue: 0,
-      addScore: 0,
-    },
+    // "Gate1": {
+    //   text: "",
+    //   nextDialogue: 0,
+    //   addScore: 0,
+    // },
     "Gate1-1": {
       text: "No, I don’t think that I have the capacity to add anything right now.",
       nextDialogue: "End",
@@ -613,22 +613,22 @@ const Dialogue = {
       addScore: 0,
     },
     18: {
-      text: "I've got you down for $25, 000.Can we count on you for that ?",
+      text: "I've got you down for $25, 000.Can we count on you for that?",
       nextDialogue: 21,
       addScore: 1,
     },
     19: {
-      text: "Thank you Sharrel. I was hoping we could count on your support.The total cost will be $50, 000.A leadership gift from you can make these plans a reality",
+      text: "Thank you Sharrel. I was hoping we could count on your support.The total cost will be $50, 000.A leadership gift from you can make these plans a reality.",
       nextDialogue: 22,
       addScore: 2,
     },
     20: {
-      text: "Thank you Sharrel. Your vision is vital to the success of this project.The total cost will be $50, 000.Would you consider making a leadership gift of $25, 000 ?",
+      text: "Thank you Sharrel. Your vision is vital to the success of this project.The total cost will be $50, 000.Would you consider making a leadership gift of $25, 000?",
       nextDialogue: 23,
       addScore: 3,
     },
     21: {
-      text: "You know $25,000 is a lot of money. Let me think about it and get back to you",
+      text: "You know $25,000 is a lot of money. Let me think about it and get back to you.",
       nextDialogue: "End",
       addScore: 0,
     },

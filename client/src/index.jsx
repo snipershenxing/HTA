@@ -360,80 +360,80 @@ class App extends React.Component {
 
   dialogueHandler(player, newDialogue, skip, point) {
     let { subScore, playerDialogues, gameChoosen } = this.state;
-    if (player) {
-      if (gameChoosen === 'FrancoPhone' && newDialogue === 'Gate1') {
-        if (subScore + point <= 2) {
-          newDialogue = 'Gate1-1';
-          this.changeVideoHandler("./assets/Franco2.2.mp4");
-        } else if (3 <= subScore + point && subScore + point <= 4) {
-          newDialogue = 'Gate1-2'
-        } else {
-          newDialogue = 'Gate1-3'
-        }
-      } else if (gameChoosen === 'FrancoPhone' && newDialogue === 'Gate2') {
-        if (subScore + point <= 4) {
-          newDialogue = 'Gate2-1';
-          this.changeVideoHandler("./assets/Franco2.2.mp4");
-        } else if (5 <= subScore + point && subScore + point <= 6) {
-          newDialogue = 'Gate2-2'
-        } else {
-          newDialogue = 'Gate2-3'
-        }
-      } else if (gameChoosen === 'FrancoMeeting' && newDialogue === 'Gate1') {
-        if (subScore + point <= 4) {
-          newDialogue = 'Gate1-4'
-        } else if (5 <= subScore + point && subScore + point <= 7) {
-          newDialogue = 'Gate1-1'
-        } else if (8 <= subScore + point && subScore + point <= 12) {
-          newDialogue = 'Gate1-2'
-        } else {
-          newDialogue = 'Gate1-3'
-        }
-      } else if (gameChoosen === 'SharrelPhone' && newDialogue === 'Gate1') {
-        if (subScore + point <= 3) {
-          newDialogue = 'Gate1-1';
-          this.changeVideoHandler("./assets/Franco2.2.mp4");
-        } else if (4 <= subScore + point && subScore + point <= 7) {
-          newDialogue = 'Gate1-2'
-        } else {
-          newDialogue = 'Gate1-3'
-        }
-      } else if (gameChoosen === 'SharrelPhone' && newDialogue === 'Gate2') {
-        if (subScore + point <= 11) {
-          newDialogue = 'Gate2-1';
-          this.changeVideoHandler("./assets/Franco2.2.mp4");
-        } else if (12 <= subScore + point && subScore + point <= 17) {
-          newDialogue = 'Gate2-2'
-        } else {
-          newDialogue = 'Gate2-3'
-        }
-      } else if (gameChoosen === 'SharrelMeeting' && newDialogue === 'Gate1') {
-        if (subScore + point <= 4) {
-          newDialogue = 'Gate1-4'
-        } else if (5 <= subScore + point && subScore + point <= 7) {
-          newDialogue = 'Gate1-1'
-        } else if (8 <= subScore + point && subScore + point <= 12) {
-          newDialogue = 'Gate1-2'
-        } else {
-          newDialogue = 'Gate1-3'
-        }
-      }
-      playerDialogues.forEach((e, i) => {
-        e.addScore = 0
-        if (skip != i) document.getElementById(String(i)).style.display = 'none';
-      });
+    if (newDialogue === 'End') {
       this.setState({
-        donorDialogue: Dialogue[gameChoosen][newDialogue],
-        subScore: subScore + point,
-        playerDialogues: playerDialogues,
-        donorClickable: true
-      });
+        donorDialogue: null,
+        playerDialogues: [],
+      })
     } else {
-      if (newDialogue === 'End') {
+      if (player) {
+        if (gameChoosen === 'FrancoPhone' && newDialogue === 'Gate1') {
+          if (subScore + point <= 2) {
+            newDialogue = 'Gate1-1';
+            this.changeVideoHandler("./assets/Franco2.2.mp4");
+          } else if (3 <= subScore + point && subScore + point <= 4) {
+            newDialogue = 'Gate1-2'
+          } else {
+            newDialogue = 'Gate1-3'
+          }
+        } else if (gameChoosen === 'FrancoPhone' && newDialogue === 'Gate2') {
+          if (subScore + point <= 4) {
+            newDialogue = 'Gate2-1';
+            this.changeVideoHandler("./assets/Franco2.2.mp4");
+          } else if (5 <= subScore + point && subScore + point <= 6) {
+            newDialogue = 'Gate2-2'
+          } else {
+            newDialogue = 'Gate2-3'
+          }
+        } else if (gameChoosen === 'FrancoMeeting' && newDialogue === 'Gate1') {
+          if (subScore + point <= 4) {
+            newDialogue = 'Gate1-4'
+          } else if (5 <= subScore + point && subScore + point <= 7) {
+            newDialogue = 'Gate1-1'
+          } else if (8 <= subScore + point && subScore + point <= 12) {
+            newDialogue = 'Gate1-2'
+          } else {
+            newDialogue = 'Gate1-3'
+          }
+        } else if (gameChoosen === 'SharrelPhone' && newDialogue === 'Gate1') {
+          if (subScore + point <= 3) {
+            newDialogue = 'Gate1-1';
+            this.changeVideoHandler("./assets/Franco2.2.mp4");
+          } else if (4 <= subScore + point && subScore + point <= 7) {
+            newDialogue = 'Gate1-2'
+          } else {
+            newDialogue = 'Gate1-3'
+          }
+        } else if (gameChoosen === 'SharrelPhone' && newDialogue === 'Gate2') {
+          if (subScore + point <= 11) {
+            newDialogue = 'Gate2-1';
+            this.changeVideoHandler("./assets/Franco2.2.mp4");
+          } else if (12 <= subScore + point && subScore + point <= 17) {
+            newDialogue = 'Gate2-2'
+          } else {
+            newDialogue = 'Gate2-3'
+          }
+        } else if (gameChoosen === 'SharrelMeeting' && newDialogue === 'Gate1') {
+          if (subScore + point <= 3) {
+            newDialogue = 'Gate1-1'
+          } else if (4 === subScore + point) {
+            newDialogue = 'Gate1-2'
+          } else if (5 <= subScore + point && subScore + point <= 6) {
+            newDialogue = 'Gate1-3'
+          } else {
+            newDialogue = 'Gate1-4'
+          }
+        }
+        playerDialogues.forEach((e, i) => {
+          e.addScore = 0
+          if (skip != i) document.getElementById(String(i)).style.display = 'none';
+        });
         this.setState({
-          donorDialogue: null,
-          playerDialogues: [],
-        })
+          donorDialogue: Dialogue[gameChoosen][newDialogue],
+          subScore: subScore + point,
+          playerDialogues: playerDialogues,
+          donorClickable: true
+        });
       } else {
         let playerDialogues = [];
         for (let ix of newDialogue) {
@@ -547,7 +547,6 @@ class App extends React.Component {
                       }
                     }}
                   /> :
-
 
                   <GameScreen
                     playerDialogues={playerDialogues}
