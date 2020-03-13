@@ -718,45 +718,45 @@ const Dialogue = {
     },
     18:
     {
-      text: "",
-      nextDialogue: 0,
-      addScore: 0,
+      text: "I've got you down for $25, 000.Can we count on you for that ?",
+      nextDialogue: 21,
+      addScore: 1,
     },
     19:
     {
-      text: "",
-      nextDialogue: 0,
-      addScore: 0,
+      text: "Thank you Sharrel. I was hoping we could count on your support.The total cost will be $50, 000.A leadership gift from you can make these plans a reality",
+      nextDialogue: 22,
+      addScore: 2,
     },
     20:
     {
-      text: "",
-      nextDialogue: 0,
-      addScore: 0,
+      text: "Thank you Sharrel. Your vision is vital to the success of this project.The total cost will be $50, 000.Would you consider making a leadership gift of $25, 000 ?",
+      nextDialogue: 23,
+      addScore: 3,
     },
     21:
     {
-      text: "",
-      nextDialogue: 0,
+      text: "You know $25,000 is a lot of money. Let me think about it and get back to you",
+      nextDialogue: ["End"],
       addScore: 0,
     },
     22:
     {
-      text: "",
-      nextDialogue: 0,
+      text: "I’d be happy to do that. I’ll write the first check for $10, 000.And invite my friends to join me.",
+      nextDialogue: [24],
       addScore: 0,
     },
     23:
     {
-      text: "",
-      nextDialogue: 0,
+      text: "I’d be thrilled to do that. I would also like to help by inviting some friends who support illustration to join me.",
+      nextDialogue: ["End"],
       addScore: 0,
     },
     24:
     {
-      text: "",
-      nextDialogue: 0,
-      addScore: 0,
+      text: "Thank you for your generosity! Your gift will impact hundreds of thousands of children each year.",
+      nextDialogue: "End",
+      addScore: 1,
     },
   },
   
