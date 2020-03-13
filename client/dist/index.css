@@ -65,41 +65,89 @@ input {
   overflow: hidden;
 }
 
-#firstpage {
+.firstPageContainer {
   opacity: 0;
   transition: opacity 1s;
+  background-color: rgba(154, 36, 149, 1);
   width: 100vw;
   height: 100vh;
 }
 .firstPage {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(154, 36, 149, 1);
+  position: absolute;
+  top: 5vh;
+  left: 7.5vw;
+  width: 85vw;
+  height: 90vh;
   /* background: rgba(154, 36, 149, 1) url('./assets/LogoMenu.png') no-repeat center; */
   /* background-size: contain; */
 }
-.goButton {
-  width: 350px;
-  height: 75px;
+.buttonContainer_firstPage {
   position: absolute;
-  right: 100px;
-  top: 50vh;
-  border-radius: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 4vh;
-  font-weight: 500;
+  width: 60vw;
+  height: 48vh;
+  right: 0;
+  top: 21vh;
+  display: flex;
+  flex-direction: column;
+}
+.goButton {
+  width: 87.5%;
+  height: 14vh;
+  margin: 10px 0;
+  background-color: rgb(120, 180, 164, 1);
+  border-radius: 2vh;
+  border-width: 0;
+  font-family: arial-rounded, arial, sans-serif;
+  color: white;
+  font-size: 8vh;
+  font-weight: 900;
+  opacity: 0;
+  transition: opacity 1s;
 }
 .goButton:hover {
-  background-color: aqua;
+  background-color: rgb(220,150,255);
 }
 .goButton:focus {
-  background-color: goldenrod;
+  background-color: rgb(238, 115, 115);
+}
+
+
+.chooseDonorTitle {
+  width: 84vw;
+  height: 15vh;
+  position: absolute;
+  top: 12vh;
+  left: 8vw;
+  display: flex;
+  flex-direction: column;
+}
+.chooseDonorTitle > h1 {
+  margin: 0;
+  font-size: 8vh;
+  font-family: arial, sans-serif;
+  color: black;
+}
+.TitleUnderline {
+  width: 100%;
+  height: 2.5vh;
+  margin: 1.5vh 0 0;
+  background-color: rgb(238, 115, 115);
 }
 
 .chooseDonor {
   width: 100vw;
   height: 100vh;
   background-color: rgba(154, 36, 149, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chooseDonorBody{
+  position: absolute;
+  top: 25vh;
+  left: 10vw;
+  width: 80vw;
+  height: 45vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,9 +166,9 @@ input {
   text-align: center;
 }
 
-.telephone {
-  width: 40vw;
-  height: 40vh;
+.telephone, .meeting {
+  width: 37vw;
+  height: 36vh;
   margin: 0 2.5vw;
   display: block;
   justify-content: center;
@@ -129,31 +177,38 @@ input {
   font-size: 3vh;
   text-align: center;
 }
-.meeting {
-  width: 40vw;
-  height: 40vh;
-  margin: 0 2.5vw;
-  display: block;
-  justify-content: center;
-  align-items: flex-end;
-  color: white;
+.phone, .meet {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.chooseDonorFooter {
+  width: 84vw;
+  height: 18vh;
+  position: absolute;
+  bottom: 12vh;
+  left: 8vw;
+  display: flex;
+  flex-direction: column;
+}
+.chooseDonorFooter > h1 {
+  background-color: rgb(238, 115, 115);
+  margin: 0;
   font-size: 3vh;
-  text-align: center;
+  font-family: arial, sans-serif;
+  color: white;
+  height: 14vh;
+  padding: 2vh 2vw 0 2vw;
+}
+.footerUnderline {
+  width: 100%;
+  height: 2vh;
+  margin: 0;
+  background-color: rgb(206, 102, 117);
 }
 
-.phone {
-  width: 100%;
-  height: auto;
-  opacity: 0;
-  transition: opacity 1s;
-}
-
-.meet {
-  width: 100%;
-  height: auto;
-  opacity: 0;
-  transition: opacity 1s;
-}
 .person:hover, .telephone:hover, .meeting:hover, .goButton:hover, .bubbleButton:hover, .respondButton:hover {
   cursor: pointer;
 }

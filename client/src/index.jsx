@@ -10,8 +10,9 @@ import ChooseDonor from './Screen/ChooseDonorScreen.jsx';
 import GameScreen from './Screen/GameScreen.jsx';
 import ChooseCommunication from './Screen/ChooseCommunicationScreen.jsx';
 
-const address = 'http://192.168.1.100:3001';
-// const address = 'http://192.168.1.2:3001';
+// const address = 'http://192.168.1.100:3001';
+const address = 'http://192.168.1.2:3001';
+// const address = 'http://localhost:3001';
 
 
 class App extends React.Component {
@@ -388,6 +389,34 @@ class App extends React.Component {
         } else {
           newDialogue = 'Gate1-3'
         }
+      } else if (gameChoosen === 'SharrelPhone' && newDialogue === 'Gate1') {
+        if (subScore + point <= 3) {
+          newDialogue = 'Gate1-1';
+          this.changeVideoHandler("./assets/Franco2.2.mp4");
+        } else if (4 <= subScore + point && subScore + point <= 7) {
+          newDialogue = 'Gate1-2'
+        } else {
+          newDialogue = 'Gate1-3'
+        }
+      } else if (gameChoosen === 'SharrelPhone' && newDialogue === 'Gate2') {
+        if (subScore + point <= 11) {
+          newDialogue = 'Gate2-1';
+          this.changeVideoHandler("./assets/Franco2.2.mp4");
+        } else if (12 <= subScore + point && subScore + point <= 17) {
+          newDialogue = 'Gate2-2'
+        } else {
+          newDialogue = 'Gate2-3'
+        }
+      } else if (gameChoosen === 'SharrelMeeting' && newDialogue === 'Gate1') {
+        if (subScore + point <= 4) {
+          newDialogue = 'Gate1-4'
+        } else if (5 <= subScore + point && subScore + point <= 7) {
+          newDialogue = 'Gate1-1'
+        } else if (8 <= subScore + point && subScore + point <= 12) {
+          newDialogue = 'Gate1-2'
+        } else {
+          newDialogue = 'Gate1-3'
+        }
       }
       playerDialogues.forEach((e, i) => {
         e.addScore = 0
@@ -482,30 +511,54 @@ class App extends React.Component {
                     if (name === 'FrancoPhone') {
                       this.setState({
                         gameChoosen: name,
-                        playerDialogues: [Dialogue[name][2], Dialogue[name][3], Dialogue[name][4]],
-                        donorDialogue: Dialogue[name][1]
+                        // playerDialogues: [Dialogue[name][2], Dialogue[name][3], Dialogue[name][4]],
+                        donorDialogue: Dialogue[name][1],
+                        donorClickable: true
                       });
                     } else if (name === 'FrancoMeeting') {
                       this.setState({
                         gameChoosen: name,
                         playerDialogues: [Dialogue[name][1]],
-                        donorDialogue: Dialogue[name][2],
-                        donorClickable: true
+                        // donorDialogue: Dialogue[name][2],
+                        donorClickable: false
                       });
                     }
                   }}
                 /> :
 
-                <GameScreen
-                  playerDialogues={playerDialogues}
-                  donorDialogue={donorDialogue}
-                  donorClickable={donorClickable}
-                  currentVideo={currentVideo}
-                  currentPoster={currentPoster}
-                  logoutHandler={this.logoutHandler}
-                  changeVideoHandler={this.changeVideoHandler}
-                  dialogueHandler={this.dialogueHandler}
-                />
+                gameChoosen === 'Sharrel' ?
+                  <ChooseCommunication
+                    name='Sharrel'
+                    chooseCom={(name) => {
+                      if (name === 'SharrelPhone') {
+                        this.setState({
+                          gameChoosen: name,
+                          // playerDialogues: [Dialogue[name][2], Dialogue[name][3], Dialogue[name][4]],
+                          donorDialogue: Dialogue[name][1],
+                          donorClickable: true,
+                        });
+                      } else if (name === 'SharrelMeeting') {
+                        this.setState({
+                          gameChoosen: name,
+                          playerDialogues: [Dialogue[name][1]],
+                          // donorDialogue: Dialogue[name][2],
+                          donorClickable: false,
+                        });
+                      }
+                    }}
+                  /> :
+
+
+                  <GameScreen
+                    playerDialogues={playerDialogues}
+                    donorDialogue={donorDialogue}
+                    donorClickable={donorClickable}
+                    currentVideo={currentVideo}
+                    currentPoster={currentPoster}
+                    logoutHandler={this.logoutHandler}
+                    changeVideoHandler={this.changeVideoHandler}
+                    dialogueHandler={this.dialogueHandler}
+                  />
         }
       </div>
     );

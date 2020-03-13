@@ -24,7 +24,8 @@ const GameScreen = ({ donorDialogue, playerDialogues, donorClickable, currentVid
         onCanPlay={() => {
           let myVideo = document.getElementById("myVideo");
           myVideo.style.opacity = 1;
-          setTimeout(() => { myVideo.play() }, 0);
+          if (donorClickable)
+            setTimeout(() => { myVideo.play() }, 0);
         }}
       >
         <source src={currentVideo} type="video/mp4" autoPlay />
@@ -47,7 +48,7 @@ const GameScreen = ({ donorDialogue, playerDialogues, donorClickable, currentVid
       )}
 
 
-      {donorDialogue && <DonorBubble
+      {Object.keys(donorDialogue).length && <DonorBubble
         text={donorDialogue.text}
         nextArray={donorDialogue.nextDialogue}
         dialogueHandler={dialogueHandler}
