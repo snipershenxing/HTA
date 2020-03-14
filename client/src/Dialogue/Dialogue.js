@@ -594,7 +594,144 @@ const Dialogue = {
     },
   },
   Romero2: {
-
+    1:
+    {
+      text: "Thank you for making the time to meet with me. I’ve been looking forward to sharing some of my ideas for your grandkids and would love to see you get more involved with the LoDo Aquarium",
+      nextDialogue: 2,
+      addScore: 0,
+    },
+    2:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    3:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    4:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    5:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    6:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    7:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    8:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    9:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    10:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    11:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    12:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    13:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    14:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    "Gate2":
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    "Gate2-1":
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    "Gate2-2":
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    "Gate2-3":
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    "Gate2-4":
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    19:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    20:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    21:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
+    22:
+    {
+      text: "",
+      nextDialogue: 0,
+      addScore: 0,
+    },
   },
   Sherl1: {
     1:
@@ -623,7 +760,7 @@ const Dialogue = {
     },
     5:
     {
-      text: "I'm sorry, I'm very busy right now, but I have a minute or two to talk.Will this be quick ?",
+      text: "I'm sorry, I'm very busy right now, but I have a minute or two to talk Will this be quick ?",
       nextDialogue: [7,8],
       addScore: 0,
     },
