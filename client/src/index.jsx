@@ -30,8 +30,8 @@ class App extends React.Component {
       progress: 0,
       tutorial: true,
       allUsers: [],
-      currentVideo: "./assets/Franco1.1.mp4",
-      currentPoster: "./assets/posterFranco.png",
+      currentVideo: "",
+      currentPoster: "",
       playerDialogues: [],
       donorDialogue: {},
       donorClickable: false,
@@ -53,6 +53,7 @@ class App extends React.Component {
     this.logoutHandler = this.logoutHandler.bind(this);
     this.changeVideoHandler = this.changeVideoHandler.bind(this);
     this.dialogueHandler = this.dialogueHandler.bind(this);
+    this.chooseGameHandler = this.chooseGameHandler.bind(this);
   }
 
   componentDidMount() {
@@ -448,117 +449,127 @@ class App extends React.Component {
     }
   }
 
+  chooseGameHandler(name) {
+    if (name === 'FrancoPhone') {
+      this.setState({
+        gameChoosen: name,
+        donorDialogue: Dialogue[name][1],
+        donorClickable: true,
+        currentVideo: './assets/Franco1.1.mp4',
+        currentPoster: './assets/posterFranco.png',
+      });
+    } else if (name === 'FrancoMeeting') {
+      this.setState({
+        gameChoosen: name,
+        playerDialogues: [Dialogue[name][1]],
+        donorClickable: false,
+        currentVideo: './assets/Jennifer1.1.mp4',
+        currentPoster: './assets/posterJennifer.png',
+      });
+    } else if (name === 'SharrelPhone') {
+      this.setState({
+        gameChoosen: name,
+        donorDialogue: Dialogue[name][1],
+        donorClickable: true,
+      });
+    } else if (name === 'SharrelMeeting') {
+      this.setState({
+        gameChoosen: name,
+        playerDialogues: [Dialogue[name][1]],
+        donorClickable: false,
+      });
+    }
+
+  }
+
   render() {
     let { playerDialogues, donorDialogue, donorClickable, subScore, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster, gameChoosen } = this.state;
+    let gameScreen;
+
+    if (authenticate !== 'passed') {
+      gameScreen = <div>
+        <Authentication
+          userName={userName}
+          authenticate={authenticate}
+          userNameValid={userNameValid}
+          passwordValid={passwordValid}
+          warningStatus={warningStatus}
+          changeHandler={this.changeHandler}
+          checkInputValidity={this.checkInputValidity}
+          submitHandler={this.submitHandler}
+          authenticateSwitch={this.authenticateSwitch}
+        />
+      </div>
+      // <div style={{ display: 'table', width: '100%' }}>
+      //   <Admin
+      //     userName={userName}
+      //     score={score}
+      //     progress={progress}
+      //     tutorial={tutorial}
+      //     buttonHandler={this.buttonHandler}
+      //     updateHandler={this.updateHandler}
+      //     logoutHandler={this.logoutHandler}
+      //   />
+
+      //   <div style={{ float: 'left', width: '50%' }}>
+      //     <h2>List of Users</h2>
+      //     <ol style={{ width: '100%' }}>
+      //       {allUsers.map((user, idx) => (
+      //         <li key={idx} >
+      //           <div style={{ width: '100%', display: 'flex' }}>
+      //             <p style={{ width: '50%' }}>{user.userName}, score: {user.score}, progress: {user.progress}, tutorial: {user.tutorial.toString()}, expire: {user.cookieExpireTime} </p>
+      //             <button style={{ padding: '5px', height: '30px', margin: '20px 0' }} onClick={() => this.deleteHandler(user.id)}>del</button>
+      //           </div>
+      //         </li>
+      //       ))}
+      //     </ol>
+      //   </div>
+      // </div>
+    } else {
+      switch (gameChoosen) {
+        case '':
+          gameScreen = <FirstPage
+            goToChooseDonor={() => this.setState({ gameChoosen: 'choose' })}
+          />; break;
+
+        case 'choose':
+          gameScreen = <ChooseDonor
+            chooseDonor={(name) => {
+              this.setState({ gameChoosen: name });
+            }}
+          />; break;
+
+        case 'Franco':
+          gameScreen = <ChooseCommunication
+            name='Franco'
+            chooseCom={this.chooseGameHandler}
+          />; break;
+
+        case 'Sharrel':
+          gameScreen = <ChooseCommunication
+            name='Sharrel'
+            chooseCom={this.chooseGameHandler}
+          />; break;
+
+        default:
+          gameScreen = <GameScreen
+            playerDialogues={playerDialogues}
+            donorDialogue={donorDialogue}
+            donorClickable={donorClickable}
+            currentVideo={currentVideo}
+            currentPoster={currentPoster}
+            logoutHandler={this.logoutHandler}
+            changeVideoHandler={this.changeVideoHandler}
+            dialogueHandler={this.dialogueHandler}
+          />;
+      }
+    }
+
+
     return (
       <div id='main'>
         <h3 style={{ position: "absolute", top: 0, left: "50%" }}>Score : {subScore}</h3>
-        {authenticate !== 'passed' ?
-          <div>
-            <Authentication
-              userName={userName}
-              authenticate={authenticate}
-              userNameValid={userNameValid}
-              passwordValid={passwordValid}
-              warningStatus={warningStatus}
-              changeHandler={this.changeHandler}
-              checkInputValidity={this.checkInputValidity}
-              submitHandler={this.submitHandler}
-              authenticateSwitch={this.authenticateSwitch}
-            />
-          </div> :
-          // <div style={{ display: 'table', width: '100%' }}>
-          //   <Admin
-          //     userName={userName}
-          //     score={score}
-          //     progress={progress}
-          //     tutorial={tutorial}
-          //     buttonHandler={this.buttonHandler}
-          //     updateHandler={this.updateHandler}
-          //     logoutHandler={this.logoutHandler}
-          //   />
-
-          //   <div style={{ float: 'left', width: '50%' }}>
-          //     <h2>List of Users</h2>
-          //     <ol style={{ width: '100%' }}>
-          //       {allUsers.map((user, idx) => (
-          //         <li key={idx} >
-          //           <div style={{ width: '100%', display: 'flex' }}>
-          //             <p style={{ width: '50%' }}>{user.userName}, score: {user.score}, progress: {user.progress}, tutorial: {user.tutorial.toString()}, expire: {user.cookieExpireTime} </p>
-          //             <button style={{ padding: '5px', height: '30px', margin: '20px 0' }} onClick={() => this.deleteHandler(user.id)}>del</button>
-          //           </div>
-          //         </li>
-          //       ))}
-          //     </ol>
-          //   </div>
-          // </div>
-          gameChoosen === '' ?
-            <FirstPage
-              goToChooseDonor={() => this.setState({ gameChoosen: 'choose' })}
-            /> :
-
-            gameChoosen === 'choose' ?
-              <ChooseDonor
-                chooseDonor={(name) => {
-                  this.setState({ gameChoosen: name });
-                }}
-              /> :
-
-              gameChoosen === 'Franco' ?
-                <ChooseCommunication
-                  name='Franco'
-                  chooseCom={(name) => {
-                    if (name === 'FrancoPhone') {
-                      this.setState({
-                        gameChoosen: name,
-                        // playerDialogues: [Dialogue[name][2], Dialogue[name][3], Dialogue[name][4]],
-                        donorDialogue: Dialogue[name][1],
-                        donorClickable: true
-                      });
-                    } else if (name === 'FrancoMeeting') {
-                      this.setState({
-                        gameChoosen: name,
-                        playerDialogues: [Dialogue[name][1]],
-                        // donorDialogue: Dialogue[name][2],
-                        donorClickable: false
-                      });
-                    }
-                  }}
-                /> :
-
-                gameChoosen === 'Sharrel' ?
-                  <ChooseCommunication
-                    name='Sharrel'
-                    chooseCom={(name) => {
-                      if (name === 'SharrelPhone') {
-                        this.setState({
-                          gameChoosen: name,
-                          // playerDialogues: [Dialogue[name][2], Dialogue[name][3], Dialogue[name][4]],
-                          donorDialogue: Dialogue[name][1],
-                          donorClickable: true,
-                        });
-                      } else if (name === 'SharrelMeeting') {
-                        this.setState({
-                          gameChoosen: name,
-                          playerDialogues: [Dialogue[name][1]],
-                          // donorDialogue: Dialogue[name][2],
-                          donorClickable: false,
-                        });
-                      }
-                    }}
-                  /> :
-
-                  <GameScreen
-                    playerDialogues={playerDialogues}
-                    donorDialogue={donorDialogue}
-                    donorClickable={donorClickable}
-                    currentVideo={currentVideo}
-                    currentPoster={currentPoster}
-                    logoutHandler={this.logoutHandler}
-                    changeVideoHandler={this.changeVideoHandler}
-                    dialogueHandler={this.dialogueHandler}
-                  />
-        }
+        {gameScreen}
       </div>
     );
   }

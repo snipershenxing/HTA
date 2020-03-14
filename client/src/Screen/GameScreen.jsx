@@ -8,7 +8,7 @@ const GameScreen = ({ donorDialogue, playerDialogues, donorClickable, currentVid
   return (
     <div
       id='videoContainer'
-      style={{ position: 'absolute', zIndex: 5, background: 'url("./assets/posterFranco.png") no-repeat center', backgroundSize: 'contain', width: '100vw', height: '100vh' }}
+      style={{ position: 'absolute', zIndex: 5, background: `url("${currentPoster}") no-repeat center`, backgroundSize: 'contain', width: '100vw', height: '100vh' }}
     >
       <video
         id="myVideo"
@@ -46,7 +46,6 @@ const GameScreen = ({ donorDialogue, playerDialogues, donorClickable, currentVid
           dialogueHandler={dialogueHandler}
         />
       )}
-
 
       {Object.keys(donorDialogue).length && <DonorBubble
         text={donorDialogue.text}
