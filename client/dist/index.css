@@ -1,5 +1,11 @@
+@font-face {
+  font-family: 'ArialRounded';
+  src: url('./fonts/ArialRoundedMTStd-ExtraBold.otf');
+}
+
 body {
-  margin: 0
+  margin: 0;
+  font-family: ArialRounded;
 }
 button,
 input {
@@ -14,7 +20,7 @@ input {
   height: 23vh;
   color: black;
   font-size: 25px;
-  font-family: arial;
+  font-family: ArialRounded, arial;
   border-radius: 4vh;
   overflow: hidden;
   transition: display 1s;
@@ -97,7 +103,7 @@ input {
   background-color: rgb(120, 180, 164, 1);
   border-radius: 2vh;
   border-width: 0;
-  font-family: arial-rounded, arial, sans-serif;
+  font-family: ArialRounded, arial-rounded, arial, sans-serif;
   color: white;
   font-size: 8vh;
   font-weight: 900;
@@ -124,7 +130,7 @@ input {
 .chooseDonorTitle > h1 {
   margin: 0;
   font-size: 8vh;
-  font-family: arial, sans-serif;
+  font-family: ArialRounded, arial, sans-serif;
   color: black;
 }
 .TitleUnderline {
@@ -197,7 +203,7 @@ input {
   background-color: rgb(238, 115, 115);
   margin: 0;
   font-size: 3vh;
-  font-family: arial, sans-serif;
+  font-family: ArialRounded, arial, sans-serif;
   color: white;
   height: 14vh;
   padding: 2vh 2vw 0 2vw;
