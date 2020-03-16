@@ -71,10 +71,10 @@ class ChooseCommunication extends React.Component { //({ chooseCom, name }) => {
           </div>
         </div>
 
-        <div className='chooseDonorFooter'>
+        {text.length > 0 && <div className='chooseDonorFooter'>
           <h1>{text}</h1>
           <div className='footerUnderline'></div>
-        </div>
+        </div>}
 
         <BackButton
           navigateBack={navigateBack}
