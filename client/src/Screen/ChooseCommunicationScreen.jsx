@@ -49,21 +49,21 @@ class ChooseCommunication extends React.Component { //({ chooseCom, name }) => {
             <img
               id='meet'
               className='meet'
-              src='./assets/TheAsk.png'
+              src={`./assets/TheAskBase${name}.png`}
               onLoad={() => {
                 document.getElementById('meet').style.opacity = 1;
               }}
               onError={() => console.log('error loading image on first page')}
               onMouseEnter={() => {
-                document.getElementById('meet').src = './assets/TheAskHover.png';
+                document.getElementById('meet').src = `./assets/TheAskHover${name}.png`;
                 this.setState({ text: 'Go to in-person meeting after the call.' });
               }}
               onMouseLeave={() => {
-                document.getElementById('meet').src = './assets/TheAsk.png';
+                document.getElementById('meet').src = `./assets/TheAskBase${name}.png`;
                 this.setState({ text: '' });
               }}
               onMouseDown={() => {
-                document.getElementById('meet').src = './assets/TheAskPressed.png'
+                document.getElementById('meet').src = `./assets/TheAskPressed${name}.png`;
               }}
             />
           </div>

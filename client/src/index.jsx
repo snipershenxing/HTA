@@ -9,6 +9,7 @@ import FirstPage from './Screen/FirstPage.jsx';
 import ChooseDonor from './Screen/ChooseDonorScreen.jsx';
 import GameScreen from './Screen/GameScreen.jsx';
 import ChooseCommunication from './Screen/ChooseCommunicationScreen.jsx';
+import End from './Screen/EndScreen.jsx';
 
 // const address = 'http://192.168.1.100:3001';
 const address = 'http://192.168.1.2:3001';
@@ -34,8 +35,8 @@ class App extends React.Component {
       currentPoster: "",
       playerDialogues: [],
       donorDialogue: {},
-      donorClickable: false,
-      gameChoosen: '',
+      playerClickable: false,
+      gameChosen: '',
       subScore: 0,
     };
     this.trySignInWithCookie = this.trySignInWithCookie.bind(this);
@@ -360,15 +361,31 @@ class App extends React.Component {
   }
 
   dialogueHandler(player, newDialogue, skip, point) {
-    let { subScore, playerDialogues, gameChoosen } = this.state;
-    if (newDialogue === 'End') {
+    let { subScore, playerDialogues, gameChosen, playerClickable } = this.state;
+    if (typeof newDialogue === 'string' && newDialogue.includes('End')) {
+      let person = '', status = '';
+
+      if (gameChosen.includes('Franco')) person = 'Franco';
+      else if (gameChosen.includes('Sharrel')) person = 'Sharrel';
+      else if (gameChosen.includes('JP')) person = 'JP';
+
+      if (newDialogue.includes('telephoneFail')) status = 'telephoneFail';
+      else if (newDialogue.includes('telephoneSuccess')) {
+        // status = 'telephoneSuccess';
+        // this.setState({ gameChosen: person });
+      }
+      else if (newDialogue.includes('meetingFail')) status = 'meetingFail';
+      else if (newDialogue.includes('meetingSuccess')) status = 'meetingSuccess';
+      let pageChosen = status.length > 0 ? `${status} ${person}` : person;
       this.setState({
         donorDialogue: null,
         playerDialogues: [],
+        gameChosen: pageChosen,
       })
     } else {
+
       if (player) {
-        if (gameChoosen === 'FrancoPhone' && newDialogue === 'Gate1') {
+        if (gameChosen === 'FrancoPhone' && newDialogue === 'Gate1') {
           if (subScore + point <= 2) {
             newDialogue = 'Gate1-1';
             this.changeVideoHandler("./assets/Franco2.2.mp4");
@@ -377,7 +394,7 @@ class App extends React.Component {
           } else {
             newDialogue = 'Gate1-3'
           }
-        } else if (gameChoosen === 'FrancoPhone' && newDialogue === 'Gate2') {
+        } else if (gameChosen === 'FrancoPhone' && newDialogue === 'Gate2') {
           if (subScore + point <= 4) {
             newDialogue = 'Gate2-1';
             this.changeVideoHandler("./assets/Franco2.2.mp4");
@@ -386,7 +403,7 @@ class App extends React.Component {
           } else {
             newDialogue = 'Gate2-3'
           }
-        } else if (gameChoosen === 'FrancoMeeting' && newDialogue === 'Gate1') {
+        } else if (gameChosen === 'FrancoMeeting' && newDialogue === 'Gate1') {
           if (subScore + point <= 4) {
             newDialogue = 'Gate1-4'
           } else if (5 <= subScore + point && subScore + point <= 7) {
@@ -396,7 +413,7 @@ class App extends React.Component {
           } else {
             newDialogue = 'Gate1-3'
           }
-        } else if (gameChoosen === 'SharrelPhone' && newDialogue === 'Gate1') {
+        } else if (gameChosen === 'SharrelPhone' && newDialogue === 'Gate1') {
           if (subScore + point <= 3) {
             newDialogue = 'Gate1-1';
             this.changeVideoHandler("./assets/Franco2.2.mp4");
@@ -405,7 +422,7 @@ class App extends React.Component {
           } else {
             newDialogue = 'Gate1-3'
           }
-        } else if (gameChoosen === 'SharrelPhone' && newDialogue === 'Gate2') {
+        } else if (gameChosen === 'SharrelPhone' && newDialogue === 'Gate2') {
           if (subScore + point <= 11) {
             newDialogue = 'Gate2-1';
             this.changeVideoHandler("./assets/Franco2.2.mp4");
@@ -414,7 +431,7 @@ class App extends React.Component {
           } else {
             newDialogue = 'Gate2-3'
           }
-        } else if (gameChoosen === 'SharrelMeeting' && newDialogue === 'Gate1') {
+        } else if (gameChosen === 'SharrelMeeting' && newDialogue === 'Gate1') {
           if (subScore + point <= 3) {
             newDialogue = 'Gate1-1'
           } else if (4 === subScore + point) {
@@ -425,25 +442,36 @@ class App extends React.Component {
             newDialogue = 'Gate1-4'
           }
         }
-        playerDialogues.forEach((e, i) => {
-          e.addScore = 0
-          if (skip != i) document.getElementById(String(i)).style.display = 'none';
-        });
-        this.setState({
-          donorDialogue: Dialogue[gameChoosen][newDialogue],
-          subScore: subScore + point,
-          playerDialogues: playerDialogues,
-          donorClickable: true
-        });
+        if (playerClickable) {
+          playerDialogues.forEach((e, i) => {
+            e.addScore = 0;
+            document.getElementById(String(i)).onclick = () => { };
+            if (skip != i) document.getElementById(String(i)).style.display = 'none';
+          });
+          this.setState({
+            donorDialogue: { text: ' . . . ' },
+            subScore: subScore + point,
+            playerClickable: false
+          });
+          setTimeout(() => {
+            this.setState({
+              donorDialogue: Dialogue[gameChosen][newDialogue],
+            }, () => {
+              let myVideo = document.getElementById("myVideo");
+              myVideo.play();
+            })
+          }, 800);
+        }
+
+
       } else {
         let playerDialogues = [];
         for (let ix of newDialogue) {
-          playerDialogues.push(Dialogue[gameChoosen][ix]);
+          playerDialogues.push(Dialogue[gameChosen][ix]);
         }
-        document.getElementById("myVideo").play()
         this.setState({
           playerDialogues,
-          donorClickable: false
+          playerClickable: true
         });
       }
     }
@@ -452,38 +480,36 @@ class App extends React.Component {
   chooseGameHandler(name) {
     if (name === 'FrancoPhone') {
       this.setState({
-        gameChoosen: name,
+        gameChosen: name,
         donorDialogue: Dialogue[name][1],
-        donorClickable: true,
         currentVideo: './assets/Franco1.1.mp4',
         currentPoster: './assets/posterFranco.png',
       });
     } else if (name === 'FrancoMeeting') {
       this.setState({
-        gameChoosen: name,
+        gameChosen: name,
+        playerClickable: true,
         playerDialogues: [Dialogue[name][1]],
-        donorClickable: false,
         currentVideo: './assets/Jennifer1.1.mp4',
         currentPoster: './assets/posterJennifer.png',
       });
     } else if (name === 'SharrelPhone') {
       this.setState({
-        gameChoosen: name,
+        gameChosen: name,
         donorDialogue: Dialogue[name][1],
-        donorClickable: true,
       });
     } else if (name === 'SharrelMeeting') {
       this.setState({
-        gameChoosen: name,
+        playerClickable: true,
+        gameChosen: name,
         playerDialogues: [Dialogue[name][1]],
-        donorClickable: false,
       });
     }
 
   }
 
   render() {
-    let { playerDialogues, donorDialogue, donorClickable, subScore, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster, gameChoosen } = this.state;
+    let { playerDialogues, donorDialogue, subScore, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster, gameChosen } = this.state;
     let gameScreen;
 
     if (authenticate !== 'passed') {
@@ -526,36 +552,52 @@ class App extends React.Component {
       //   </div>
       // </div>
     } else {
-      switch (gameChoosen) {
-        case '':
+      switch (true) {
+        case gameChosen === '':
           gameScreen = <FirstPage
-            goToChooseDonor={() => this.setState({ gameChoosen: 'choose' })}
+            goToChooseDonor={() => this.setState({ gameChosen: 'choose' })}
           />; break;
 
-        case 'choose':
+        case gameChosen === 'choose':
           gameScreen = <ChooseDonor
             chooseDonor={(name) => {
-              this.setState({ gameChoosen: name });
+              this.setState({ gameChosen: name });
             }}
           />; break;
 
-        case 'Franco':
+        case gameChosen === 'Franco':
           gameScreen = <ChooseCommunication
             name='Franco'
             chooseCom={this.chooseGameHandler}
           />; break;
 
-        case 'Sharrel':
+        case gameChosen === 'Sharrel':
           gameScreen = <ChooseCommunication
             name='Sharrel'
             chooseCom={this.chooseGameHandler}
+          />; break;
+
+        case gameChosen === 'JP':
+          gameScreen = <ChooseCommunication
+            name='JP'
+            chooseCom={this.chooseGameHandler}
+          />; break;
+
+        case (gameChosen.includes('Fail') || gameChosen.includes('Success')):
+          gameScreen = <End
+            ending={gameChosen}
+            goToMain={(page) => {
+              this.setState({
+                subScore: 0,
+                gameChosen: page
+              })
+            }}
           />; break;
 
         default:
           gameScreen = <GameScreen
             playerDialogues={playerDialogues}
             donorDialogue={donorDialogue}
-            donorClickable={donorClickable}
             currentVideo={currentVideo}
             currentPoster={currentPoster}
             logoutHandler={this.logoutHandler}

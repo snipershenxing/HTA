@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PlayerBubble = ({ id, text, point, nextArray, verticalPosition, height, donorClickable, dialogueHandler }) => {
+const PlayerBubble = ({ id, text, point, nextArray, verticalPosition, height, dialogueHandler }) => {
   return (
     <div
       id={id}
@@ -9,8 +9,8 @@ const PlayerBubble = ({ id, text, point, nextArray, verticalPosition, height, do
         document.getElementById(id).style.filter = 'none';
         dialogueHandler(true, nextArray, id, point);
       }}
-      onMouseEnter={() => { if (!donorClickable) document.getElementById(id).style.filter = 'brightness(0.7)'; }}
-      onMouseLeave={() => { if (!donorClickable) document.getElementById(id).style.filter = 'none'; }}
+      onMouseEnter={() => { document.getElementById(id).style.filter = 'brightness(0.7)'; }}
+      onMouseLeave={() => { document.getElementById(id).style.filter = 'none'; }}
       className='bubbleButton'>
       <p className='textForBubbleButton'>
         {text}

@@ -67,12 +67,12 @@ const Dialogue = {
       addScore: 0,
     },
     "Gate1-2": {
-      text: `I know Jennifer and her husband have been talking about how they’ld want to get involved. I know she is interested, but she and her husband have been traveling. I’ll need to check the calendar.`,
+      text: `I know she is interested, but she and her husband have been traveling. I’ll need to check the calendar.`,
       nextDialogue: [16, 17],
       addScore: 0,
     },
     "Gate1-3": {
-      text: `Well, thank you for letting me know. That’s great to hear. I know Jennifer and her husband have been talking about how they’ld want to get involved.`,
+      text: `Well, thank you for letting me know. That’s great to hear. I know Jennifer and her husband have been talking about how they’d want to get involved.`,
       nextDialogue: [17, 18],
       addScore: 0,
     },
@@ -105,17 +105,17 @@ const Dialogue = {
 
     "Gate2-1": {
       text: `Unfortunately, I do need to go. I’ll let her know you called.`,
-      nextDialogue: "End",
+      nextDialogue: "End telephoneFail",
       addScore: 0,
     },
     "Gate2-2": {
       text: `Alright – Unfortunately, I do need to go, but I will let her know you called. Could you please follow up later in the week?`,
-      nextDialogue: "End",
+      nextDialogue: "End telephoneSuccess",
       addScore: 0,
     },
     "Gate2-3": {
       text: `It looks like they are both available Wednesday at 1:30. I’ll add that to the calendar. Please email me the location.`,
-      nextDialogue: "End",
+      nextDialogue: "End telephoneSuccess",
       addScore: 0,
     },
   },
@@ -189,7 +189,7 @@ const Dialogue = {
     },
     14: {
       text: "Natalie: Be careful to direct your conversation to their interests.",
-      nextDialogue: "End",
+      nextDialogue: "End meetingFail",
       addScore: 0,
     },
     15: {
@@ -230,12 +230,12 @@ const Dialogue = {
 
     "Gate1-4": {
       text: "Natalie: Be careful to direct your conversation to their interests.",
-      nextDialogue: "End",
+      nextDialogue: "End meetingFail",
       addScore: 0,
     },
     "Gate1-1": {
       text: "Not right now.",
-      nextDialogue: "End",
+      nextDialogue: "End meetingFail",
       addScore: 0,
     },
     "Gate1-2": {
@@ -271,7 +271,7 @@ const Dialogue = {
     },
     30: {
       text: "I understand that funding is important, but we have so many commitments right now. Let’s reconnect after the holidays.",
-      nextDialogue: "End",
+      nextDialogue: "End meetingFail",
       addScore: 0,
     },
     31: {
@@ -286,7 +286,7 @@ const Dialogue = {
     },
     33: {
       text: "Natalie: Good job! I knew you could do it.",
-      nextDialogue: "End",
+      nextDialogue: "End meetingSuccess",
       addScore: 0,
     },
     34: {
@@ -306,7 +306,7 @@ const Dialogue = {
     },
     37: {
       text: "You know $25,000 is a lot of money. Let me think about it and get back to you.",
-      nextDialogue: "End",
+      nextDialogue: "End meetingSuccess",
       addScore: 0,
     },
     38: {
@@ -321,7 +321,7 @@ const Dialogue = {
     },
     40: {
       text: "Thank you for your generosity!",
-      nextDialogue: "End",
+      nextDialogue: "End meetingSuccess",
       addScore: 0,
     },
   },
@@ -422,7 +422,7 @@ const Dialogue = {
     },
     18: {
       text: "I really don't have time for this.",
-      nextDialogue: "End",
+      nextDialogue: "End telephoneFail",
       addScore: 0,
     },
     19: {
@@ -467,12 +467,12 @@ const Dialogue = {
     // },
     "Gate2-1": {
       text: "I will have to think about this.",
-      nextDialogue: "End",
+      nextDialogue: "End telephoneFail",
       addScore: 0,
     },
     "Gate2-2": {
       text: "Sure we can meet. Let's set up something for next month. How about you come to my house and we can chat?",
-      nextDialogue: "End",
+      nextDialogue: "End telephoneSuccess",
       addScore: 0,
     },
     "Gate2-3": {
@@ -506,18 +506,18 @@ const Dialogue = {
       addScore: 0,
     },
     34: {
-      text: "Oh I've heard wonderful things about it. The waitlist for reservations is so long.Let's go.",
-      nextDialogue: "End",
+      text: "Oh I've heard wonderful things about it. The waitlist for reservations is so long. Let's go.",
+      nextDialogue: "End telephoneSuccess",
       addScore: 0,
     },
     35: {
       text: "That's really thoughtful of you. I like that café.",
-      nextDialogue: "End",
+      nextDialogue: "End telephoneSuccess",
       addScore: 0,
     },
     36: {
       text: "Terrific, I'll send you my address.",
-      nextDialogue: "End",
+      nextDialogue: "End telephoneSuccess",
       addScore: 0,
     },
   },

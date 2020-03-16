@@ -122,7 +122,7 @@ input {
   width: 84vw;
   height: 15vh;
   position: absolute;
-  top: 12vh;
+  top: 10vh;
   left: 8vw;
   display: flex;
   flex-direction: column;
@@ -153,16 +153,12 @@ input {
   top: 25vh;
   left: 10vw;
   width: 80vw;
-  height: 45vh;
+  height: 40vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .person {
-  background: url('./assets/person.png') no-repeat center;
-  width: 25vw;
-  height: 60vh;
-  background-color: blue;
   margin: 0 2.5vw;
   display: flex;
   justify-content: center;
@@ -170,6 +166,55 @@ input {
   color: white;
   font-size: 3vh;
   text-align: center;
+  display: table;
+}
+.person > button {
+  width: 25vw;
+  height: 18vw;
+  border-width: 0;
+  margin: 0;
+  background-color: transparent;
+  z-index: -1;
+}
+.person > h2 {
+  margin: 0;
+}
+
+.Jennifer {
+  background: url('./assets/JenChooseDonorBase.png') no-repeat top;
+}
+.Jennifer:hover {
+  background: url('./assets/JenChooseDonorHover.png') no-repeat top;
+}
+.Jennifer:active {
+  background: url('./assets/JenChooseDonorPressed.png') no-repeat top;
+}
+
+.JP {
+  background: url('./assets/JPChooseDonorBase.png') no-repeat top;
+}
+.JP:hover {
+  background: url('./assets/JPChooseDonorHover.png') no-repeat top;
+}
+.JP:active {
+  background: url('./assets/JPChooseDonorPressed.png') no-repeat top;
+}
+
+.Sharrel {
+  background: url('./assets/SharrelChooseDonorBase.png') no-repeat top;
+}
+.Sharrel:hover {
+  background: url('./assets/SharrelChooseDonorHover.png') no-repeat top;
+}
+.Sharrel:active {
+  background: url('./assets/SharrelChooseDonorPressed.png') no-repeat top;
+}
+
+
+.person > button, .JP, .JP:hover, .JP:focus, .Jennifer, .Jennifer:hover, .Jennifer:focus, .Sharrel, .Sharrel:hover, .Sharrel:focus {
+  background-size: contain;
+  transition: all 0.5s;
+  cursor: pointer;
 }
 
 .telephone, .meeting {
@@ -184,7 +229,7 @@ input {
   text-align: center;
 }
 .phone, .meet {
-  height: 100%;
+  /* height: 100%; */
   width: auto;
   max-width: 100%;
   opacity: 0;
@@ -215,6 +260,25 @@ input {
   background-color: rgb(206, 102, 117);
 }
 
-.person:hover, .telephone:hover, .meeting:hover, .goButton:hover, .bubbleButton:hover, .respondButton:hover {
+.telephone:hover, .meeting:hover, .goButton:hover, .bubbleButton:hover, .respondButton:hover {
   cursor: pointer;
+}
+
+.telephoneFail, .meetingFail, .meetingSuccess {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-image: url("./assets/TelephoneFail.png");
+  opacity: 0;
+  transition: opacity 1.8s;
+}
+.meetingFail {
+  background-image: url("./assets/meetingFail.png");
+}
+.meetingSuccess {
+  background-image: url("./assets/meetingSuccess.png");
 }
