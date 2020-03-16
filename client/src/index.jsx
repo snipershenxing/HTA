@@ -33,6 +33,7 @@ class App extends React.Component {
       allUsers: [],
       currentVideo: "",
       currentPoster: "",
+      currentAudio: "",
       playerDialogues: [],
       donorDialogue: {},
       playerClickable: false,
@@ -403,7 +404,8 @@ class App extends React.Component {
           }
         } else if (gameChosen === 'FrancoMeeting' && newDialogue === 'Gate1') {
           if (subScore + point <= 4) {
-            newDialogue = 'Gate1-4'
+            newDialogue = 'Gate1-4';
+            this.changeVideoHandler("./assets/Jennifer2.2.mp4");
           } else if (5 <= subScore + point && subScore + point <= 7) {
             newDialogue = 'Gate1-1'
           } else if (8 <= subScore + point && subScore + point <= 12) {
@@ -449,22 +451,22 @@ class App extends React.Component {
           this.setState({
             donorDialogue: { text: ' . . . ' },
             subScore: subScore + point,
-            playerClickable: false
+            playerClickable: false,
+            currentAudio: `./assets/Breezy.m4a` // this is just a simulation
           });
           setTimeout(() => {
+            playerDialogues[skip] = { text: ' . . . ' };
             this.setState({
               donorDialogue: Dialogue[gameChosen][newDialogue],
+              playerDialogues,
             }, () => {
-              // let myVideo = document.getElementById("myVideo");
-              // myVideo.play();
-              // myVideo.name = 'true';
               document.getElementById('respondButton').click();
             })
           }, 800);
         }
 
 
-      } else {
+      } else { // donor
         let playerDialogues = [];
         for (let ix of newDialogue) {
           playerDialogues.push(Dialogue[gameChosen][ix]);
@@ -484,6 +486,7 @@ class App extends React.Component {
         donorDialogue: Dialogue[name][1],
         currentVideo: './assets/Franco1.1.mp4',
         currentPoster: './assets/posterFranco.png',
+        currentAudio: './assets/Breezy.m4a',
       });
     } else if (name === 'FrancoMeeting') {
       this.setState({
@@ -492,6 +495,7 @@ class App extends React.Component {
         playerDialogues: [Dialogue[name][1]],
         currentVideo: './assets/Jennifer1.1.mp4',
         currentPoster: './assets/posterJennifer.png',
+        currentAudio: './assets/Breezy.m4a',
       });
     } else if (name === 'SharrelPhone') {
       this.setState({
@@ -499,6 +503,7 @@ class App extends React.Component {
         donorDialogue: Dialogue[name][1],
         currentVideo: './assets/ss.mp4',
         currentPoster: './assets/sss.png',
+        currentAudio: './assets/Breezy.m4a',
       });
     } else if (name === 'SharrelMeeting') {
       this.setState({
@@ -511,7 +516,7 @@ class App extends React.Component {
   }
 
   render() {
-    let { playerDialogues, donorDialogue, subScore, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster, gameChosen } = this.state;
+    let { playerDialogues, donorDialogue, subScore, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster, currentAudio, gameChosen } = this.state;
     let gameScreen;
 
     if (authenticate !== 'passed') {
@@ -570,27 +575,9 @@ class App extends React.Component {
             }}
           />; break;
 
-        case gameChosen === 'Franco':
+        case (gameChosen === 'Franco' || gameChosen === 'Sharrel' || gameChosen === 'JP'):
           gameScreen = <ChooseCommunication
-            name='Franco'
-            chooseCom={this.chooseGameHandler}
-            navigateBack={() => {
-              this.setState({ gameChosen: 'choose' })
-            }}
-          />; break;
-
-        case gameChosen === 'Sharrel':
-          gameScreen = <ChooseCommunication
-            name='Sharrel'
-            chooseCom={this.chooseGameHandler}
-            navigateBack={() => {
-              this.setState({ gameChosen: 'choose' })
-            }}
-          />; break;
-
-        case gameChosen === 'JP':
-          gameScreen = <ChooseCommunication
-            name='JP'
+            name={gameChosen}
             chooseCom={this.chooseGameHandler}
             navigateBack={() => {
               this.setState({ gameChosen: 'choose' })
@@ -614,6 +601,7 @@ class App extends React.Component {
             donorDialogue={donorDialogue}
             currentVideo={currentVideo}
             currentPoster={currentPoster}
+            currentAudio={currentAudio}
             logoutHandler={this.logoutHandler}
             changeVideoHandler={this.changeVideoHandler}
             dialogueHandler={this.dialogueHandler}

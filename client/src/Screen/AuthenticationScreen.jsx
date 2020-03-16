@@ -16,6 +16,7 @@ const Authentication = ({ userName, warningStatus, authenticate, userNameValid, 
           defaultValue={userName}
           onChange={changeHandler}
           onBlur={checkInputValidity}
+          autoCapitalize="username"
         />
         {!userNameValid ? <p style={{ color: 'red', fontSize: 11 }}>
           User name must be 6 to 20 characters which contain only characters, numeric digits, underscore and first character must be a letter.

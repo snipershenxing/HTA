@@ -3,7 +3,7 @@ import PlayerBubble from '../components/PlayerBubble.jsx';
 import DonorBubble from '../components/DonorBubble.jsx';
 
 
-const GameScreen = ({ donorDialogue, playerDialogues, currentVideo, currentPoster, logoutHandler, changeVideoHandler, dialogueHandler }) => {
+const GameScreen = ({ donorDialogue, playerDialogues, currentVideo, currentPoster, currentAudio, logoutHandler, changeVideoHandler, dialogueHandler }) => {
   let vidH = window.innerHeight;
   return (
     <div
@@ -52,7 +52,7 @@ const GameScreen = ({ donorDialogue, playerDialogues, currentVideo, currentPoste
       {donorDialogue && Object.keys(donorDialogue).length &&
         <DonorBubble
           text={donorDialogue.text}
-          audio={`./assets/Breezy.m4a`}
+          audioUrl={currentAudio}
           nextArray={donorDialogue.nextDialogue}
           dialogueHandler={dialogueHandler}
         />

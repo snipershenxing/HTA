@@ -1,8 +1,8 @@
 import React from 'react';
 import useAudio from './AudioPlayer.js';
 
-const DonorBubble = ({ text, audio, nextArray, dialogueHandler }) => {
-  const [playing, toggle] = useAudio(audio);
+const DonorBubble = ({ text, audioUrl }) => {
+  const [playing, toggle] = useAudio(audioUrl);
 
   return (
     <div
@@ -10,11 +10,7 @@ const DonorBubble = ({ text, audio, nextArray, dialogueHandler }) => {
       className='respondButton'
       onClick={() => {
         let myVideo = document.getElementById("myVideo");
-        if (myVideo.getAttribute('name') === 'false') {
-          // myVideo.name = 'false';
-          // myVideo.pause();
-          // myVideo.currentTime = 0;
-          // } else {
+        if (myVideo.getAttribute('name') === 'false' && !playing) {
           toggle();
           myVideo.setAttribute('name', 'true');
           myVideo.play();
