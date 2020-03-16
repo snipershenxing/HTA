@@ -1,6 +1,8 @@
 import React from 'react';
+import BackButton from '../components/BackButton.jsx';
 
-const ChooseDonor = ({ chooseDonor }) => {
+
+const ChooseDonor = ({ chooseDonor, navigateBack }) => {
   return (
     <div className='chooseDonor'>
       <div className='chooseDonorTitle'>
@@ -34,6 +36,9 @@ const ChooseDonor = ({ chooseDonor }) => {
           >JP Romero</div>
         </div>
       </div>
+      <BackButton
+        navigateBack={navigateBack}
+      />
     </div>
   );
 };

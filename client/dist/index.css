@@ -250,7 +250,7 @@ input {
   font-size: 3vh;
   font-family: ArialRounded, arial, sans-serif;
   color: white;
-  height: 14vh;
+  height: 9vh;
   padding: 2vh 2vw 0 2vw;
 }
 .footerUnderline {
@@ -281,4 +281,27 @@ input {
 }
 .meetingSuccess {
   background-image: url("./assets/meetingSuccess.png");
+}
+
+.backButton {
+  position: absolute;
+  left: 8vw;
+  bottom: 5vh;
+  width: 8vh;
+  height: 8vh;
+  background-image: url("./assets/BackBase.png");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-color: transparent;
+  background-size: contain;
+  border-width: 0;
+  margin: 0;
+  padding: 0
+}
+.backButton:hover {
+  background-image: url("./assets/BackHover.png");
+}
+.backButton:focus {
+  background-image: url("./assets/BackPressed.png");
 }

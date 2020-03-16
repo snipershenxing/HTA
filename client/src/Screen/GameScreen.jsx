@@ -12,6 +12,7 @@ const GameScreen = ({ donorDialogue, playerDialogues, currentVideo, currentPoste
     >
       <video
         id="myVideo"
+        name='false'
         loop={false}
         muted
         poster={currentPoster}
@@ -28,13 +29,13 @@ const GameScreen = ({ donorDialogue, playerDialogues, currentVideo, currentPoste
         autoPlay={false}
         onEnded={() => {
           dialogueHandler(false, donorDialogue.nextDialogue);
+          document.getElementById('myVideo').setAttribute('name', 'false');
         }}
       >
         <source src={currentVideo} type="video/mp4" autoPlay />
         Sorry, your browser doesn't support MP4.
       </video>
-      <div id="vid2" />
-
+      <div id="dialogues" />
       {playerDialogues.length && playerDialogues.map((p, idx) =>
         <PlayerBubble
           id={idx}
@@ -51,6 +52,7 @@ const GameScreen = ({ donorDialogue, playerDialogues, currentVideo, currentPoste
       {donorDialogue && Object.keys(donorDialogue).length &&
         <DonorBubble
           text={donorDialogue.text}
+          audio={`./assets/Breezy.m4a`}
           nextArray={donorDialogue.nextDialogue}
           dialogueHandler={dialogueHandler}
         />

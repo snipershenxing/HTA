@@ -1,4 +1,6 @@
 import React from 'react';
+import BackButton from '../components/BackButton.jsx';
+
 
 class ChooseCommunication extends React.Component { //({ chooseCom, name }) => {
   constructor(props) {
@@ -9,7 +11,7 @@ class ChooseCommunication extends React.Component { //({ chooseCom, name }) => {
   }
 
   render() {
-    let { chooseCom, name } = this.props;
+    let { chooseCom, name, navigateBack } = this.props;
     let { text } = this.state;
     return (
       <div className='chooseDonor'>
@@ -73,6 +75,10 @@ class ChooseCommunication extends React.Component { //({ chooseCom, name }) => {
           <h1>{text}</h1>
           <div className='footerUnderline'></div>
         </div>
+
+        <BackButton
+          navigateBack={navigateBack}
+        />
       </div>
     );
   }

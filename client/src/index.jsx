@@ -59,9 +59,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.trySignInWithCookie();
-    var vid = document.getElementById("myVideo");
   }
-
 
   trySignInWithCookie() {
     let cookie = Cookies.get('cookie');
@@ -457,8 +455,10 @@ class App extends React.Component {
             this.setState({
               donorDialogue: Dialogue[gameChosen][newDialogue],
             }, () => {
-              let myVideo = document.getElementById("myVideo");
-              myVideo.play();
+              // let myVideo = document.getElementById("myVideo");
+              // myVideo.play();
+              // myVideo.name = 'true';
+              document.getElementById('respondButton').click();
             })
           }, 800);
         }
@@ -497,6 +497,8 @@ class App extends React.Component {
       this.setState({
         gameChosen: name,
         donorDialogue: Dialogue[name][1],
+        currentVideo: './assets/ss.mp4',
+        currentPoster: './assets/sss.png',
       });
     } else if (name === 'SharrelMeeting') {
       this.setState({
@@ -563,24 +565,36 @@ class App extends React.Component {
             chooseDonor={(name) => {
               this.setState({ gameChosen: name });
             }}
+            navigateBack={() => {
+              this.setState({ gameChosen: '' })
+            }}
           />; break;
 
         case gameChosen === 'Franco':
           gameScreen = <ChooseCommunication
             name='Franco'
             chooseCom={this.chooseGameHandler}
+            navigateBack={() => {
+              this.setState({ gameChosen: 'choose' })
+            }}
           />; break;
 
         case gameChosen === 'Sharrel':
           gameScreen = <ChooseCommunication
             name='Sharrel'
             chooseCom={this.chooseGameHandler}
+            navigateBack={() => {
+              this.setState({ gameChosen: 'choose' })
+            }}
           />; break;
 
         case gameChosen === 'JP':
           gameScreen = <ChooseCommunication
             name='JP'
             chooseCom={this.chooseGameHandler}
+            navigateBack={() => {
+              this.setState({ gameChosen: 'choose' })
+            }}
           />; break;
 
         case (gameChosen.includes('Fail') || gameChosen.includes('Success')):
