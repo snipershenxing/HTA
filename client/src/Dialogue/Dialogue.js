@@ -1,4 +1,5 @@
 const Dialogue = {
+  
   Franco: {
     1: {
       text: "Hello, Dr.Walker's Office.",
@@ -602,81 +603,81 @@ const Dialogue = {
     },
     2:
     {
-      text: "",
-      nextDialogue: 0,
+      text: "Thank you. I’ve been looking forward to hearing what you have in mind.",
+      nextDialogue: [3,4,5,6],
       addScore: 0,
     },
     3:
     {
-      text: "",
-      nextDialogue: 0,
-      addScore: 0,
+      text: "We are excited about expanding the touch tank and adding conservation programming whichwould benefit your grandchildren.The total budget is $50, 000 and we are hoping you will make a leadership gift of $25,000.",
+      nextDialogue: 7,
+      addScore: 1,
     },
     4:
     {
-      text: "",
-      nextDialogue: 0,
-      addScore: 0,
+      text: "We think that your vision and your assets would benefit everyone at the aquarium.Our new plans for the touch tank and summer programming would open up some opportunities behind the scenes for your grandchildren and we are hoping you will consider a leadership gift to the campaign.",
+      nextDialogue: 8,
+      addScore: 2,
     },
     5:
     {
-      text: "",
-      nextDialogue: 0,
-      addScore: 0,
+      text: "It was wonderful to see so much of you and your family at the aquarium last summer. Our plans for the touch tank and summer programming would open up opportunities for your grandchildren to learn firsthand about conservation by working with our staff.",
+      nextDialogue: 9,
+      addScore: 3,
     },
     6:
     {
-      text: "",
-      nextDialogue: 0,
-      addScore: 0,
+      text: "I am hopeful your grandchildren will participate, perhaps even with an eye toward future internships, in our plans to expand the touch tank and summer programming.We would also love to include them in some behind the scenes opportunities to meet the scientists and some of the more unique animals in the collection.",
+      nextDialogue: 9,
+      addScore: 4,
     },
     7:
     {
-      text: "",
-      nextDialogue: 0,
+      text: "I am interested in supporting the aquarium and it does mean a lot to my grandkids, but I’m not ready to commit to a gift of that size.",
+      nextDialogue: [11,12],
       addScore: 0,
     },
     8:
     {
-      text: "",
-      nextDialogue: 0,
+      text: "I might be able to help with that, but I would like to understand more about the opportunities for my grandchildren",
+      nextDialogue: [12,13],
       addScore: 0,
     },
     9:
     {
-      text: "",
-      nextDialogue: 0,
+      text: "I agree. I really like what you guys are doing and I think the kids will enjoy getting more involved when they are here visiting.How can I help ?",
+      nextDialogue: [13,14],
       addScore: 0,
     },
     10:
     {
-      text: "",
-      nextDialogue: 0,
-      addScore: 0,
+      text: "What amount would you consider ?",
+      nextDialogue: "Gate2",
+      addScore: 1,
     },
     11:
     {
-      text: "",
-      nextDialogue: 0,
-      addScore: 0,
+      text: "Our plans for the touch tank and summer programming would open up opportunities for your grandchildren to learn firsthand about conservation by working with our staff.",
+      nextDialogue: "Gate2",
+      addScore: 2,
     },
     12:
     {
-      text: "",
-      nextDialogue: 0,
-      addScore: 0,
+      text: "I am hopeful your grandchildren will participate, in our plans to expand the touch tank and summer programming.We would also love to include them in some behind the scenes opportunities to meet the scientists and some of the more unique animals in the collection.",
+      nextDialogue: "Gate2",
+      addScore: 3,
     },
     13:
     {
-      text: "",
-      nextDialogue: 0,
-      addScore: 0,
+      text: "The total budget is $50, 000 and we are hoping you would consider a leadership gift to the campaign of $25, 000 which will set a powerful example for our supporters and ensure this vision is realized",
+      nextDialogue: "Gate2",
+      addScore: 3,
     },
     14:
     {
-      text: "",
-      nextDialogue: 0,
-      addScore: 0,
+      text: "I’d love to have you visit the aquarium and get your input on the overall plan. The budget for the project is $50, 000 and we are hoping you will consider a leadership gift to the campaign of $25, 000.At that level, we would include a naming opportunity for the touch tank.",
+      nextDialogue: "Gate2",
+      addScore: 4,
     },
     "Gate2":
     {
@@ -686,53 +687,54 @@ const Dialogue = {
     },
     "Gate2-1":
     {
-      text: "",
-      nextDialogue: 0,
+      text: "Natalie will explain where you messed up, such as asking too much for the money.One should keep the donor’s interests in mind in addition to the money.",
+      nextDialogue: ["End"],
       addScore: 0,
     },
     "Gate2-2":
     {
-      text: "",
-      nextDialogue: 0,
+      text: "Hmm, I’ll have to think about this. Let’s set up another meeting to talk further.",
+      nextDialogue: ["End"],
       addScore: 0,
     },
     "Gate2-3":
     {
-      text: "",
-      nextDialogue: 0,
+      text: "Well I’d certainly be willing to help you reach that, but I don’t want to cover 50 % of the campaign on my own.I’d be willing to give $12, 500. When you find another donor for that amount, I would be happy to share why I am supporting the aquarium at this level.",
+      nextDialogue: [19],
       addScore: 0,
     },
     "Gate2-4":
     {
-      text: "",
-      nextDialogue: 0,
+      text: "I hadn’t really considered giving you that much, but you’ve really helped me understand how great this could be, not just for my grandchildren, but for so many of your visitors.I’d be honored.",
+      nextDialogue: [20],
       addScore: 0,
     },
     19:
     {
-      text: "",
-      nextDialogue: 0,
+      text: "Thank you for your generosity!I can’t tell you how much we appreciate your gift and your offer to be a resource for your peers!",
+      nextDialogue: 21,
       addScore: 0,
     },
     20:
     {
-      text: "",
-      nextDialogue: 0,
+      text: "Thank you for your generosity! I am so looking forward to working with you on this project and arranging those opportunities we discussed for your grandkids to get to know the scientists and some of the star animals.",
+      nextDialogue: 22,
       addScore: 0,
     },
     21:
     {
-      text: "",
-      nextDialogue: 0,
+      text: "Natalie may comment as to why J.P.may not have wanted to donate as much.  Maybe due to apprehension.",
+      nextDialogue: ["End"],
       addScore: 0,
     },
     22:
     {
-      text: "",
-      nextDialogue: 0,
+      text: "Natalie congratulates you!",
+      nextDialogue: ["End"],
       addScore: 0,
     },
   },
+
   Sherl1: {
     1:
     {
