@@ -21,49 +21,89 @@ input {
   height: 100%;
 }
 .bubbleButton, .respondButton {
-  position: absolute;
-  height: 23vh;
   color: black;
   font-size: 25px;
   font-family: ArialRounded, arial;
   border-radius: 4vh;
-  overflow: hidden;
   transition: display 1s;
 }
-
+.playerDialogueContainer{
+  content: "";
+  left: 8vw;
+  top: 10vh;
+  height: 80vh;
+  width: 30vw;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
 .bubbleButton {
   background-color: rgba(120, 180, 164, 1);
-  width: 28vw;
-  top: 50px;
-  left: 50px;
+  width: 100%;
+  position: relative;
+  height: min-content;
+  position: relative;
+  display: inline-table;
+  justify-content: center;
+  align-items: center;
 }
 .bubbleButton::before {
   content: '';
-  position: fixed;
-  width: 70px;
-  height: 113px;
-  background: url(./assets/playerAnchor.png) no-repeat center;
-  margin-left: -45px;
-  margin-top: 8vh;
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -2.5vw;
+  bottom: -2vh;
+  border-left: 3vh solid transparent;
+  border-right: 2.5vh solid transparent;
+  border-top: 10vh solid rgba(120, 180, 164, 1);
+  transform: rotate(55deg);
+}
+.bubbleButton:hover {
+  background-color: rgba(84, 126, 115, 1);
+  color: white;
+}
+.bubbleButton:hover:before {
+  border-top-color: rgba(84, 126, 115, 1);
 }
 
 .respondButton {
   background-color: rgba(233, 114, 115, 1);
-  bottom: 100px;
-  right: 50px;
-  width: 33vw;
+  bottom: 10vh;
+  right: 6vw;
+  width: 30vw;
+  height: 23vh;
+  position: absolute;
 }
 .respondButton::before {
   content: '';
-  position: fixed;
-  width: 70px;
-  height: 59px;
-  background: url(./assets/donorAnchor.png) no-repeat center;
-  margin-left: 18vw;
-  margin-top: -59px;
+  position: absolute;
+  top: -7vw;
+  right: 10vw;
+  width: 17vw;
+  height: 11vw;
+  border-radius: 50%;
+  box-shadow: 4vw 2vw 0 0 rgba(233, 114, 115, 1);
 }
-
-.textForBubbleButton, .textForRespondButton {
+.respondButton:hover:before {
+  box-shadow: 4vw 2vw 0 0 rgb(190, 75, 77);
+}
+.respondButton:hover {
+  background-color: rgb(190, 75, 77);
+}
+.textForBubbleButton {
+  padding: 1vh 2vw;
+  position: relative;
+  text-align: center;
+  font-size: 2.5vh;
+  min-height: 12vh;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.textForRespondButton {
   margin: 0;
   position: absolute;
   top: 50%;
@@ -74,46 +114,49 @@ input {
   text-align: center;
   font-size: 2.5vh;
   overflow: hidden;
+  z-index: 1;
 }
 
 .firstPageContainer {
-  opacity: 0;
-  transition: opacity 0.2s;
   background-color: rgba(154, 36, 149, 1);
   width: 100vw;
   height: 100vh;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -webkit-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
 }
+
 .firstPage {
   position: absolute;
   top: 5vh;
-  left: 7.5vw;
-  width: 85vw;
-  height: 90vh;
-  /* background: rgba(154, 36, 149, 1) url('./assets/LogoMenu.png') no-repeat center; */
-  /* background-size: contain; */
+  right: 5vw;
+  max-width: 90vw;
+  max-height: 90vh;
 }
 .buttonContainer_firstPage {
   position: absolute;
   width: 60vw;
-  height: 48vh;
-  right: 0;
-  top: 21vh;
+  right: 5vw;
   display: flex;
   flex-direction: column;
 }
 .goButton {
-  width: 87.5%;
-  height: 14vh;
-  margin: 10px 0;
+  width: 100%;
   background-color: rgb(120, 180, 164, 1);
   border-radius: 2vh;
   border-width: 0;
   font-family: ArialRounded, arial-rounded, arial, sans-serif;
   color: white;
-  font-size: 8vh;
   font-weight: 900;
   opacity: 0;
-  transition: opacity 1s;
+  transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -webkit-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
 }
 .goButton:hover {
   background-color: rgb(220,150,255);

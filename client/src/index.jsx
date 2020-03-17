@@ -446,7 +446,11 @@ class App extends React.Component {
           playerDialogues.forEach((e, i) => {
             e.addScore = 0;
             document.getElementById(String(i)).onclick = () => { };
-            if (skip != i) document.getElementById(String(i)).style.display = 'none';
+            if (skip != i) {
+              let disappear = document.getElementById(String(i));
+              disappear.style.zIndex = -3;
+              disappear.style.opacity = 0;
+            }
           });
           this.setState({
             donorDialogue: { text: ' . . . ' },
@@ -597,6 +601,7 @@ class App extends React.Component {
 
         default:
           gameScreen = <GameScreen
+            userName={userName}
             playerDialogues={playerDialogues}
             donorDialogue={donorDialogue}
             currentVideo={currentVideo}

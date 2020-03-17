@@ -8,10 +8,10 @@ const useAudio = (url) => {
 
   useEffect(() => {
     if (playing) {
-      audio.play();
-    } else {
-      audio.pause();
       audio.currentTime = 0;
+      audio.play();
+      // } else {
+      // audio.pause();
     }
   },
     [playing]

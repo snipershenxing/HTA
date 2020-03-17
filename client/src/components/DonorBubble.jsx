@@ -16,8 +16,6 @@ const DonorBubble = ({ text, audioUrl }) => {
           myVideo.play();
         }
       }}
-      onMouseEnter={() => { document.getElementById('respondButton').style.filter = 'brightness(0.7)'; }}
-      onMouseLeave={() => { document.getElementById('respondButton').style.filter = 'none'; }}
     >
       <p className='textForRespondButton'>
         {text}

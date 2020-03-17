@@ -6,7 +6,7 @@ const Dialogue = {
       addScore: 0,
     },
     2: {
-      text: "Hello Franco, this is (Player Name) from the aquarium. How have you been?",
+      text: "Hello Franco, this is (PlayerName) from the aquarium. How have you been?",
       nextDialogue: 5,
       addScore: 2,
     },
@@ -16,7 +16,7 @@ const Dialogue = {
       addScore: 3,
     },
     4: {
-      text: "Hello Franco. This is (PlayerName) from the aquarium. I am calling to find a time to get together with Mrs.Walker.",
+      text: "Hello Franco. This is (PlayerName) from the aquarium. I am calling to find a time to get together with Mrs. Walker.",
       nextDialogue: 7,
       addScore: 1,
     },
@@ -31,7 +31,7 @@ const Dialogue = {
       addScore: 0,
     },
     7: {
-      text: `That’s “Dr.Walker” I can’t talk for long. What is this regarding?`,
+      text: `That’s “Dr.Walker”. I can’t talk for long. What is this regarding?`,
       nextDialogue: [11, 12],
       addScore: 0,
     },

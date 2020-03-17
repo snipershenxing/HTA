@@ -3,7 +3,7 @@ import PlayerBubble from '../components/PlayerBubble.jsx';
 import DonorBubble from '../components/DonorBubble.jsx';
 
 
-const GameScreen = ({ donorDialogue, playerDialogues, currentVideo, currentPoster, currentAudio, logoutHandler, changeVideoHandler, dialogueHandler }) => {
+const GameScreen = ({ userName, donorDialogue, playerDialogues, currentVideo, currentPoster, currentAudio, logoutHandler, dialogueHandler }) => {
   let vidH = window.innerHeight;
   return (
     <div
@@ -36,22 +36,22 @@ const GameScreen = ({ donorDialogue, playerDialogues, currentVideo, currentPoste
         Sorry, your browser doesn't support MP4.
       </video>
       <div id="dialogues" />
-      {playerDialogues.length && playerDialogues.map((p, idx) =>
-        <PlayerBubble
-          id={idx}
-          key={p.text}
-          text={p.text}
-          point={p.addScore}
-          nextArray={p.nextDialogue}
-          verticalPosition={100 + ((vidH - 200) / playerDialogues.length) * idx}
-          height={((vidH - 200) / playerDialogues.length - 25)}
-          dialogueHandler={dialogueHandler}
-        />
-      )}
+      <div className='playerDialogueContainer'>
+        {playerDialogues.length > 0 && playerDialogues.map((p, idx) =>
+          <PlayerBubble
+            id={idx}
+            key={p.text}
+            text={p.text.replace('(PlayerName)', userName)}
+            point={p.addScore}
+            nextArray={p.nextDialogue}
+            dialogueHandler={dialogueHandler}
+          />
+        )}
+      </div>
 
       {donorDialogue && Object.keys(donorDialogue).length &&
         <DonorBubble
-          text={donorDialogue.text}
+          text={donorDialogue.text.replace('(PlayerName)', userName)}
           audioUrl={currentAudio}
           nextArray={donorDialogue.nextDialogue}
           dialogueHandler={dialogueHandler}
