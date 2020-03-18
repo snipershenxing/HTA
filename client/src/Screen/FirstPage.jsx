@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const FirstPage = ({ goToChooseDonor }) => {
-  let winH = window.innerHeight,
-    winW = window.innerWidth;
+  const [dimensions, setDimensions] = React.useState({
+    height: window.innerHeight,
+    width: window.innerWidth
+  });
+  useEffect(() => {
+    function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth
+      })
+    }
+    window.addEventListener('resize', handleResize)
+  });
+  let winH = dimensions.height,
+    winW = dimensions.width;
   if (winW / winH > 10292 / 6350) {
     winW = winH * 10292 / 6350;
   } else {
     winH = winW / 10292 * 6350;
   }
-  let top = (105 / 626.856 * winH) + 0.05 * window.innerHeight;
+  let top = (105 / 626.856 * winH) + 0.05 * dimensions.height;
   let height = (305 / 626.856 * winH);
   let width = (565 / 914.39 * 0.9 * winW);
   let buttonHeight = (height * 0.3);
@@ -22,9 +35,6 @@ const FirstPage = ({ goToChooseDonor }) => {
         src='./assets/LogoMenu.png'
         onLoad={() => {
           document.getElementById('firstPage').style.opacity = 1;
-          for (let element of document.getElementsByClassName('goButton')) {
-            element.style.opacity = 1;
-          }
         }}
         onError={() => console.log('error loading image on first page')}
       />

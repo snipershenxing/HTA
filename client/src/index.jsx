@@ -452,11 +452,10 @@ class App extends React.Component {
             document.getElementById(String(i)).onclick = () => { };
             if (skip != i) {
               let disappear = document.getElementById(String(i));
-              disappear.style.left = "-100px";
-              console.log("everything else go to left")
               setTimeout(() => {
                 disappear.style.opacity = 0;
-              }, 200);
+                disappear.style.left = "-100px";
+              }, 0);
               setTimeout(() => {
                 disappear.style.zIndex = -3;
               }, 800);

@@ -89,7 +89,12 @@ class ChooseCommunication extends React.Component { //({ chooseCom, name }) => {
         </div>}
 
         <BackButton
-          navigateBack={navigateBack}
+          navigateBack={() => {
+            document.getElementsByClassName('chooseDonor')[0].style.opacity = 0;
+            setTimeout(() => {
+              navigateBack();
+            }, 800);
+          }}
         />
       </div>
     );

@@ -15,6 +15,9 @@ input {
   border-width: 1px;
   min-height: 25px;
 }
+button:focus {
+  outline: none;
+}
 
 #app {
   background-color: rgba(154, 36, 149, 1);
@@ -27,31 +30,26 @@ input {
   font-family: ArialRounded, arial;
   border-radius: 4vh;
   transition: opacity 0.8s, left 0.8s;
-  -webkit-animation: fadein 0.8s; 
-  -moz-animation: fadein 0.8s; 
-  -ms-animation: fadein 0.8s;
-  -o-animation: fadein 0.8s;
-  animation: fadein 0.8s;
 }
 @keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
 }
 @-moz-keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
 }
 @-webkit-keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
 }
 @-ms-keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
 }
 @-o-keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
 }
 
 .playerDialogueContainer{
@@ -76,6 +74,11 @@ input {
   align-items: center;
   left: -100px;
   opacity: 0;
+  -webkit-animation: fadein 0.8s; 
+  -moz-animation: fadein 0.8s; 
+  -ms-animation: fadein 0.8s;
+  -o-animation: fadein 0.8s;
+  animation: fadein 0.8s;
 }
 .tripleDots {
   background-color: rgba(120, 180, 164, 1);
@@ -88,6 +91,11 @@ input {
   align-items: center;
   left: 0 !important;
   transition: opacity 0.8s, left 0.8s;
+  -webkit-animation: 0s; 
+  -moz-animation: 0s; 
+  -ms-animation: 0s;
+  -o-animation: 0s;
+  animation: 0s;
 }
 .bubbleButton::before {
   content: '';
@@ -192,9 +200,34 @@ input {
   font-family: ArialRounded, arial-rounded, arial, sans-serif;
   color: white;
   font-weight: 900;
-  opacity: 0;
   transition: opacity 0.7s ease-in-out;
+  -webkit-animation: forButton 0.8s; 
+  -moz-animation: forButton 0.8s; 
+  -ms-animation: forButton 0.8s;
+  -o-animation: forButton 0.8s;
+  animation: forButton 0.8s;
 }
+@keyframes forButton {
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
+}
+@-moz-keyframes forButton {
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
+}
+@-webkit-keyframes forButton {
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
+}
+@-ms-keyframes forButton {
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
+}
+@-o-keyframes forButton {
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
+}
+
 .goButton:hover {
   background-color: rgb(220,150,255);
 }
