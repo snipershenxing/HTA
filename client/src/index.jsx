@@ -5,10 +5,15 @@ import ReactDOM from 'react-dom';
 import Authentication from './components/AuthenticationScreen.jsx';
 import Admin from './Screen/AdminScreen.jsx';
 import Dialogue from './Dialogue/Dialogue.js';
+import FirstPage from './Screen/FirstPage.jsx';
 import ChooseDonor from './Screen/ChooseDonorScreen.jsx';
+import GameScreen from './Screen/GameScreen.jsx';
+import ChooseCommunication from './Screen/ChooseCommunicationScreen.jsx';
+import End from './Screen/EndScreen.jsx';
 
-const address = 'http://192.168.1.100:3001';
-// const address = 'http://192.168.1.2:3001';
+// const address = 'http://192.168.1.100:3001';
+const address = 'http://192.168.1.2:3001';
+// const address = 'http://localhost:3001';
 
 
 class App extends React.Component {
@@ -26,12 +31,13 @@ class App extends React.Component {
       progress: 0,
       tutorial: true,
       allUsers: [],
-      currentVideo: "./assets/FrancoSittingAnsweingPhone.mp4",
-      currentPoster: "./assets/posterFranco.png",
+      currentVideo: "",
+      currentPoster: "",
+      currentAudio: "",
       playerDialogues: [],
       donorDialogue: {},
-      donorClickable: false,
-      gameChoosen: '',
+      playerClickable: false,
+      gameChosen: '',
       subScore: 0,
     };
     this.trySignInWithCookie = this.trySignInWithCookie.bind(this);
@@ -49,17 +55,12 @@ class App extends React.Component {
     this.logoutHandler = this.logoutHandler.bind(this);
     this.changeVideoHandler = this.changeVideoHandler.bind(this);
     this.dialogueHandler = this.dialogueHandler.bind(this);
+    this.chooseGameHandler = this.chooseGameHandler.bind(this);
   }
 
   componentDidMount() {
     this.trySignInWithCookie();
-    var vid = document.getElementById("myVideo");
-    this.setState({
-      playerDialogues: [Dialogue.Franco[2], Dialogue.Franco[3], Dialogue.Franco[4]],
-      donorDialogue: Dialogue.Franco[1]
-    })
   }
-
 
   trySignInWithCookie() {
     let cookie = Cookies.get('cookie');
@@ -349,121 +350,296 @@ class App extends React.Component {
       .catch(err => console.log(err));
   }
 
-  changeVideoHandler() {
+  changeVideoHandler(newVid) {
     let vid = document.getElementById("myVideo");
     this.setState({
-      currentVideo: "./assets/FrancoSittingAnsweingPhone2.mp4"
+      currentVideo: newVid
     }, () => {
     });
-    // setTimeout(() => { 
     vid.load();
-    // }, 10);
   }
 
   dialogueHandler(player, newDialogue, skip, point) {
-    let { subScore, playerDialogues } = this.state;
-    if (player) {
-      if (newDialogue === 'Gate1') {
-        if (subScore + point <= 2) {
-          newDialogue = 'Gate1-1'
-        } else if (3 <= subScore + point && subScore + point <= 4) {
-          newDialogue = 'Gate1-2'
-        } else {
-          newDialogue = 'Gate1-3'
-        }
-      } else if (newDialogue === 'Gate2') {
-        if (subScore + point <= 4) {
-          newDialogue = 'Gate2-1'
-        } else if (5 <= subScore + point && subScore + point <= 6) {
-          newDialogue = 'Gate2-2'
-        } else {
-          newDialogue = 'Gate2-3'
-        }
+    let { subScore, playerDialogues, gameChosen, playerClickable } = this.state;
+    if (typeof newDialogue === 'string' && newDialogue.includes('End')) {
+
+      let person = '', status = '';
+
+      if (gameChosen.includes('Franco')) person = 'Franco';
+      else if (gameChosen.includes('Sharrel')) person = 'Sharrel';
+      else if (gameChosen.includes('JP')) person = 'JP';
+
+      if (newDialogue.includes('telephoneFail')) status = 'telephoneFail';
+      else if (newDialogue.includes('telephoneSuccess')) {
+        // status = 'telephoneSuccess';
+        // this.setState({ gameChosen: person });
       }
-      playerDialogues.forEach((e, i) => {
-        e.addScore = 0
-        if (skip != i) document.getElementById(String(i)).style.display = 'none';
-      });
-      this.setState({
-        donorDialogue: Dialogue.Franco[newDialogue],
-        subScore: subScore + point,
-        playerDialogues: playerDialogues,
-        donorClickable: true
-      });
-    } else {
-      if (newDialogue === 'End') {
+      else if (newDialogue.includes('meetingFail')) status = 'meetingFail';
+      else if (newDialogue.includes('meetingSuccess')) status = 'meetingSuccess';
+      let pageChosen = status.length > 0 ? `${status} ${person}` : person;
+      document.getElementById('videoContainer').style.opacity = 0;
+      setTimeout(() => {
         this.setState({
           donorDialogue: null,
           playerDialogues: [],
+          gameChosen: pageChosen,
         })
-      } else {
-        let playerDialogues = [];
-        for (let ix of newDialogue) {
-          playerDialogues.push(Dialogue.Franco[ix]);
+      }, 1000);
+    } else {
+
+      if (player) {
+        if (gameChosen === 'FrancoPhone' && newDialogue === 'Gate1') {
+          if (subScore + point <= 2) {
+            newDialogue = 'Gate1-1';
+            this.changeVideoHandler("./assets/Franco2.2.mp4");
+          } else if (3 <= subScore + point && subScore + point <= 4) {
+            newDialogue = 'Gate1-2'
+          } else {
+            newDialogue = 'Gate1-3'
+          }
+        } else if (gameChosen === 'FrancoPhone' && newDialogue === 'Gate2') {
+          if (subScore + point <= 4) {
+            newDialogue = 'Gate2-1';
+            this.changeVideoHandler("./assets/Franco2.2.mp4");
+          } else if (5 <= subScore + point && subScore + point <= 6) {
+            newDialogue = 'Gate2-2'
+          } else {
+            newDialogue = 'Gate2-3'
+          }
+        } else if (gameChosen === 'FrancoMeeting' && newDialogue === 'Gate1') {
+          if (subScore + point <= 4) {
+            newDialogue = 'Gate1-4';
+            this.changeVideoHandler("./assets/Jennifer2.2.mp4");
+          } else if (5 <= subScore + point && subScore + point <= 7) {
+            newDialogue = 'Gate1-1'
+          } else if (8 <= subScore + point && subScore + point <= 12) {
+            newDialogue = 'Gate1-2'
+          } else {
+            newDialogue = 'Gate1-3'
+          }
+        } else if (gameChosen === 'SharrelPhone' && newDialogue === 'Gate1') {
+          if (subScore + point <= 3) {
+            newDialogue = 'Gate1-1';
+            this.changeVideoHandler("./assets/Franco2.2.mp4");
+          } else if (4 <= subScore + point && subScore + point <= 7) {
+            newDialogue = 'Gate1-2'
+          } else {
+            newDialogue = 'Gate1-3'
+          }
+        } else if (gameChosen === 'SharrelPhone' && newDialogue === 'Gate2') {
+          if (subScore + point <= 11) {
+            newDialogue = 'Gate2-1';
+            this.changeVideoHandler("./assets/Franco2.2.mp4");
+          } else if (12 <= subScore + point && subScore + point <= 17) {
+            newDialogue = 'Gate2-2'
+          } else {
+            newDialogue = 'Gate2-3'
+          }
+        } else if (gameChosen === 'SharrelMeeting' && newDialogue === 'Gate1') {
+          if (subScore + point <= 3) {
+            newDialogue = 'Gate1-1'
+          } else if (4 === subScore + point) {
+            newDialogue = 'Gate1-2'
+          } else if (5 <= subScore + point && subScore + point <= 6) {
+            newDialogue = 'Gate1-3'
+          } else {
+            newDialogue = 'Gate1-4'
+          }
         }
-        this.setState({
-          playerDialogues,
-          donorClickable: false
-        });
+        if (playerClickable) {
+          playerDialogues.forEach((e, i) => {
+            e.addScore = 0;
+            document.getElementById(String(i)).onclick = () => { };
+            if (skip != i) {
+              let disappear = document.getElementById(String(i));
+              setTimeout(() => {
+                disappear.style.opacity = 0;
+                disappear.style.left = "-100px";
+              }, 0);
+              setTimeout(() => {
+                disappear.style.zIndex = -3;
+              }, 800);
+            }
+          });
+          setTimeout(() => {
+            this.setState({
+              donorDialogue: { text: ' . . . ' },
+              subScore: subScore + point,
+              playerClickable: false,
+              currentAudio: `./assets/Breezy.m4a` // this is just a simulation
+            });
+          }, 800);
+          setTimeout(() => {
+            playerDialogues[skip] = { text: ' . . . ' };
+            this.setState({
+              donorDialogue: Dialogue[gameChosen][newDialogue],
+              playerDialogues,
+            }, () => {
+              document.getElementById('respondButton').click();
+            })
+          }, 1600);
+        }
+
+
+      } else { // donor
+        let newPlayerDialogues = [];
+        for (let ix of newDialogue) {
+          newPlayerDialogues.push(Dialogue[gameChosen][ix]);
+        }
+        if (playerDialogues.length > 0) {
+          let prevBubbles = document.getElementsByClassName('tripleDots');
+          for (let b of prevBubbles) {
+            b.style.opacity = 0;
+            // b.style.left = '-100px';
+            // console.log("hello")
+          };
+        }
+        setTimeout(() => {
+          this.setState({
+            playerDialogues: newPlayerDialogues,
+            playerClickable: true
+          });
+        }, 800);
       }
     }
   }
 
-  render() {
-    let { playerDialogues, donorDialogue, donorClickable, subScore, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster } = this.state;
-    return (
-      <div id='main'>
-        <h3 style={{ position: "absolute", top: 0, left: "50%" }}>Score : {subScore}</h3>
-        {authenticate !== 'passed' ?
-          <div>
-            <Authentication
-              userName={userName}
-              authenticate={authenticate}
-              userNameValid={userNameValid}
-              passwordValid={passwordValid}
-              warningStatus={warningStatus}
-              changeHandler={this.changeHandler}
-              checkInputValidity={this.checkInputValidity}
-              submitHandler={this.submitHandler}
-              authenticateSwitch={this.authenticateSwitch}
-            />
-          </div> :
-          // <div style={{ display: 'table', width: '100%' }}>
-          //   <Admin
-          //     userName={userName}
-          //     score={score}
-          //     progress={progress}
-          //     tutorial={tutorial}
-          //     buttonHandler={this.buttonHandler}
-          //     updateHandler={this.updateHandler}
-          //     logoutHandler={this.logoutHandler}
-          //   />
+  chooseGameHandler(name) {
+    if (name === 'FrancoPhone') {
+      this.setState({
+        gameChosen: name,
+        donorDialogue: Dialogue[name][1],
+        currentVideo: './assets/Franco1.1.mp4',
+        currentPoster: './assets/posterFranco.png',
+        currentAudio: './assets/Breezy.m4a',
+      });
+    } else if (name === 'FrancoMeeting') {
+      this.setState({
+        gameChosen: name,
+        playerClickable: true,
+        playerDialogues: [Dialogue[name][1]],
+        currentVideo: './assets/Jennifer1.1.mp4',
+        currentPoster: './assets/posterJennifer.png',
+        currentAudio: './assets/Breezy.m4a',
+      });
+    } else if (name === 'SharrelPhone') {
+      this.setState({
+        gameChosen: name,
+        donorDialogue: Dialogue[name][1],
+        currentVideo: './assets/ss.mp4',
+        currentPoster: './assets/sss.png',
+        currentAudio: './assets/Breezy.m4a',
+      });
+    } else if (name === 'SharrelMeeting') {
+      this.setState({
+        playerClickable: true,
+        gameChosen: name,
+        playerDialogues: [Dialogue[name][1]],
+      });
+    }
 
-          //   <div style={{ float: 'left', width: '50%' }}>
-          //     <h2>List of Users</h2>
-          //     <ol style={{ width: '100%' }}>
-          //       {allUsers.map((user, idx) => (
-          //         <li key={idx} >
-          //           <div style={{ width: '100%', display: 'flex' }}>
-          //             <p style={{ width: '50%' }}>{user.userName}, score: {user.score}, progress: {user.progress}, tutorial: {user.tutorial.toString()}, expire: {user.cookieExpireTime} </p>
-          //             <button style={{ padding: '5px', height: '30px', margin: '20px 0' }} onClick={() => this.deleteHandler(user.id)}>del</button>
-          //           </div>
-          //         </li>
-          //       ))}
-          //     </ol>
-          //   </div>
-          // </div>
-          <ChooseDonor
+  }
+
+  render() {
+    let { playerDialogues, donorDialogue, subScore, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster, currentAudio, gameChosen } = this.state;
+    let gameScreen;
+
+    if (authenticate !== 'passed') {
+      gameScreen = <div>
+        <Authentication
+          userName={userName}
+          authenticate={authenticate}
+          userNameValid={userNameValid}
+          passwordValid={passwordValid}
+          warningStatus={warningStatus}
+          changeHandler={this.changeHandler}
+          checkInputValidity={this.checkInputValidity}
+          submitHandler={this.submitHandler}
+          authenticateSwitch={this.authenticateSwitch}
+        />
+      </div>
+      // <div style={{ display: 'table', width: '100%' }}>
+      //   <Admin
+      //     userName={userName}
+      //     score={score}
+      //     progress={progress}
+      //     tutorial={tutorial}
+      //     buttonHandler={this.buttonHandler}
+      //     updateHandler={this.updateHandler}
+      //     logoutHandler={this.logoutHandler}
+      //   />
+
+      //   <div style={{ float: 'left', width: '50%' }}>
+      //     <h2>List of Users</h2>
+      //     <ol style={{ width: '100%' }}>
+      //       {allUsers.map((user, idx) => (
+      //         <li key={idx} >
+      //           <div style={{ width: '100%', display: 'flex' }}>
+      //             <p style={{ width: '50%' }}>{user.userName}, score: {user.score}, progress: {user.progress}, tutorial: {user.tutorial.toString()}, expire: {user.cookieExpireTime} </p>
+      //             <button style={{ padding: '5px', height: '30px', margin: '20px 0' }} onClick={() => this.deleteHandler(user.id)}>del</button>
+      //           </div>
+      //         </li>
+      //       ))}
+      //     </ol>
+      //   </div>
+      // </div>
+    } else {
+      switch (true) {
+        case gameChosen === '':
+          gameScreen = <FirstPage
+            goToChooseDonor={() => this.setState({ gameChosen: 'choose' })}
+          />; break;
+
+        case gameChosen === 'choose':
+          gameScreen = <ChooseDonor
+            chooseDonor={(name) => {
+              this.setState({ gameChosen: name });
+            }}
+            navigateBack={() => {
+              this.setState({ gameChosen: '' })
+            }}
+          />; break;
+
+        case (gameChosen === 'Franco' || gameChosen === 'Sharrel' || gameChosen === 'JP'):
+          gameScreen = <ChooseCommunication
+            name={gameChosen}
+            chooseCom={this.chooseGameHandler}
+            navigateBack={() => {
+              this.setState({ gameChosen: 'choose' })
+            }}
+          />; break;
+
+        case (gameChosen.includes('Fail') || gameChosen.includes('Success')):
+          gameScreen = <End
+            ending={gameChosen}
+            goToMain={(page) => {
+              this.setState({
+                subScore: 0,
+                gameChosen: page
+              })
+            }}
+          />; break;
+
+        default:
+          gameScreen = <GameScreen
+            userName={userName}
             playerDialogues={playerDialogues}
             donorDialogue={donorDialogue}
-            donorClickable={donorClickable}
             currentVideo={currentVideo}
             currentPoster={currentPoster}
+            currentAudio={currentAudio}
             logoutHandler={this.logoutHandler}
             changeVideoHandler={this.changeVideoHandler}
             dialogueHandler={this.dialogueHandler}
-          />
-        }
+          />;
+      }
+    }
+
+
+    return (
+      <div id='main'>
+        <h3 style={{ position: "absolute", top: 0, left: "50%" }}>Score : {subScore}</h3>
+        {gameScreen}
       </div>
     );
   }

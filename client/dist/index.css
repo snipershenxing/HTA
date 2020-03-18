@@ -1,48 +1,158 @@
-.bubbleButton, .respondButton {
-  position: absolute;
-  height: 23vh;
-  color: black;
-  font-size: 25px;
-  font-family: arial;
-  border-radius: 4vh;
-  overflow: hidden;
-  transition: display 1s;
+@font-face {
+  font-family: 'ArialRounded';
+  src: url('./fonts/ArialRoundedMTStd-ExtraBold.otf');
 }
 
+body {
+  margin: 0;
+  font-family: ArialRounded;
+  background-color: rgba(154, 36, 149, 1);
+}
+button,
+input {
+  padding: 0;
+  margin: 5px 0;
+  border-width: 1px;
+  min-height: 25px;
+}
+button:focus {
+  outline: none;
+}
+
+#app {
+  background-color: rgba(154, 36, 149, 1);
+  width: 100%;
+  height: 100%;
+}
+.bubbleButton, .respondButton {
+  color: black;
+  font-size: 25px;
+  font-family: ArialRounded, arial;
+  border-radius: 4vh;
+  transition: opacity 0.8s, left 0.8s;
+}
+@keyframes fadein {
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
+}
+@-moz-keyframes fadein {
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
+}
+@-webkit-keyframes fadein {
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
+}
+@-ms-keyframes fadein {
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
+}
+@-o-keyframes fadein {
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
+}
+
+.playerDialogueContainer{
+  content: "";
+  left: 8vw;
+  top: 10vh;
+  height: 80vh;
+  width: 30vw;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
 .bubbleButton {
   background-color: rgba(120, 180, 164, 1);
-  width: 28vw;
-  top: 50px;
-  left: 50px;
+  width: 100%;
+  position: relative;
+  height: min-content;
+  position: relative;
+  display: inline-table;
+  justify-content: center;
+  align-items: center;
+  left: -100px;
+  opacity: 0;
+  -webkit-animation: fadein 0.8s; 
+  -moz-animation: fadein 0.8s; 
+  -ms-animation: fadein 0.8s;
+  -o-animation: fadein 0.8s;
+  animation: fadein 0.8s;
+}
+.tripleDots {
+  background-color: rgba(120, 180, 164, 1);
+  width: 100%;
+  position: relative;
+  height: min-content;
+  position: relative;
+  display: inline-table;
+  justify-content: center;
+  align-items: center;
+  left: 0 !important;
+  transition: opacity 0.8s, left 0.8s;
+  -webkit-animation: 0s; 
+  -moz-animation: 0s; 
+  -ms-animation: 0s;
+  -o-animation: 0s;
+  animation: 0s;
 }
 .bubbleButton::before {
   content: '';
-  position: fixed;
-  width: 70px;
-  height: 113px;
-  background: url(./assets/playerAnchor.png) no-repeat center;
-  margin-left: -45px;
-  margin-top: 8vh;
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -2.5vw;
+  bottom: -2vh;
+  border-left: 3vh solid transparent;
+  border-right: 2.5vh solid transparent;
+  border-top: 10vh solid rgba(120, 180, 164, 1);
+  transform: rotate(55deg);
+}
+.bubbleButton:hover {
+  background-color: rgba(84, 126, 115, 1);
+  color: white;
+}
+.bubbleButton:hover:before {
+  border-top-color: rgba(84, 126, 115, 1);
 }
 
 .respondButton {
   background-color: rgba(233, 114, 115, 1);
-  bottom: 100px;
-  right: 50px;
-  width: 33vw;
+  bottom: 10vh;
+  right: 6vw;
+  width: 30vw;
+  height: 23vh;
+  position: absolute;
 }
 .respondButton::before {
   content: '';
-  position: fixed;
-  width: 70px;
-  height: 59px;
-  background: url(./assets/donorAnchor.png) no-repeat center;
-  margin-left: 18vw;
-  margin-top: -59px;
+  position: absolute;
+  top: -7vw;
+  right: 10vw;
+  width: 17vw;
+  height: 11vw;
+  border-radius: 50%;
+  box-shadow: 4vw 2vw 0 0 rgba(233, 114, 115, 1);
 }
-
-
-.textForBubbleButton, .textForRespondButton {
+.respondButton:hover:before {
+  box-shadow: 4vw 2vw 0 0 rgb(190, 75, 77);
+}
+.respondButton:hover {
+  background-color: rgb(190, 75, 77);
+}
+.textForBubbleButton {
+  padding: 1vh 2vw;
+  position: relative;
+  text-align: center;
+  font-size: 2.5vh;
+  min-height: 12vh;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.textForRespondButton {
   margin: 0;
   position: absolute;
   top: 50%;
@@ -53,4 +163,281 @@
   text-align: center;
   font-size: 2.5vh;
   overflow: hidden;
+  z-index: 1;
+}
+
+.firstPageContainer {
+  background-color: rgba(154, 36, 149, 1);
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+  -moz-transition: opacity 0.7s ease-in-out;
+  -webkit-transition: opacity 0.7s ease-in-out;
+  -o-transition: opacity 0.7s ease-in-out;
+  -ms-transition: opacity 0.7s ease-in-out;
+}
+
+.firstPage {
+  position: absolute;
+  top: 5vh;
+  right: 5vw;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+.buttonContainer_firstPage {
+  position: absolute;
+  width: 60vw;
+  right: 5vw;
+  display: flex;
+  flex-direction: column;
+}
+.goButton {
+  width: 100%;
+  background-color: rgb(120, 180, 164, 1);
+  border-radius: 2vh;
+  border-width: 0;
+  font-family: ArialRounded, arial-rounded, arial, sans-serif;
+  color: white;
+  font-weight: 900;
+  transition: opacity 0.7s ease-in-out;
+  -webkit-animation: forButton 0.8s; 
+  -moz-animation: forButton 0.8s; 
+  -ms-animation: forButton 0.8s;
+  -o-animation: forButton 0.8s;
+  animation: forButton 0.8s;
+}
+@keyframes forButton {
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
+}
+@-moz-keyframes forButton {
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
+}
+@-webkit-keyframes forButton {
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
+}
+@-ms-keyframes forButton {
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
+}
+@-o-keyframes forButton {
+  from { opacity: 0; left: -100px; }
+  to   { opacity: 1; left: 0; }
+}
+
+.goButton:hover {
+  background-color: rgb(220,150,255);
+}
+.goButton:focus {
+  background-color: rgb(238, 115, 115);
+}
+
+.chooseDonor {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(154, 36, 149, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+}
+
+.chooseDonorTitle {
+  width: 84vw;
+  height: 15vh;
+  position: absolute;
+  top: 10vh;
+  left: 8vw;
+  display: flex;
+  flex-direction: column;
+}
+.chooseDonorTitle > h1 {
+  margin: 0;
+  font-size: 8vh;
+  font-family: ArialRounded, arial, sans-serif;
+  color: black;
+}
+.TitleUnderline {
+  width: 100%;
+  height: 2.5vh;
+  margin: 1.5vh 0 0;
+  background-color: rgb(238, 115, 115);
+}
+
+.chooseDonorBody{
+  position: absolute;
+  top: 25vh;
+  left: 10vw;
+  width: 80vw;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.personContainer {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(154, 36, 149, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.person {
+  margin: 0 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  color: white;
+  font-size: 3vh;
+  text-align: center;
+  display: table;
+}
+.person > button {
+  width: 25vw;
+  height: 18vw;
+  border-width: 0;
+  margin: 0;
+  background-color: transparent;
+  z-index: -1;
+}
+.person > h2 {
+  margin: 0;
+}
+
+.Jennifer {
+  background: url('./assets/JenChooseDonorBase.png') no-repeat top;
+}
+.Jennifer:hover {
+  background: url('./assets/JenChooseDonorHover.png') no-repeat top;
+}
+.Jennifer:active {
+  background: url('./assets/JenChooseDonorPressed.png') no-repeat top;
+}
+
+.JP {
+  background: url('./assets/JPChooseDonorBase.png') no-repeat top;
+}
+.JP:hover {
+  background: url('./assets/JPChooseDonorHover.png') no-repeat top;
+}
+.JP:active {
+  background: url('./assets/JPChooseDonorPressed.png') no-repeat top;
+}
+
+.Sharrel {
+  background: url('./assets/SharrelChooseDonorBase.png') no-repeat top;
+}
+.Sharrel:hover {
+  background: url('./assets/SharrelChooseDonorHover.png') no-repeat top;
+}
+.Sharrel:active {
+  background: url('./assets/SharrelChooseDonorPressed.png') no-repeat top;
+}
+
+
+.person > button, .JP, .JP:hover, .JP:focus, .Jennifer, .Jennifer:hover, .Jennifer:focus, .Sharrel, .Sharrel:hover, .Sharrel:focus {
+  background-size: contain;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.telephone, .meeting {
+  width: 37vw;
+  height: 36vh;
+  margin: 0 2.5vw;
+  display: block;
+  justify-content: center;
+  align-items: flex-end;
+  color: white;
+  font-size: 3vh;
+  text-align: center;
+}
+.phone, .meet {
+  /* height: 100%; */
+  width: auto;
+  max-width: 100%;
+  opacity: 0;
+  transition: opacity 0.7s;
+}
+.chooseDonorFooter {
+  width: 84vw;
+  height: 18vh;
+  position: absolute;
+  bottom: 12vh;
+  left: 8vw;
+  display: flex;
+  flex-direction: column;
+}
+.chooseDonorFooter > h1 {
+  background-color: rgb(238, 115, 115);
+  margin: 0;
+  font-size: 3vh;
+  font-family: ArialRounded, arial, sans-serif;
+  color: white;
+  height: 9vh;
+  padding: 2vh 2vw 0 2vw;
+}
+.footerUnderline {
+  width: 100%;
+  height: 2vh;
+  margin: 0;
+  background-color: rgb(206, 102, 117);
+}
+
+.telephone:hover, .meeting:hover, .goButton:hover, .bubbleButton:hover, .respondButton:hover {
+  cursor: pointer;
+}
+
+.telephoneFail, .meetingFail, .meetingSuccess {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(154, 36, 149, 1);
+  background-image: url("./assets/TelephoneFail.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+}
+.meetingFail {
+  background-image: url("./assets/meetingFail.png");
+}
+.meetingSuccess {
+  background-image: url("./assets/meetingSuccess.png");
+}
+
+.backButton {
+  position: absolute;
+  left: 8vw;
+  bottom: 5vh;
+  width: 8vh;
+  height: 8vh;
+  background-image: url("./assets/BackBase.png");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-color: transparent;
+  background-size: contain;
+  border-width: 0;
+  margin: 0;
+  padding: 0
+}
+.backButton:hover {
+  background-image: url("./assets/BackHover.png");
+}
+.backButton:focus {
+  background-image: url("./assets/BackPressed.png");
+}
+
+#videoContainer {
+  position: absolute;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
 }

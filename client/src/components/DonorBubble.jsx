@@ -1,20 +1,26 @@
 import React from 'react';
+import useAudio from './AudioPlayer.js';
 
-const DonorBubble = ({ text, nextArray, dialogueHandler, donorClickable }) => {
+const DonorBubble = ({ text, audioUrl }) => {
+  const [playing, toggle] = useAudio(audioUrl);
+
   return (
     <div
       id='respondButton'
       className='respondButton'
       onClick={() => {
-        document.getElementById('respondButton').style.filter = 'none';
-        dialogueHandler(false, nextArray);
+        let myVideo = document.getElementById("myVideo");
+        if (myVideo.getAttribute('name') === 'false' && !playing) {
+          toggle();
+          myVideo.setAttribute('name', 'true');
+          myVideo.play();
+        }
       }}
-      onMouseEnter={() => { if (donorClickable) document.getElementById('respondButton').style.filter = 'brightness(0.7)'; }}
-      onMouseLeave={() => { if (donorClickable) document.getElementById('respondButton').style.filter = 'none'; }}
     >
       <p className='textForRespondButton'>
         {text}
       </p>
+
     </div>
   )
 };

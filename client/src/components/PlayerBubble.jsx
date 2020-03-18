@@ -1,20 +1,21 @@
 import React from 'react';
 
-const PlayerBubble = ({ id, text, point, nextArray, verticalPosition, height, dialogueHandler }) => {
+const PlayerBubble = ({ id, text, point, nextArray, dialogueHandler }) => {
   return (
     <div
       id={id}
-      style={{ top: `${verticalPosition}px`, height: `${height}px` }}
+      className={text === ' . . . ' ? 'bubbleButton tripleDots' : 'bubbleButton'}
       onClick={() => {
-        document.getElementById(id).style.filter = 'none';
-        dialogueHandler(true, nextArray, id, point);
+        if (myVideo.getAttribute('name') === 'false') {
+          dialogueHandler(true, nextArray, id, point);
+        }
       }}
-      onMouseEnter={() => { if (point) document.getElementById(id).style.filter = 'brightness(0.7)'; }}
-      onMouseLeave={() => { if (point) document.getElementById(id).style.filter = 'none'; }}
-      className='bubbleButton'>
-      <p className='textForBubbleButton'>
-        {text}
-      </p>
+    >
+      <div className='textForBubbleButton'>
+        <p>
+          {text}
+        </p>
+      </div>
     </div>
   )
 };
