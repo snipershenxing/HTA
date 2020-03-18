@@ -22,8 +22,7 @@ const GameScreen = ({ userName, donorDialogue, playerDialogues, currentVideo, cu
     >
       <video
         id="myVideo"
-        name='false'
-        loop={false}
+        loop={true}
         muted
         poster={currentPoster}
         style={{
@@ -37,9 +36,8 @@ const GameScreen = ({ userName, donorDialogue, playerDialogues, currentVideo, cu
           myVideo.style.opacity = 1;
         }}
         autoPlay={false}
-        onEnded={() => {
+        onPause={() => {
           dialogueHandler(false, donorDialogue.nextDialogue);
-          document.getElementById('myVideo').setAttribute('name', 'false');
         }}
       >
         <source src={currentVideo} type="video/mp4" autoPlay />
