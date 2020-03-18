@@ -3,6 +3,11 @@ import BackButton from '../components/BackButton.jsx';
 
 
 const ChooseDonor = ({ chooseDonor, navigateBack }) => {
+  var bgImg = new Image();
+  bgImg.src = './assets/person.png';
+  bgImg.onload = function () {
+    document.getElementsByClassName('chooseDonor')[0].style.opacity = 1
+  };
   return (
     <div className='chooseDonor'>
       <div className='chooseDonorTitle'>
@@ -10,10 +15,15 @@ const ChooseDonor = ({ chooseDonor, navigateBack }) => {
         <div className='TitleUnderline'></div>
       </div>
 
-      <div className='chooseDonor'>
+      <div className='personContainer'>
         <div
+          id="Jennifer"
           className="person Jennifer"
-          onClick={() => chooseDonor('Franco')}
+          onClick={() => {
+            document.getElementsByClassName('chooseDonor')[0].style.opacity = 0;
+            setTimeout(() => { chooseDonor('Franco'); }, 800);
+          }}
+
         >
           <button ></button>
           <div
@@ -21,7 +31,10 @@ const ChooseDonor = ({ chooseDonor, navigateBack }) => {
         </div>
         <div
           className="person Sharrel"
-          onClick={() => chooseDonor('Sharrel')}
+          onClick={() => {
+            document.getElementsByClassName('chooseDonor')[0].style.opacity = 0;
+            setTimeout(() => { chooseDonor('Sharrel'); }, 800);
+          }}
         >
           <button ></button>
           <div
@@ -29,7 +42,10 @@ const ChooseDonor = ({ chooseDonor, navigateBack }) => {
         </div>
         <div
           className="person JP"
-          onClick={() => chooseDonor('JP')}
+          onClick={() => {
+            document.getElementsByClassName('chooseDonor')[0].style.opacity = 0;
+            setTimeout(() => { chooseDonor('JP'); }, 800);
+          }}
         >
           <button ></button>
           <div

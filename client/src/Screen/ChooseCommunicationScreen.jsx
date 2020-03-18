@@ -13,6 +13,12 @@ class ChooseCommunication extends React.Component { //({ chooseCom, name }) => {
   render() {
     let { chooseCom, name, navigateBack } = this.props;
     let { text } = this.state;
+    var bgImg = new Image();
+    bgImg.src = './assets/person.png';
+    bgImg.onload = function () {
+      document.getElementsByClassName('chooseDonor')[0].style.opacity = 1
+    };
+
     return (
       <div className='chooseDonor'>
         <div className='chooseDonorTitle'>
@@ -22,7 +28,10 @@ class ChooseCommunication extends React.Component { //({ chooseCom, name }) => {
 
         <div className='chooseDonorBody'>
           <div className="telephone"
-            onClick={() => chooseCom(`${name}Phone`)}
+            onClick={() => {
+              document.getElementsByClassName('chooseDonor')[0].style.opacity = 0;
+              setTimeout(() => { chooseCom(`${name}Phone`); }, 800);
+            }}
           >
             <img
               id='phone'
@@ -46,7 +55,10 @@ class ChooseCommunication extends React.Component { //({ chooseCom, name }) => {
             />
           </div>
           <div className="meeting"
-            onClick={() => chooseCom(`${name}Meeting`)}
+            onClick={() => {
+              document.getElementsByClassName('chooseDonor')[0].style.opacity = 0;
+              setTimeout(() => { chooseCom(`${name}Meeting`); }, 800);
+            }}
           >
             <img
               id='meet'

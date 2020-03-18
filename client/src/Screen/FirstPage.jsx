@@ -29,9 +29,27 @@ const FirstPage = ({ goToChooseDonor }) => {
         onError={() => console.log('error loading image on first page')}
       />
       <div className='buttonContainer_firstPage' style={{ top: `${top}px`, height: `${height}px`, width: `${width}px` }}>
-        <button style={{ height: `${buttonHeight}px`, lineHeight: `${buttonVerticalMargin}px`, margin: `${buttonVerticalMargin}px 0`, fontSize: `${buttonFontSize}px` }} className='goButton' onClick={goToChooseDonor}>Start</button>
-        <button style={{ height: `${buttonHeight}px`, lineHeight: `${buttonVerticalMargin}px`, margin: `${buttonVerticalMargin}px 0`, fontSize: `${buttonFontSize}px` }} className='goButton' onClick={() => { }}>Quit</button>
-        <button style={{ height: `${buttonHeight}px`, lineHeight: `${buttonVerticalMargin}px`, margin: `${buttonVerticalMargin}px 0`, fontSize: `${buttonFontSize}px` }} className='goButton' onClick={() => { }}>Load</button>
+        <button
+          style={{ height: `${buttonHeight}px`, lineHeight: `${buttonVerticalMargin}px`, margin: `${buttonVerticalMargin}px 0`, fontSize: `${buttonFontSize}px` }}
+          className='goButton'
+          onClick={() => {
+            document.getElementById('firstPage').style.opacity = 0;
+            setTimeout(goToChooseDonor, 800);
+          }}>
+          Start
+          </button>
+        <button
+          style={{ height: `${buttonHeight}px`, lineHeight: `${buttonVerticalMargin}px`, margin: `${buttonVerticalMargin}px 0`, fontSize: `${buttonFontSize}px` }}
+          className='goButton'
+          onClick={() => { }}>
+          Quit
+          </button>
+        <button
+          style={{ height: `${buttonHeight}px`, lineHeight: `${buttonVerticalMargin}px`, margin: `${buttonVerticalMargin}px 0`, fontSize: `${buttonFontSize}px` }}
+          className='goButton'
+          onClick={() => { }}>
+          Load
+          </button>
       </div>
     </div>
   );

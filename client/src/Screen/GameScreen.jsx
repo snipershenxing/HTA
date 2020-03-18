@@ -4,11 +4,21 @@ import DonorBubble from '../components/DonorBubble.jsx';
 
 
 const GameScreen = ({ userName, donorDialogue, playerDialogues, currentVideo, currentPoster, currentAudio, logoutHandler, dialogueHandler }) => {
-  let vidH = window.innerHeight;
+  var bgImg = new Image();
+  bgImg.src = './assets/person.png';
+  bgImg.onload = function () {
+    document.getElementById('videoContainer').style.opacity = 1;
+    let pBubbles = document.getElementsByClassName('bubbleButton');
+    for (let p of pBubbles) {
+      p.style.left = 0;
+      p.style.opacity = 1;
+    }
+  };
+
   return (
     <div
       id='videoContainer'
-      style={{ position: 'absolute', zIndex: 5, background: `url("${currentPoster}") no-repeat center`, backgroundSize: 'contain', width: '100vw', height: '100vh' }}
+      style={{ background: `url("${currentPoster}") no-repeat center`, backgroundSize: 'contain' }}
     >
       <video
         id="myVideo"

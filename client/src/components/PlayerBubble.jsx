@@ -4,7 +4,7 @@ const PlayerBubble = ({ id, text, point, nextArray, dialogueHandler }) => {
   return (
     <div
       id={id}
-      className='bubbleButton'
+      className={text === ' . . . ' ? 'bubbleButton tripleDots' : 'bubbleButton'}
       onClick={() => {
         if (myVideo.getAttribute('name') === 'false') {
           dialogueHandler(true, nextArray, id, point);

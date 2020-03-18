@@ -362,6 +362,7 @@ class App extends React.Component {
   dialogueHandler(player, newDialogue, skip, point) {
     let { subScore, playerDialogues, gameChosen, playerClickable } = this.state;
     if (typeof newDialogue === 'string' && newDialogue.includes('End')) {
+
       let person = '', status = '';
 
       if (gameChosen.includes('Franco')) person = 'Franco';
@@ -376,11 +377,14 @@ class App extends React.Component {
       else if (newDialogue.includes('meetingFail')) status = 'meetingFail';
       else if (newDialogue.includes('meetingSuccess')) status = 'meetingSuccess';
       let pageChosen = status.length > 0 ? `${status} ${person}` : person;
-      this.setState({
-        donorDialogue: null,
-        playerDialogues: [],
-        gameChosen: pageChosen,
-      })
+      document.getElementById('videoContainer').style.opacity = 0;
+      setTimeout(() => {
+        this.setState({
+          donorDialogue: null,
+          playerDialogues: [],
+          gameChosen: pageChosen,
+        })
+      }, 1000);
     } else {
 
       if (player) {
@@ -448,16 +452,24 @@ class App extends React.Component {
             document.getElementById(String(i)).onclick = () => { };
             if (skip != i) {
               let disappear = document.getElementById(String(i));
-              disappear.style.zIndex = -3;
-              disappear.style.opacity = 0;
+              disappear.style.left = "-100px";
+              console.log("everything else go to left")
+              setTimeout(() => {
+                disappear.style.opacity = 0;
+              }, 200);
+              setTimeout(() => {
+                disappear.style.zIndex = -3;
+              }, 800);
             }
           });
-          this.setState({
-            donorDialogue: { text: ' . . . ' },
-            subScore: subScore + point,
-            playerClickable: false,
-            currentAudio: `./assets/Breezy.m4a` // this is just a simulation
-          });
+          setTimeout(() => {
+            this.setState({
+              donorDialogue: { text: ' . . . ' },
+              subScore: subScore + point,
+              playerClickable: false,
+              currentAudio: `./assets/Breezy.m4a` // this is just a simulation
+            });
+          }, 800);
           setTimeout(() => {
             playerDialogues[skip] = { text: ' . . . ' };
             this.setState({
@@ -466,19 +478,29 @@ class App extends React.Component {
             }, () => {
               document.getElementById('respondButton').click();
             })
-          }, 800);
+          }, 1600);
         }
 
 
       } else { // donor
-        let playerDialogues = [];
+        let newPlayerDialogues = [];
         for (let ix of newDialogue) {
-          playerDialogues.push(Dialogue[gameChosen][ix]);
+          newPlayerDialogues.push(Dialogue[gameChosen][ix]);
         }
-        this.setState({
-          playerDialogues,
-          playerClickable: true
-        });
+        if (playerDialogues.length > 0) {
+          let prevBubbles = document.getElementsByClassName('tripleDots');
+          for (let b of prevBubbles) {
+            b.style.opacity = 0;
+            // b.style.left = '-100px';
+            // console.log("hello")
+          };
+        }
+        setTimeout(() => {
+          this.setState({
+            playerDialogues: newPlayerDialogues,
+            playerClickable: true
+          });
+        }, 800);
       }
     }
   }

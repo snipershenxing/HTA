@@ -1,13 +1,20 @@
 import React from 'react';
 
 const End = ({ ending, goToMain }) => {
-  setTimeout(() => { document.getElementsByClassName(ending.split(' ')[0])[0].style.opacity = 1 }, 1);
+  var bgImg = new Image();
+  bgImg.src = './assets/person.png';
+  bgImg.onload = function () {
+    document.getElementsByClassName('chooseDonor')[0].style.opacity = 1;
+    // document.getElementsByClassName(ending.split(' ')[0])[0].style.opacity = 1
+  };
+
   return (
     <div className="chooseDonor">
       <div
         className={ending.split(' ')[0]}
         onClick={() => {
-          goToMain(ending.split(' ')[1]);
+          document.getElementsByClassName('chooseDonor')[0].style.opacity = 0;
+          setTimeout(() => { goToMain(ending.split(' ')[1]); }, 800);
         }}></div>
     </div>
   );

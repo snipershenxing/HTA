@@ -110,7 +110,7 @@ const Dialogue = {
     },
     "Gate2-2": {
       text: `Alright – Unfortunately, I do need to go, but I will let her know you called. Could you please follow up later in the week?`,
-      nextDialogue: "End telephoneSuccess",
+      nextDialogue: "End telephoneFail",
       addScore: 0,
     },
     "Gate2-3": {
