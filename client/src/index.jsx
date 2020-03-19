@@ -486,6 +486,34 @@ class App extends React.Component {
           } else {
             newDialogue = 'Gate1-4'
           }
+        } else if (gameChosen === 'JPPhone' && newDialogue === 'Gate1') {
+          if (subScore + point <= 3) {
+            newDialogue = 'Gate1-1';
+            this.changeVideoHandler("./assets/Franco2.2.mp4");
+          } else if (4 <= subScore + point && subScore + point <= 7) {
+            newDialogue = 'Gate1-2'
+          } else {
+            newDialogue = 'Gate1-3'
+          }
+        } else if (gameChosen === 'JPPhone' && newDialogue === 'Gate2') {
+          if (subScore + point <= 9) {
+            newDialogue = 'Gate2-1';
+            this.changeVideoHandler("./assets/Franco2.2.mp4");
+          } else if (10 <= subScore + point && subScore + point <= 14) {
+            newDialogue = 'Gate2-2'
+          } else {
+            newDialogue = 'Gate2-3'
+          }
+        } else if (gameChosen === 'JPMeeting' && newDialogue === 'Gate1') {
+          if (subScore + point <= 2) {
+            newDialogue = 'Gate1-1'
+          } else if (3 <= subScore + point && subScore + point <= 4) {
+            newDialogue = 'Gate1-2'
+          } else if (5 <= subScore + point && subScore + point <= 6) {
+            newDialogue = 'Gate1-3'
+          } else {
+            newDialogue = 'Gate1-4'
+          }
         }
         if (playerClickable) {
           playerDialogues.forEach((e, i) => {
@@ -544,7 +572,6 @@ class App extends React.Component {
   }
 
   chooseGameHandler(name) {
-    let { JenTelScore, JenMeetScore, SharrelTelScore, SharrelMeetScore, JPTelScore, JPMeetScore } = this.state;
     if (name === 'FrancoPhone') {
       this.setState({
         gameChosen: name,
@@ -566,8 +593,8 @@ class App extends React.Component {
       this.setState({
         gameChosen: name,
         donorDialogue: Dialogue[name][1],
-        currentVideo: './assets/ss.mp4',
-        currentPoster: './assets/sss.png',
+        currentVideo: './assets/SharrelPhone/SharrelPhoneNeutral.mp4',
+        currentPoster: './assets/SharrelPhone/SharrelPhonePoster.png',
         currentAudio: './assets/Breezy.m4a',
       });
     } else if (name === 'SharrelMeeting') {
@@ -575,6 +602,26 @@ class App extends React.Component {
         gameChosen: name,
         playerClickable: true,
         playerDialogues: [Dialogue[name][1]],
+        currentVideo: './assets/SharrelMeeting/SharrelMeetingNeutral.mp4',
+        currentPoster: './assets/SharrelMeeting/SharrelMeetPoster.png',
+        currentAudio: './assets/Breezy.m4a',
+      });
+    } else if (name === 'JPPhone') {
+      this.setState({
+        gameChosen: name,
+        donorDialogue: Dialogue[name][1],
+        currentVideo: './assets/JPPhone/JPPhoneNeutral.mp4',
+        currentPoster: './assets/JPPhone/JPPhonePoster.png',
+        currentAudio: './assets/Breezy.m4a',
+      });
+    } else if (name === 'JPMeeting') {
+      this.setState({
+        gameChosen: name,
+        playerClickable: true,
+        playerDialogues: [Dialogue[name][1]],
+        currentVideo: './assets/JPMeeting/JPMeetingNeutral.mp4',
+        currentPoster: './assets/JPMeeting/JPMeetingPoster.png',
+        currentAudio: './assets/Breezy.m4a',
       });
     }
 
@@ -650,7 +697,7 @@ class App extends React.Component {
         case (gameChosen === 'Franco' || gameChosen === 'Sharrel' || gameChosen === 'JP'):
           gameScreen = <ChooseCommunication
             name={gameChosen}
-            canGoToMeeting={(gameChosen === 'Franco') ? (JenTelScore > 6) : (gameChosen === 'Sharrel') ? (SharrelTelScore >= 12) : (JPTelScore > 0)}
+            canGoToMeeting={(gameChosen === 'Franco') ? (JenTelScore > 6) : (gameChosen === 'Sharrel') ? (SharrelTelScore >= 12) : (JPTelScore >= 10)}
             chooseCom={this.chooseGameHandler}
             navigateBack={() => {
               this.setState({
