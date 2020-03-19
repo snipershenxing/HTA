@@ -1,5 +1,7 @@
 const Dialogue = {
+
   FrancoPhone: {
+
     1: {
       text: "Hello, Dr.Walker's Office.",
       nextDialogue: [2, 3, 4],
@@ -264,8 +266,11 @@ const Dialogue = {
       nextDialogue: 32,
       addScore: 5,
     },
+    
     29: {
       text: "I’m pleased to hear that. Let’s review our pledge form.",
+
+    
       nextDialogue: 33,
       addScore: 0,
     },
@@ -316,7 +321,7 @@ const Dialogue = {
     },
     39: {
       text: "I’d be thrilled to do that. I would also like to help by inviting some friends who support climate change research to join me.",
-      nextDialogue: [40],
+      nextDialogue: 40,
       addScore: 0,
     },
     40: {
@@ -1022,4 +1027,3 @@ const Dialogue = {
 
 
 export default Dialogue;
-// export default DialogueW2;
