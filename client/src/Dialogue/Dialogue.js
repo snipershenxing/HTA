@@ -822,13 +822,13 @@ const Dialogue = {
     },
     "Gate2-2":
     {
-      text: "It looks like I am available for lunch on Wednesday.",
+      text: "It looks like I am available for lunch on Friday.",
       nextDialogue: [29],
       addScore: 0,
     },
     "Gate2-3":
     {
-      text: "(There is no line here)",
+      text: "It looks like I am available for lunch on Wednesday.",
       nextDialogue: [29],
       addScore: 0,
     },
