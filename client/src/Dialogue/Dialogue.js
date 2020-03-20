@@ -59,7 +59,7 @@ const Dialogue = {
     },
     12: {
       text: `Franco, I am so sorry. I didn’t mean to disrespect Dr. Walker – I would never do something like that.I just wanted to find a time to talk with her.`,
-      nextDialogue: "Gate1",
+      nextDialogue: "End telephoneFail 2",
       addScore: 0,
     },
 
@@ -107,7 +107,7 @@ const Dialogue = {
 
     "Gate2-1": {
       text: `Unfortunately, I do need to go. I’ll let her know you called.`,
-      nextDialogue: "End telephoneFail",
+      nextDialogue: "End telephoneFail 1",
       addScore: 0,
     },
     "Gate2-2": {
@@ -346,7 +346,7 @@ const Dialogue = {
       addScore: 1,
     },
     3: {
-      text: "Good Morning Mrs. Letkin, this is (PlayerName) from the Aquarium. I hope you remember our conversation at (CDEventHere); is it possible to discuss your interest in our organization?",
+      text: "Good Morning Mrs. Letkin, this is (PlayerName) from the Aquarium. I hope you remember our conversation at fashion show; is it possible to discuss your interest in our organization?",
       nextDialogue: 6,
       addScore: 3,
     },
@@ -356,7 +356,7 @@ const Dialogue = {
       addScore: 5,
     },
     5: {
-      text: "I'm sorry, I'm very busy right now, but I have a minute or two to talk.Will this be quick?",
+      text: "I'm sorry, I'm very busy right now, but I have a minute or two to talk. Will this be quick?",
       nextDialogue: [7, 8],
       addScore: 0,
     },
@@ -543,7 +543,7 @@ const Dialogue = {
       addScore: 1,
     },
     4: {
-      text: "I know how passionate you are about marine illustration. We have secured an exciting new artist for a 6 month residency to work on illustrations around the Aquarium. I'm sure you are as excited as we are",
+      text: "I know how passionate you are about marine illustration. We have secured an exciting new artist for a 6 month residency to work on illustrations around the Aquarium. I'm sure you are as excited as we are.",
       nextDialogue: 8,
       addScore: 2,
     },
@@ -578,7 +578,7 @@ const Dialogue = {
       addScore: 1,
     },
     11: {
-      text: "We are actually hoping to add illustrations to the touch tank",
+      text: "We are actually hoping to add illustrations to the touch tank.",
       nextDialogue: "Gate1",
       addScore: 2,
     },
@@ -658,68 +658,57 @@ const Dialogue = {
 
 
   JPPhone: {
-    1:
-    {
+    1: {
       text: "Hi it's JP",
       nextDialogue: [2, 3, 4],
       addScore: 0,
     },
-    2:
-    {
+    2: {
       text: "Good Morning, this is (PlayerName) from the LoDo Aquarium. I’d like to talk about meeting up to discuss supporting our organization.",
       nextDialogue: 5,
       addScore: 1,
     },
-    3:
-    {
+    3: {
       text: "Hi J.P. This is (PlayerName) from the LoDo Aquarium. I was wanting to further discuss helping the aquarium.",
       nextDialogue: 6,
       addScore: 3,
     },
-    4:
-    {
+    4: {
       text: "Hello, J.P.! This is (PlayerName) calling from theLoDo Aquarium. I’m calling to follow up on our conversation about partnering with us.",
       nextDialogue: 6,
       addScore: 5,
     },
-    5:
-    {
+    5: {
       text: "Okay. I have a little time to talk but I’m pretty busy.",
       nextDialogue: [7, 8, 9],
       addScore: 0,
     },
-    6:
-    {
+    6: {
       text: "Good to hear from you. How have things been going?",
       nextDialogue: [10, 11],
       addScore: 0,
     },
-    7:
-    {
+    7: {
       text: "Okay. It’s going to be hard to tell you everything right now. We have so much going on. It’s hard to know where to start.",
       nextDialogue: "Gate1",
       addScore: 1,
     },
-    8:
-    {
+    8: {
       text: "I understand you are busy. We do have a lot of exciting news about our plans to share with you. Is it possible to find another time to talk about the touch tank and our summer programming?",
       nextDialogue: "Gate1",
       addScore: 2,
     },
-    9:
-    {
+    9: {
       text: "I don’t want to take up too much of your time. I thought you would be happy to know we are expanding the touch tank exhibit and our summer programming.",
       nextDialogue: "Gate1",
       addScore: 3,
     },
-    10:
-    {
+    10: {
       text: "They’re going great! Attendance and engagement are up significantly, and we have just announced some exciting plans for the touch tank and our summer programming. I thought your grandkids would be interested.",
       nextDialogue: "Gate1",
       addScore: 4,
     },
-    11:
-    {
+    11: {
       text: "Thank you for asking, J.P. I think you will be the most interested in some new opportunities for your grandchildren. We are expanding the touch tank and I thought they might be interested in our new summer programs.",
       nextDialogue: "Gate1",
       addScore: 5,
@@ -730,152 +719,127 @@ const Dialogue = {
     //   nextDialogue: 0,
     //   addScore: 0,
     // },
-    "Gate1-1":
-    {
+    "Gate1-1": {
       text: "I think finding another time to talk would be better.",
       nextDialogue: [15, 16],
       addScore: 0,
     },
-    "Gate1-2":
-    {
+    "Gate1-2": {
       text: "That’s great to hear. All of the grandchildren enjoy the aquarium and we’ll definitely bring them when they visit next summer.",
       nextDialogue: [17, 18],
       addScore: 0,
     },
-    "Gate1-3":
-    {
+    "Gate1-3": {
       text: "That is really exciting. The aquarium is becoming more and more important to all of my grandchildren. It is wonderful that you have new developments every time they visit.",
       nextDialogue: [18, 19],
       addScore: 0,
     },
-    15:
-    {
+    15: {
       text: "Sure, let’s schedule a time to meet and discuss numbers.",
       nextDialogue: 20,
       addScore: 1,
     },
-    16:
-    {
+    16: {
       text: "Yes, of course. I know you are busy. Would it be OK for me to reach out next week?",
       nextDialogue: 21,
       addScore: 2,
     },
-    17:
-    {
+    17: {
       text: "Fantastic. I’d be happy to arrange some unique opportunities for them. Could we get together to review the options?",
       nextDialogue: 21,
       addScore: 2,
     },
-    18:
-    {
+    18: {
       text: "That is so great to hear. We want to make sure families like yours always have new experiences and opportunities to learn. I have a few ideas about things they might enjoy during their next visit and how you can get more involved. How does your schedule look for the next few weeks?",
       nextDialogue: 22,
       addScore: 3,
     },
-    19:
-    {
+    19: {
       text: "Thank you, J.P., We want to make sure families like yours always have new experiences and opportunities to learn. I have some ideas about behind the scenes opportunities for your family and would love for you to be more involved. Are you available for lunch on Wednesday of later in the day Thursday?",
       nextDialogue: 23,
       addScore: 5,
     },
-    20:
-    {
+    20: {
       text: "Natalie: may explain that you should look more towards the donor’s interests rather than the statistics of the organization.",
       nextDialogue: "End telephoneFail",
       addScore: 0,
     },
-    21:
-    {
+    21: {
       text: "I’d be interested in hearing more. Why don’t you try calling me next week?",
       nextDialogue: "End replay",
       addScore: 0,
     },
-    22:
-    {
+    22: {
       text: "I’ll be out of town for a couple of weeks, but we could get together the week of the 21st.",
       nextDialogue: [24, 25],
       addScore: 0,
     },
-    23:
-    {
+    23: {
       text: "That sounds great. I’m free for lunch on Wednesday and want to hear what you have in mind.",
       nextDialogue: [29],
       addScore: 0,
     },
-    24:
-    {
+    24: {
       text: "That sounds good. I’ll reach out to you again then and we can schedule a time to meet in person.",
       nextDialogue: 2,
       addScore: "Gate2",
     },
-    25:
-    {
+    25: {
       text: "OK. I am flexible on Wednesday, Thursday, and Friday of that week. What time works best for you?",
       nextDialogue: "Gate2",
       addScore: 3,
     },
-    "Gate2-1":
-    {
+    "Gate2-1": {
       text: "I’ll have to think about it. Call me back next week.",
       nextDialogue: "End telephoneFail",
       addScore: 0,
     },
-    "Gate2-2":
-    {
+    "Gate2-2": {
       text: "It looks like I am available for lunch on Friday.",
       nextDialogue: [29],
       addScore: 0,
     },
-    "Gate2-3":
-    {
+    "Gate2-3": {
       text: "It looks like I am available for lunch on Wednesday.",
       nextDialogue: [29],
       addScore: 0,
     },
-    29:
-    {
+    29: {
       text: "Sounds Good.",
       nextDialogue: 30,
       addScore: 0,
     },
-    30:
-    {
+    30: {
       text: "Where would you like to meet? How about my office at the ranch?",
       nextDialogue: [31, 32, 33],
       addScore: 0,
     },
-    31:
-    {
+    31: {
       text: "Actually, I know the Maitre' D at that new restaurant Chez Jacques. I heard it's fantastic, have you been?",
       nextDialogue: 34,
       addScore: 0,
     },
-    32:
-    {
+    32: {
       text: "I don't want to put you to any trouble. Why don't we meet at the café on 5th?",
       nextDialogue: 35,
       addScore: 0,
     },
-    33:
-    {
+    33: {
       text: "Thank you so much, I'd love to see your ranch.",
       nextDialogue: 36,
       addScore: 0,
     },
-    34:
-    {
+    34: {
       text: "Oh I've heard wonderful things about it. The waitlist for reservations is so long. Let's go.",
       nextDialogue: "End telephoneSuccess",
       addScore: 0,
     },
-    35:
-    {
+    35: {
       text: "That's really thoughtful of you. I like that café.",
       nextDialogue: "End telephoneSuccess",
       addScore: 0,
     },
-    36:
-    {
+    36: {
       text: "Natalie explains why this location is not a place you want to make an ask and takes the player back to previous choice.",
       nextDialogue: "End otherChoice",
       addScore: 0,
@@ -884,86 +848,72 @@ const Dialogue = {
 
 
   JPMeeting: {
-    1:
-    {
+    1: {
       text: "Thank you for making the time to meet with me. I’ve been looking forward to sharing some of my ideas for your grandkids and would love to see you get more involved with the LoDo Aquarium.",
       nextDialogue: 2,
       addScore: 0,
     },
-    2:
-    {
+    2: {
       text: "Thank you. I’ve been looking forward to hearing what you have in mind.",
       nextDialogue: [3, 4, 5, 6],
       addScore: 0,
     },
-    3:
-    {
+    3: {
       text: "We are excited about expanding the touch tank and adding conservation programming which would benefit your grandchildren. The total budget is $50,000 and we are hoping you will make a leadership gift of $25,000.",
       nextDialogue: 7,
       addScore: 1,
     },
-    4:
-    {
+    4: {
       text: "We think that your vision and your assets would benefit everyone at the aquarium. Our new plans for the touch tank and summer programming would open up some opportunities behind the scenes for your grandchildren and we are hoping you will consider a leadership gift to the campaign.",
       nextDialogue: 8,
       addScore: 2,
     },
-    5:
-    {
+    5: {
       text: "It was wonderful to see so much of you and your family at the aquarium last summer. Our plans for the touch tank and summer programming would open up opportunities for your grandchildren to learn firsthand about conservation by working with our staff.",
       nextDialogue: 9,
       addScore: 3,
     },
-    6:
-    {
+    6: {
       text: "I am hopeful your grandchildren will participate, perhaps even with an eye toward future internships, in our plans to expand the touch tank and summer programming. We would also love to include them in some behind the scenes opportunities to meet the scientists and some of the more unique animals in the collection.",
       nextDialogue: 9,
       addScore: 4,
     },
-    7:
-    {
+    7: {
       text: "I am interested in supporting the aquarium and it does mean a lot to my grandkids, but I’m not ready to commit to a gift of that size.",
       nextDialogue: [10, 11],
       addScore: 0,
     },
-    8:
-    {
+    8: {
       text: "I might be able to help with that, but I would like to understand more about the opportunities for my grandchildren.",
       nextDialogue: [11, 12],
       addScore: 0,
     },
-    9:
-    {
+    9: {
       text: "I agree. I really like what you guys are doing and I think the kids will enjoy getting more involved when they are here visiting. How can I help?",
       nextDialogue: [13, 14],
       addScore: 0,
     },
-    10:
-    {
+    10: {
       text: "What amount would you consider?",
       nextDialogue: "Gate1",
       addScore: 1,
     },
-    11:
-    {
+    11: {
       text: "Our plans for the touch tank and summer programming would open up opportunities for your grandchildren to learn firsthand about conservation by working with our staff.",
       nextDialogue: "Gate1",
       addScore: 2,
     },
-    12:
-    {
+    12: {
       text: "I am hopeful your grandchildren will participate, in our plans to expand the touch tank and summer programming. We would also love to include them in some behind the scenes opportunities to meet the scientists and some of the more unique animals in the collection.",
       nextDialogue: "Gate1",
       addScore: 3,
     },
-    13:
-    {
+    13: {
       text: "The total budget is $50,000 and we are hoping you would consider a leadership gift to the campaign of $25,000 which will set a powerful example for our supporters and ensure this vision is realized.",
       nextDialogue: "Gate1",
       addScore: 3,
     },
-    14:
-    {
+    14: {
       text: "I’d love to have you visit the aquarium and get your input on the overall plan. The budget for the project is $50,000 and we are hoping you will consider a leadership gift to the campaign of $25,000. At that level, we would include a naming opportunity for the touch tank.",
       nextDialogue: "Gate1",
       addScore: 4,
@@ -974,53 +924,55 @@ const Dialogue = {
     //   nextDialogue: 0,
     //   addScore: 0,
     // },
-    "Gate1-1":
-    {
+    "Gate1-1": {
       text: "Natalie will explain where you messed up, such as asking too much for the money. One should keep the donor’s interests in mind in addition to the money.",
       nextDialogue: "End meetingFail",
       addScore: 0,
     },
-    "Gate1-2":
-    {
+    "Gate1-2": {
       text: "Hmm, I’ll have to think about this. Let’s set up another meeting to talk further.",
       nextDialogue: "End meetingFail",
       addScore: 0,
     },
-    "Gate1-3":
-    {
+    "Gate1-3": {
       text: "Well I’d certainly be willing to help you reach that, but I don’t want to cover 50% of the campaign on my own. I’d be willing to give $12,500. When you find another donor for that amount, I would be happy to share why I am supporting the aquarium at this level.",
       nextDialogue: [19],
       addScore: 0,
     },
-    "Gate1-4":
-    {
+    "Gate1-4": {
       text: "I hadn’t really considered giving you that much, but you’ve really helped me understand how great this could be, not just for my grandchildren, but for so many of your visitors. I’d be honored.",
       nextDialogue: [20],
       addScore: 0,
     },
-    19:
-    {
+    19: {
       text: "Thank you for your generosity! I can’t tell you how much we appreciate your gift and your offer to be a resource for your peers!",
       nextDialogue: 21,
       addScore: 0,
     },
-    20:
-    {
+    20: {
       text: "Thank you for your generosity! I am so looking forward to working with you on this project and arranging those opportunities we discussed for your grandkids to get to know the scientists and some of the star animals.",
       nextDialogue: 22,
       addScore: 0,
     },
-    21:
-    {
+    21: {
       text: "Natalie may comment as to why J.P. may not have wanted to donate as much. Maybe due to apprehension.",
       nextDialogue: "End meetingSuccess",
       addScore: 0,
     },
-    22:
-    {
+    22: {
       text: "Natalie congratulates you!",
       nextDialogue: "End meetingSuccess",
       addScore: 0,
+    },
+  },
+
+
+  Natalie: {
+    "1": {
+      text: "Remember to always be prepared for your call. If not, that’s how mistakes happen that may cost you."
+    },
+    "2": {
+      text: "It is always advantageous to be less subservient and remain professional and self-possessed."
     },
   }
 }

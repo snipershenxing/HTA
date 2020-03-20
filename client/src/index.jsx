@@ -389,8 +389,8 @@ class App extends React.Component {
 
   dialogueHandler(player, newDialogue, skip, point) {
     let { subScore, playerDialogues, gameChosen, playerClickable } = this.state;
-    if (typeof newDialogue === 'string' && newDialogue.includes('End')) {
-      let person = '', status = '', person2 = '', status2 = '';
+    if (typeof newDialogue === 'string' && (newDialogue.includes('End') || newDialogue.includes('Natalie'))) {
+      let person = '', status = '', person2 = '', status2 = '', num = "0";
 
       if (gameChosen.includes('Franco')) {
         person = 'Franco'; person2 = 'Jen';
@@ -401,17 +401,20 @@ class App extends React.Component {
       }
 
       if (newDialogue.includes('telephoneFail')) {
-        status = 'telephoneFail'; status2 = 'Tel';
+        status = 'telephoneFail';
+        status2 = 'Tel';
       } else if (newDialogue.includes('telephoneSuccess')) {
-        // status = 'telephoneSuccess';
-        // this.setState({ gameChosen: person });
+        status = 'telephoneSuccess';
         status2 = 'Tel';
       } else if (newDialogue.includes('meetingFail')) {
-        status = 'meetingFail'; status2 = 'Meet';
+        status = 'meetingFail';
+        status2 = 'Meet';
       } else if (newDialogue.includes('meetingSuccess')) {
-        status = 'meetingSuccess'; status2 = 'Meet';
+        status = 'meetingSuccess';
+        status2 = 'Meet';
       }
-      let pageChosen = status.length > 0 ? `${status} ${person}` : person;
+      num = newDialogue.split(" ")[2];
+      let pageChosen = status.length > 0 ? `${status} ${person} ${num}` : person;
       document.getElementById('videoContainer').style.opacity = 0;
       if (this.state[person2 + status2 + 'Score'] < subScore) {
         this.setState({
@@ -425,7 +428,7 @@ class App extends React.Component {
           gameChosen: pageChosen,
           subScore: 0,
         })
-      }, 1000);
+      }, 800);
     } else {
 
       if (player) {
@@ -527,26 +530,27 @@ class App extends React.Component {
               }, 0);
               setTimeout(() => {
                 disappear.style.zIndex = -3;
+                disappear.style.transition = 'none';
+                disappear.style.display = 'none'
               }, 800);
             }
           });
           setTimeout(() => {
             this.setState({
-              donorDialogue: { text: ' . . . ' },
               subScore: subScore + point,
               playerClickable: false,
-              currentAudio: `./assets/Breezy.m4a` // this is just a simulation
             });
           }, 800);
           setTimeout(() => {
             playerDialogues[skip] = { text: ' . . . ' };
             this.setState({
+              currentAudio: `./assets/Breezy.m4a`, // this is just a simulation
               donorDialogue: Dialogue[gameChosen][newDialogue],
               playerDialogues,
             }, () => {
               document.getElementById('respondButton').click();
             })
-          }, 1600);
+          }, 801);
         }
 
 
@@ -707,6 +711,7 @@ class App extends React.Component {
           />; break;
 
         case (gameChosen.includes('Fail') || gameChosen.includes('Success')):
+          let num = gameChosen.split(" ")[2];
           gameScreen = <End
             ending={gameChosen}
             goToMain={(page) => {
@@ -715,6 +720,7 @@ class App extends React.Component {
                 gameChosen: page,
               })
             }}
+            text={Dialogue.Natalie[num].text}
           />; break;
 
         default:

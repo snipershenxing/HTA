@@ -39,11 +39,9 @@ const GameScreen = ({ userName, donorDialogue, playerDialogues, currentVideo, cu
         onPause={() => {
           dialogueHandler(false, donorDialogue.nextDialogue);
         }}
-        onPlay={() => {
-          console.log("hi")
-        }}
       >
         <source src={currentVideo} type="video/mp4" autoPlay />
+        <source src={currentVideo.replace(".mp4", ".mov")} type="video/mp4" autoPlay />
         Sorry, your browser doesn't support MP4.
       </video>
       <div id="dialogues" />
