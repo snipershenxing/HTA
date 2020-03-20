@@ -530,10 +530,8 @@ class App extends React.Component {
             document.getElementById(String(i)).onclick = () => { };
             if (skip != i) {
               let disappear = document.getElementById(String(i));
-              setTimeout(() => {
-                disappear.style.opacity = 0;
-                disappear.style.left = "-100px";
-              }, 0);
+              disappear.style.opacity = 0;
+              disappear.style.left = "-100px";
               setTimeout(() => {
                 disappear.style.zIndex = -3;
                 disappear.style.transition = 'none';
@@ -541,12 +539,11 @@ class App extends React.Component {
               }, 800);
             }
           });
-          setTimeout(() => {
-            this.setState({
-              subScore: subScore + point,
-              playerClickable: false,
-            });
-          }, 800);
+
+          this.setState({
+            subScore: subScore + point,
+            playerClickable: false,
+          })
           setTimeout(() => {
             playerDialogues[skip] = { text: ' . . . ' };
             this.setState({
@@ -558,7 +555,6 @@ class App extends React.Component {
             })
           }, 801);
         }
-
 
       } else { // donor
         let newPlayerDialogues = [];

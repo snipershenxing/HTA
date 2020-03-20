@@ -14,7 +14,7 @@ const GameScreen = ({ userName, donorDialogue, playerDialogues, currentVideo, cu
       p.style.opacity = 1;
     }
   };
-
+  console.log("render")
   return (
     <div
       id='videoContainer'
@@ -75,4 +75,5 @@ const GameScreen = ({ userName, donorDialogue, playerDialogues, currentVideo, cu
   )
 };
 
-export default GameScreen;
+export default React.memo(GameScreen);
+// export default GameScreen;
