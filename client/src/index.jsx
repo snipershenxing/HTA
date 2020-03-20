@@ -445,10 +445,16 @@ class App extends React.Component {
           if (subScore + point <= 4) {
             newDialogue = 'Gate2-1';
             this.changeVideoHandler("./assets/Franco2.2.mp4");
-          } else if (5 <= subScore + point && subScore + point <= 6) {
+          } else if (5 == subScore + point) {
             newDialogue = 'Gate2-2'
-          } else {
+          } else if (6 == subScore + point) {
+            newDialogue = 'Gate2-6'
+          } else if (7 <= subScore + point && subScore + point <= 9) {
             newDialogue = 'Gate2-3'
+          } else if (10 == subScore + point) {
+            newDialogue = 'Gate2-4'
+          } else { // 11
+            newDialogue = 'Gate2-5'
           }
         } else if (gameChosen === 'FrancoMeeting' && newDialogue === 'Gate1') {
           if (subScore + point <= 4) {

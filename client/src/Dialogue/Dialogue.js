@@ -15,7 +15,7 @@ const Dialogue = {
     3: {
       text: "Hi Franco. It’s (PlayerName) from the aquarium. I hope you are doing well. I’m calling to find a time with Jennifer to follow-up our conversations.",
       nextDialogue: 6,
-      addScore: 3,
+      addScore: 4,
     },
     4: {
       text: "Hello Franco. This is (PlayerName) from the aquarium. I am calling to find a time to get together with Mrs. Walker.",
@@ -92,7 +92,7 @@ const Dialogue = {
     18: {
       text: `That’s great to hear. I look forward to talking with them further in the next weeks and exploring their thinking. What time might work in their calendar?`,
       nextDialogue: "Gate2",
-      addScore: 3,
+      addScore: 4,
     },
     19: {
       text: `Thank you, Franco. I appreciate your assistance. Please let me know how the next couple of weeks look.`,
@@ -112,12 +112,27 @@ const Dialogue = {
     },
     "Gate2-2": {
       text: `Alright – Unfortunately, I do need to go, but I will let her know you called. Could you please follow up later in the week?`,
-      nextDialogue: "End telephoneFail",
+      nextDialogue: "End telephoneFail 5",
       addScore: 0,
     },
     "Gate2-3": {
       text: `It looks like they are both available Wednesday at 1:30. I’ll add that to the calendar. Please email me the location.`,
-      nextDialogue: "End telephoneSuccess",
+      nextDialogue: "End telephoneSuccess 3",
+      addScore: 0,
+    },
+    "Gate2-4": {
+      text: `It looks like they are both available Wednesday at 1:30. I’ll add that to the calendar. Please email me the location.`,
+      nextDialogue: "End telephoneSuccess 6",
+      addScore: 0,
+    },
+    "Gate2-5": {
+      text: `It looks like they are both available Wednesday at 1:30. I’ll add that to the calendar. Please email me the location.`,
+      nextDialogue: "End telephoneSuccess 4",
+      addScore: 0,
+    },
+    "Gate2-6": {
+      text: `Alright – Unfortunately, I do need to go, but I will let her know you called. Could you please follow up later in the week?`,
+      nextDialogue: "End telephoneFail 7",
       addScore: 0,
     },
   },
@@ -166,7 +181,7 @@ const Dialogue = {
     },
     9: {
       text: "We have so much going on. Where do I start? The touch tank is open and the new research program is up and running.",
-      nextDialogue: 14,
+      nextDialogue: "End meetingFail 8",
       addScore: 0,
     },
     10: {
@@ -189,11 +204,11 @@ const Dialogue = {
       nextDialogue: 18,
       addScore: 5,
     },
-    14: {
-      text: "Natalie: Be careful to direct your conversation to their interests.",
-      nextDialogue: "End meetingFail",
-      addScore: 0,
-    },
+    // 14: { // moved to Natalie dialogues
+    //   text: "Natalie: Be careful to direct your conversation to their interests.",
+    //   nextDialogue: "End meetingFail",
+    //   addScore: 0,
+    // },
     15: {
       text: "That sounds great. We were hoping to hear about the research initiatives.",
       nextDialogue: [19],
@@ -973,6 +988,42 @@ const Dialogue = {
     },
     "2": {
       text: "It is always advantageous to be less subservient and remain professional and self-possessed."
+    },
+    "3": {
+      text: "Good job pushing back a little to try to secure a time, rather than hope you can secure it later. Always try to strike while the iron’s hot."
+    },
+    "4": {
+      text: "Great job building a relationship with Franco. He may choose to also tell you more about how their interests are emerging."
+    },
+    "5": {
+      text: "Not a very strong answer as now you do not know if you will get an appointment. You will very likely reach out again. Always better to end with an appointment."
+    },
+    "6": {
+      text: "Great job getting the appointment but remember you also need to keep building your relationship with Franco. He will always have information that will help you position yourself."
+    },
+    "7": {
+      text: "Don’t lose control of the conversation. Your job is to politely but firmly aim for getting the appointment resolved."
+    },
+
+
+    "office": {
+      text: "In an office space you assume you have a private space, but office assistants, phone calls, and the boss often interrupt meetings unannounced."
+    },
+
+    "9": {
+      text: "Be careful to direct your conversation to their interests."
+    },
+    "10": {
+      text: ""
+    },
+    "11": {
+      text: ""
+    },
+    "12": {
+      text: ""
+    },
+    "13": {
+      text: ""
     },
   }
 }

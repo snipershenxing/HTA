@@ -392,7 +392,7 @@ button:focus {
   cursor: pointer;
 }
 
-.telephoneFail, .meetingFail, .meetingSuccess {
+.telephoneFail, .meetingFail, .meetingSuccess, .telephoneSuccess {
   width: 100%;
   height: 100%;
   background-color: rgba(154, 36, 149, 1);
