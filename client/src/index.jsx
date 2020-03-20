@@ -12,8 +12,8 @@ import ChooseCommunication from './Screen/ChooseCommunicationScreen.jsx';
 import End from './Screen/EndScreen.jsx';
 
 // const address = 'http://192.168.1.100:3001';
-const address = 'http://192.168.1.2:3001';
-// const address = 'http://localhost:3001';
+//const address = 'http://192.168.1.2:3001';
+ const address = 'http://localhost:3001';
 
 
 class App extends React.Component {
@@ -544,7 +544,7 @@ class App extends React.Component {
     let { playerDialogues, donorDialogue, subScore, warningStatus, authenticate, userNameValid, passwordValid, userName, score, progress, tutorial, allUsers, currentVideo, currentPoster, currentAudio, gameChosen } = this.state;
     let gameScreen;
 
-    if (authenticate !== 'passed') {
+    if (authenticate == 'passed') {
       gameScreen = <div>
         <Authentication
           userName={userName}

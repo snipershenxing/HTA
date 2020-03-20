@@ -2,7 +2,32 @@
   font-family: 'ArialRounded';
   src: url('./fonts/ArialRoundedMTStd-ExtraBold.otf');
 }
-
+/* #cover{
+  z-index: 1;
+} */
+.tutorl{
+  position: absolute;
+  z-index: 1;
+  background-color: black;
+  opacity: 0.25;
+  height: 100vh;
+  width: 100vw;
+}
+.Ttext{
+  position: absolute;
+  opacity: 1;
+  top: 35vh;
+  z-index: 2;
+  color: floralwhite;
+  margin: 0 10vw;
+}
+.tButton{
+  z-index: 5;
+    position: absolute;
+    top: 60%;
+    /* left: 30%; */
+    right: 30%;
+}
 body {
   margin: 0;
   font-family: ArialRounded;
