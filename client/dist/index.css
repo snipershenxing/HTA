@@ -8,21 +8,21 @@
 .tutorl{
   position: absolute;
   z-index: 1;
-  background-color: whitesmoke;
-  opacity: 0.20;
+  background-color: black;
+  opacity: 0.25;
   height: 100vh;
-  width: 100vw
+  width: 100vw;
 }
 .Ttext{
-  position: absolute;    
+  position: absolute;
     top: 30vh;
     z-index: 2;
-    color: floralwhite;
+    color: black;
     margin: 0 10vw;
-    background-color: rgba(105,105,105,0.80);
+    background-color: rgba(245,245,245,0.85);
     text-align: center;
     padding: 16px 2vh;
-    font-size: 3vh
+    font-size: 3vh;
 }
 .tButton{
   z-index: 5;
