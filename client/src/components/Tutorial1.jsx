@@ -7,7 +7,7 @@ const TutoralScreen = ({ text, next }) => {
 
       </div>
       <p className='Ttext'>{text}</p>
-      <button name='nextButton' style = {{zIndex: 5 , position: "absolute"}} onClick={() => {document.getElementById('cover').style.opacity = 0 ; console.log('hiilow')}}> Continue  </button>
+      <button name='nextButton' className = 'tButton'  onClick={() => {document.getElementById('cover').style.opacity = 0 ; console.log('hiilow')}}> Continue  </button>
     </div>
   )
 

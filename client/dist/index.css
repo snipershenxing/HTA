@@ -15,18 +15,22 @@
 }
 .Ttext{
   position: absolute;
-  opacity: 1;
-  top: 35vh;
-  z-index: 2;
-  color: floralwhite;
-  margin: 0 10vw;
+    opacity: 1;
+    top: 35vh;
+    z-index: 2;
+    color: floralwhite;
+    margin: 0 10vw;
+    background-color: rgba(105,105,105,0.80);
 }
 .tButton{
   z-index: 5;
-    position: absolute;
-    top: 60%;
-    /* left: 30%; */
-    right: 30%;
+  position: absolute;
+  top: 55vh;
+  left: 76vw;
+  padding: 8px 21px;
+  background-color: limegreen;
+  font-weight: bold;
+  font-size: 14px
 }
 body {
   margin: 0;
