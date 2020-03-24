@@ -27,15 +27,20 @@ const FirstPage = ({ goToChooseDonor }) => {
   let buttonHeight = (height * 0.3);
   let buttonVerticalMargin = (0.03 * height);
   let buttonFontSize = (0.18 * height);
-
+   
   return (
     <div id='firstPage' className='firstPageContainer'>
       <Tutoral
+      
       text = "Welcome to How to Ask. You have finally arrived at the main part of major gifting. It is time to set up an appointment with your donor and inspire them to participate in this organization with their gift."
-      next = {() => {
-        console.log("hi")
-        document.getElementById('cover').style.display = 'none'
-      }}
+      // next = {() => {
+       
+        
+       
+      //     console.log("fuck you")
+        
+        
+      // }}
       />
       <img
         className='firstPage'
