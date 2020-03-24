@@ -32,15 +32,9 @@ const FirstPage = ({ goToChooseDonor }) => {
     <div id='firstPage' className='firstPageContainer'>
       <Tutoral
       
-      text = "Welcome to How to Ask. You have finally arrived at the main part of major gifting. It is time to set up an appointment with your donor and inspire them to participate in this organization with their gift."
-      // next = {() => {
-       
-        
-       
-      //     console.log("fuck you")
-        
-        
-      // }}
+     Ttext = "Welcome to How to Ask. You have finally arrived at the main part of major gifting. It is time to set up an appointment with your donor and inspire them to participate in this organization with their gift."
+     
+  
       />
       <img
         className='firstPage'
