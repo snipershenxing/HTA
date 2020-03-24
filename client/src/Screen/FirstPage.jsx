@@ -33,7 +33,7 @@ const FirstPage = ({ goToChooseDonor }) => {
       <Tutoral
       
      Ttext = "Welcome to How to Ask. You have finally arrived at the main part of major gifting. It is time to set up an appointment with your donor and inspire them to participate in this organization with their gift."
-     
+     Ttext2 = "Here we will practice listening(reading) skills and talking skills. Have a conversation with the donor in order to reach your goal. Try not to go off topic or be rude, and always be polite. Each donor is unique and likes different levels of politeness and formality, so make sure you know who your donor is and what they like. This will make talking to them all the easier." 
   
       />
       <img
