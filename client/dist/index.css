@@ -34,6 +34,16 @@
   font-weight: bold;
   font-size: 3vh
 }
+.tSkip {
+  z-index: 5;
+  position: absolute;
+  top: 55vh;
+  left: 10vw;
+  padding: 4px 25px;
+  background-color: gray;
+  font-weight: bold;
+  font-size: 3vh;
+}
 body {
   margin: 0;
   font-family: ArialRounded;

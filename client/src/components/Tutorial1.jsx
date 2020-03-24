@@ -17,8 +17,11 @@ const TutoralScreen = ({ Ttext, Ttext2, pageLeft = 0}) => {
          {
           
           document.getElementById('cover').style.opacity = 0;
-         }
-         
+         }        
+  }
+  function skip()
+  {
+    document.getElementById('cover').style.opacity = 0;
   }
     return (
       
@@ -29,6 +32,7 @@ const TutoralScreen = ({ Ttext, Ttext2, pageLeft = 0}) => {
       <p id = 't' className='Ttext'>{Ttext}</p>
     <p id = 'te' className='Ttext' style={{opacity: 0}}>{Ttext2}</p>
       <button name='nextButton' className = 'tButton'  onClick={next}> Continue  </button>
+      <button name='skip' className = 'tSkip'  onClick={skip}> skip </button>
     </div>
   )
 
